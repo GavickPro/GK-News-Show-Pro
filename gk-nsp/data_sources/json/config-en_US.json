@@ -1,0 +1,12 @@
+{
+	"name": "json",
+	"data_source_types": [
+		{
+			"name": "json-file",
+			"label": "JSON file",
+			"fields": [
+						"data_source"
+						]
+		}
+	]
+}

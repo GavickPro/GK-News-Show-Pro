@@ -1,0 +1,12 @@
+{
+	"name": "xml",
+	"data_source_types": [
+		{
+			"name": "xml-file",
+			"label": "XML file",
+			"fields": [
+						"data_source"
+						]
+		}
+	]
+}

@@ -1,0 +1,57 @@
+{
+	"name": "wp",
+	"data_source_types": [
+		{
+			"name": "wp-latest",
+			"label": "Latest posts",
+			"fields": [
+						"offset",
+						"orderby",
+						"order"
+						]
+		},
+		{
+			"name": "wp-sticky",
+			"label": "Sticky posts",
+			"fields": [
+						"offset",
+						"orderby",
+						"order"
+						]
+		},
+		{
+			"name": "wp-category",
+			"label": "Categories slugs",
+			"fields": [
+						"data_source",
+						"offset",
+						"orderby",
+						"order"
+						]
+		},
+		{
+			"name": "wp-tag",
+			"label": "Tags",
+			"fields": [
+						"data_source",
+						"offset",
+						"orderby",
+						"order"
+						]
+		},
+		{
+			"name": "wp-post",
+			"label": "Posts slugs",
+			"fields": [
+						"data_source"
+						]
+		},
+		{
+			"name": "wp-custom",
+			"label": "Custom post types",
+			"fields": [
+						"data_source"
+						]
+		}
+	]
+}

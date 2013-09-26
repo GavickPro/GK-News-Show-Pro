@@ -1,0 +1,47 @@
+{
+	"name": "news_gallery",
+	"tab_name": "News Gallery options",
+	"css": true,
+	"js": true,
+	"support": [
+		"wp",
+		"wp_woocommerce",
+		"json",
+		"xml"
+	],
+	"params": [
+		{
+			"name": "pages",
+			"label": "Number of pages",
+			"tooltip": "Specify number of pages with news displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 3
+		},
+		{
+			"name": "cols",
+			"label": "Number of columns",
+			"tooltip": "Specify number of columns with news displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 4
+		},
+		{
+			"name": "autoanimation",
+			"label": "Autoanimation",
+			"tooltip": "Specify if the autoanimation will be used",
+			"classes": "",
+			"type": "switch",
+			"default": 1
+		},
+		{
+			"name": "animation_interval",
+			"label": "Animation interval",
+			"tooltip": "Specify the interval of autoanimation in miliseconds",
+			"classes": "medium-right",
+			"type": "text",
+			"default": 5000,
+			"after": "ms"
+		}
+	]
+}

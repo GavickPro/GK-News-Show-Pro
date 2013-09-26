@@ -1,0 +1,30 @@
+{
+	"name": "wp_woocommerce",
+	"data_source_types": [
+		{
+			"name": "wp_woocommerce-wooc_latest",
+			"label": "Latest WooCommerce products",
+			"fields": [
+						"offset",
+						"orderby",
+						"order"
+						]
+		},
+		{
+			"name": "wp_woocommerce-wooc_category",
+			"label": "WooCommerce Categories slugs",
+			"fields": [
+						"data_source",
+						"orderby",
+						"order"
+						]
+		},
+		{
+			"name": "wp_woocommerce-wooc_post",
+			"label": "WooCommerce Products SKUs",
+			"fields": [
+						"data_source"
+						]
+		}
+	]
+}

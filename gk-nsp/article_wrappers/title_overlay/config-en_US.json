@@ -1,0 +1,55 @@
+{
+	"name": "title_overlay",
+	"tab_name": "Title Overlay options",
+	"css": true,
+	"js": true,
+	"support": [
+		"wp",
+		"wp_woocommerce",
+		"json",
+		"xml"
+	],
+	"params": [
+		{
+			"name": "padding",
+			"label": "Title padding",
+			"tooltip": "Specify the padding for the title block as a CSS value",
+			"classes": "",
+			"type": "text",
+			"default": "20px"
+		},
+		{
+			"name": "width",
+			"label": "Title block width",
+			"tooltip": "Specify number of columns with news displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 50,
+			"after": "%"
+		},
+		{
+			"name": "pos",
+			"label": "Title position",
+			"tooltip": "Specify the title position",
+			"classes": "",
+			"type": "select",
+			"default": "top",
+			"options": {
+				"top": "Top",
+				"bottom": "Bottom"
+			}
+		},
+		{
+			"name": "color",
+			"label": "Title color",
+			"tooltip": "Specify the title color",
+			"classes": "",
+			"type": "select",
+			"default": "light",
+			"options": {
+				"light": "Light",
+				"dark": "Dark"
+			}
+		}
+	]
+}

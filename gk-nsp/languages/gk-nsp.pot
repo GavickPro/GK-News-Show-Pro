@@ -1,0 +1,281 @@
+# GK NSP translation file
+# Copyright (C) 2013 GavickPro
+# This file is distributed under the same license as the PACKAGE package.
+# GavickPro <info@gavick.com>, 2013.
+#
+#, fuzzy
+msgid   ""
+msgstr  "Project-Id-Version: 1.0\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2013-09-26 16:00+0200\n"
+        "PO-Revision-Date: 2013-09-26 16:00+0200\n"
+        "Last-Translator: GavickPro <info@gavick.com>\n"
+        "Language-Team: en_US <en_US@li.org>\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=CHARSET\n"
+        "Content-Transfer-Encoding: 8bit\n"
+
+#: gk-nsp-form.php:73
+msgid   "ASC"
+msgstr  ""
+
+#: data_sources/wp_woocommerce/layout-parts.php:142
+#: data_sources/wp_woocommerce/layout-parts.php:145
+#: data_sources/wp/layout-parts.php:142 data_sources/wp/layout-parts.php:145
+msgid   "An error occured during creating the thumbnail."
+msgstr  ""
+
+#: gk-nsp-form.php:120 gk-nsp-form.php:125
+msgid   "Arrows"
+msgstr  ""
+
+#: gk-nsp-form.php:153
+msgid   "Article format:"
+msgstr  ""
+
+#: gk-nsp-form.php:149
+msgid   "Article layout"
+msgstr  ""
+
+#: gk-nsp-form.php:119
+msgid   "Article pagination:"
+msgstr  ""
+
+#: gk-nsp-form.php:90
+msgid   "Article wrapper:"
+msgstr  ""
+
+#: gk-nsp-form.php:89
+msgid   "Articles block"
+msgstr  ""
+
+#: gk-nsp-form.php:143
+msgid   "Auto-animation stops on hover:"
+msgstr  ""
+
+#: gk-nsp-form.php:136
+msgid   "Auto-animation:"
+msgstr  ""
+
+#: gk-nsp-form.php:132
+msgid   "Autoanimation settings"
+msgstr  ""
+
+#: gk-nsp-form.php:50
+msgid   "Basic settings"
+msgstr  ""
+
+#: gk-nsp-form.php:79
+msgid   "Blog ID (leave blank for current blog): "
+msgstr  ""
+
+#: gk-nsp-form.php:120 gk-nsp-form.php:125
+msgid   "Both"
+msgstr  ""
+
+#: gk-nsp-form.php:261
+msgid   "Cache settings"
+msgstr  ""
+
+#: gk-nsp-form.php:264
+msgid   "Cache time: "
+msgstr  ""
+
+#: gk-nsp-form.php:173 gk-nsp-form.php:183 gk-nsp-form.php:250
+#: gk-nsp-form.php:256
+msgid   "Chars"
+msgstr  ""
+
+#: gk-nsp-form.php:108
+msgid   "Columns: "
+msgstr  ""
+
+#: data_sources/xml/layout-parts.php:122
+#: data_sources/wp_woocommerce/wp_woocommerce.php:106
+#: data_sources/wp/wp.php:118 data_sources/wp/layout-parts.php:193
+#: data_sources/json/layout-parts.php:122
+msgid   "Comments "
+msgstr  ""
+
+#: gk-nsp-form.php:73
+msgid   "DESC"
+msgstr  ""
+
+#: gk-nsp-form.php:56
+msgid   "Data source:"
+msgstr  ""
+
+#: gk-nsp-form.php:72
+msgid   "Date"
+msgstr  ""
+
+#: gk-nsp-form.php:228
+msgid   "Date format:"
+msgstr  ""
+
+#: gk-nsp-form.php:220
+msgid   "Format:"
+msgstr  ""
+
+#: gk-nsp.php:160
+msgid   "GK News Show Pro"
+msgstr  ""
+
+#: gk-nsp-form.php:72
+msgid   "ID"
+msgstr  ""
+
+#: gk-nsp-form.php:191
+msgid   "Image"
+msgstr  ""
+
+#: gk-nsp-form.php:211
+msgid   "Info block"
+msgstr  ""
+
+#: gk-nsp-form.php:140
+msgid   "Interval: "
+msgstr  ""
+
+#: gk-nsp-form.php:207
+msgid   "Left"
+msgstr  ""
+
+#: gk-nsp-form.php:244
+msgid   "Link format"
+msgstr  ""
+
+#: gk-nsp-form.php:113
+msgid   "Links block"
+msgstr  ""
+
+#: gk-nsp-form.php:124
+msgid   "Links pagination:"
+msgstr  ""
+
+#: gk-nsp-form.php:205
+msgid   "Margin: "
+msgstr  ""
+
+#: gk-nsp-form.php:72
+msgid   "Modified"
+msgstr  ""
+
+#: data_sources/xml/layout-parts.php:120
+#: data_sources/wp_woocommerce/wp_woocommerce.php:104
+#: data_sources/wp/wp.php:116 data_sources/wp/layout-parts.php:191
+#: data_sources/json/layout-parts.php:120
+msgid   "No comments"
+msgstr  ""
+
+#: data_sources/wp_woocommerce/layout-parts.php:213
+msgid   "No reviews"
+msgstr  ""
+
+#: gk-nsp-form.php:156
+msgid   "None"
+msgstr  ""
+
+#: gk-nsp-form.php:348
+msgid   "Off"
+msgstr  ""
+
+#: gk-nsp-form.php:76
+msgid   "Offset:"
+msgstr  ""
+
+#: gk-nsp-form.php:348
+msgid   "On"
+msgstr  ""
+
+#: gk-nsp-form.php:72
+msgid   "Order by:"
+msgstr  ""
+
+#: gk-nsp-form.php:168
+msgid   "Padding: "
+msgstr  ""
+
+#: gk-nsp-form.php:107 gk-nsp-form.php:114
+msgid   "Pages: "
+msgstr  ""
+
+#: gk-nsp-form.php:120 gk-nsp-form.php:125
+msgid   "Pagination"
+msgstr  ""
+
+#: gk-nsp-form.php:207
+msgid   "Position:"
+msgstr  ""
+
+#: gk-nsp-form.php:72
+msgid   "Random"
+msgstr  ""
+
+#: data_sources/xml/layout-parts.php:144 data_sources/rss/layout-parts.php:155
+#: data_sources/wp_woocommerce/layout-parts.php:251
+#: data_sources/wp/layout-parts.php:224 data_sources/json/layout-parts.php:144
+#: gk-nsp-form.php:235
+msgid   "Read more"
+msgstr  ""
+
+#: data_sources/wp_woocommerce/layout-parts.php:215
+msgid   "Reviews "
+msgstr  ""
+
+#: gk-nsp-form.php:109 gk-nsp-form.php:115
+msgid   "Rows: "
+msgstr  ""
+
+#: gk-nsp-form.php:181 gk-nsp-form.php:254
+msgid   "Text"
+msgstr  ""
+
+#: gk-nsp-form.php:72 gk-nsp-form.php:171 gk-nsp-form.php:248
+msgid   "Title"
+msgstr  ""
+
+#: gk-nsp-form.php:53
+msgid   "Title:"
+msgstr  ""
+
+#: gk-nsp-form.php:207
+msgid   "Top"
+msgstr  ""
+
+#: gk-nsp.php:163
+msgid   "Use this widget to show recent items with images and additional "
+        "elements like title, date etc."
+msgstr  ""
+
+#: gk-nsp.php:427
+msgid   "Warning! There is no posts to display. Please check your widget "
+        "settings"
+msgstr  ""
+
+#: gk-nsp-form.php:85
+msgid   "Widget layout"
+msgstr  ""
+
+#: gk-nsp-form.php:173 gk-nsp-form.php:183 gk-nsp-form.php:250
+#: gk-nsp-form.php:256
+msgid   "Words"
+msgstr  ""
+
+#: gk-nsp-form.php:172 gk-nsp-form.php:182 gk-nsp-form.php:249
+#: gk-nsp-form.php:255
+msgid   "length: "
+msgstr  ""
+
+#: gk-nsp-form.php:264
+msgid   "min"
+msgstr  ""
+
+#: gk-nsp-form.php:176 gk-nsp-form.php:186 gk-nsp-form.php:200
+#: gk-nsp-form.php:214 gk-nsp-form.php:238
+msgid   "order:"
+msgstr  ""
+
+#: gk-nsp-form.php:193
+msgid   "size:"
+msgstr  ""

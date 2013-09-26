@@ -1,0 +1,12 @@
+{
+	"name": "rss",
+	"data_source_types": [
+		{
+			"name": "rss",
+			"label": "RSS feed",
+			"fields": [
+						"data_source"
+						]
+		}
+	]
+}

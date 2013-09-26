@@ -1,0 +1,126 @@
+/* GK NSP Title Overlay */
+.gk-title-overlay > figure {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    float: left;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-perspective: 1200;
+    -moz-perspective: 1200;
+    -ms-perspective: 1200;
+    perspective: 1200;
+}
+
+.gk-title-overlay > figure > img {
+    display: block;
+    height: auto;
+    margin: 0;
+    max-width: 100%;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+.gk-title-overlay > figure:hover > img {
+    -webkit-transform: scale(1.1) rotateZ(-3deg);
+    -moz-transform: scale(1.1) rotateZ(-3deg);
+    -ms-transform: scale(1.1) rotateZ(-3deg);
+    -o-transform: scale(1.1) rotateZ(-3deg);
+    transform: scale(1.1) rotateZ(-3deg);
+}
+
+.gk-title-overlay > figure > figcaption {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+}
+
+.gk-title-overlay[data-textpos="bottom"] > figure > figcaption {
+    bottom: 0;
+}
+
+.gk-title-overlay[data-textpos="top"] > figure > figcaption {
+    top: 0;
+}
+
+.gk-title-overlay > figure > figcaption h3 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.gk-title-overlay[data-textcolor="light"] > figure > figcaption a {
+    color: #fffefe!important;   
+}
+
+.gk-title-overlay[data-textcolor="dark"] > figure > figcaption a {
+    color: #111!important;   
+}
+
+/* Image overlays */
+.gk-title-overlay .gk-img-overlay {
+    background: #000;
+    cursor: pointer;
+    height: 100%;
+    left: -30%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    width: 100%;
+    z-index: 2;
+}
+
+.gk-title-overlay.hover .gk-img-overlay {
+    filter: alpha(opacity=75);
+    opacity: 0.75;
+    left: 0;
+}
+
+.gk-title-overlay .gk-img-overlay > span {
+    color: #fff;
+    font-family: Georgia, serif;   
+    font-size: 32px;
+    height: 32px;
+    line-height: 32px; 
+    position: absolute;
+    right: 22px;
+    text-align: center;
+    width: 24px;
+}
+
+.gk-title-overlay[data-textpos="bottom"] .gk-img-overlay > span {
+    top: 12px;
+}
+
+.gk-title-overlay[data-textpos="top"] .gk-img-overlay > span {
+    bottom: 12px;
+}
+
+/* Mobile styles */
+@media (max-width: 1030px) {
+    .gk-title-overlay figure {
+        float: none;
+    }
+
+    .gk-title-overlay img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .gk-title-overlay > figure > figcaption {
+        width: 100%!important;
+    }
+}
