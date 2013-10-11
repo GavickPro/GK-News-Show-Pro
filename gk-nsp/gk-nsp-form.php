@@ -221,7 +221,10 @@ class GK_NSP_Widget_Form {
 						
 						<textarea class="gk-format-textarea" id="<?php echo esc_attr( $nsp->get_field_id( 'article_info_format' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_info_format' ) ); ?>" type="text"><?php echo esc_attr( $article_info_format ); ?></textarea>
 
-						<small>You can use in the Format option following tags:<br />%DATE, %CATEGORY, %AUTHOR, %COMMENTS</small>
+						<small>
+							<?php _e('You can use in the Format option following tags:', 'gk-nsp'); ?>
+							<br />{DATE}, {CATEGORY}, {AUTHOR}, {COMMENTS}, {PRICE}, {REVIEWS}
+						</small>
 					</p>
 					
 					<p>	

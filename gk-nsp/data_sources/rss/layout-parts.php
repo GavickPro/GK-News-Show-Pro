@@ -122,22 +122,16 @@ class GK_NSP_Layout_Parts_rss {
 	 	$date = '';
 	 	$category = '';
  		// check if there is a category in format
-	 	if(stripos($this->parent->config['article_info_format'], '%CATEGORY') !== FALSE) {
+	 	if(stripos($this->parent->config['article_info_format'], '{CATEGORY}') !== FALSE) {
 	 		$category = '<span class="gk-nsp-category">' . ($item->get_category()->get_term()) . '</span>';
 	 	}
-	 	// check if there is a author in format
-	 	if(stripos($this->parent->config['article_info_format'], '%AUTHOR') !== FALSE) {	 			 		
-	 		$author_username = '';//$item->author_name;
-	 		$author_url = '';//$item->author_URL;
-	 		$author = '<a href="'.$author_url.'" class="gk-nsp-author">'.$author_username.'</a>';
-	 	}
 	 	// check if there is a date in format
-	 	if(stripos($this->parent->config['article_info_format'], '%DATE') !== FALSE) {
+	 	if(stripos($this->parent->config['article_info_format'], '{DATE}') !== FALSE) {
 	 		$date = '<span class="gk-nsp-date">' . $item->get_date($this->parent->config['article_info_date_format']) . '</span>';
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('%DATE', '%CATEGORY'),
+	 		array('{DATE}', '{CATEGORY}'),
 	 		array($date, $category),
 	 		$this->parent->config['article_info_format']
 	 	);

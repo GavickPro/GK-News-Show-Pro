@@ -166,25 +166,27 @@ class GK_NSP_Layout_Parts_wp {
 	 		$comment_count = $this->parent->wdgt_results[$i]->comment_count;
 	 		$author_ID = $this->parent->wdgt_results[$i]->post_author;
 	 	}
-	 	
- 		$categories = get_the_category($art_ID);
+		// check if there is a category in format
+	 	if(stripos($this->parent->config['article_info_format'], '{CATEGORY}') !== FALSE) {
+	 		$categories = get_the_category($art_ID);
 
- 		if(count($categories) > 0) {
- 			foreach($categories as $cat) { 			
- 				$category .= ' <a href="'.get_category_link( $cat->term_id ).'" class="gk-nsp-category">'.$cat->name.'</a> ';
- 			}
+	 		if(count($categories) > 0) {
+	 			foreach($categories as $cat) { 			
+	 				$category .= ' <a href="'.get_category_link( $cat->term_id ).'" class="gk-nsp-category">'.$cat->name.'</a> ';
+	 			}
+	 		}
  		}
 	 	// check if there is a author in format
-	 	if(stripos($this->parent->config['article_info_format'], '%AUTHOR') !== FALSE) {	 			 		
+	 	if(stripos($this->parent->config['article_info_format'], '{AUTHOR}') !== FALSE) {	 			 		
 	 		$username = get_the_author_meta('display_name', $author_ID);
 	 		$author = '<a href="'.get_author_posts_url($author_ID).'" class="gk-nsp-author">'.$username.'</a>';
 	 	}
 	 	// check if there is a date in format
-	 	if(stripos($this->parent->config['article_info_format'], '%DATE') !== FALSE) {
+	 	if(stripos($this->parent->config['article_info_format'], '{DATE}') !== FALSE) {
 	 		$date = '<span class="gk-nsp-date">' . get_the_time($this->parent->config['article_info_date_format'], $art_ID) . '</span>';
 	 	}
 	 	// check if there is a comments in format
-	 	if(stripos($this->parent->config['article_info_format'], '%COMMENTS') !== FALSE) {
+	 	if(stripos($this->parent->config['article_info_format'], '{COMMENTS}') !== FALSE) {
 	 		$comment_phrase = '';
 
 	 		if($comment_count == 0) {
@@ -197,7 +199,7 @@ class GK_NSP_Layout_Parts_wp {
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('%CATEGORY', '%AUTHOR', '%DATE', '%COMMENTS'),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}'),
 	 		array($category, $author, $date, $comments),
 	 		$this->parent->config['article_info_format']
 	 	);

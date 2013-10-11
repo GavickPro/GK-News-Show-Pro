@@ -100,20 +100,18 @@ class GK_NSP_Layout_Parts_json {
 	 	$date = '';
 	 	$comments = '';
 	 	$comment_count = $item->comment_count;
-	 	
- 		
 	 	// check if there is a author in format
-	 	if(stripos($this->parent->config['article_info_format'], '%AUTHOR') !== FALSE) {	 			 		
+	 	if(stripos($this->parent->config['article_info_format'], '{AUTHOR}') !== FALSE) {	 			 		
 	 		$author_username = $item->author_name;
 	 		$author_url = $item->author_URL;
 	 		$author = '<a href="'.$author_url.'" class="gk-nsp-author">'.$author_username.'</a>';
 	 	}
 	 	// check if there is a date in format
-	 	if(stripos($this->parent->config['article_info_format'], '%DATE') !== FALSE) {
+	 	if(stripos($this->parent->config['article_info_format'], '{DATE}') !== FALSE) {
 	 		$date = '<span class="gk-nsp-date">' . date($this->parent->config['article_info_date_format'], strtotime($item->date)) . '</span>';
 	 	}
 	 	// check if there is a comments in format
-	 	if(stripos($this->parent->config['article_info_format'], '%COMMENTS') !== FALSE) {
+	 	if(stripos($this->parent->config['article_info_format'], '{COMMENTS}') !== FALSE) {
 	 		$comment_phrase = '';
 
 	 		if($comment_count == 0) {
@@ -126,7 +124,7 @@ class GK_NSP_Layout_Parts_json {
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('%CATEGORY', '%AUTHOR', '%DATE', '%COMMENTS'),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}'),
 	 		array($category, $author, $date, $comments),
 	 		$this->parent->config['article_info_format']
 	 	);

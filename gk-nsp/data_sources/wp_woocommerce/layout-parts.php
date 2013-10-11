@@ -184,7 +184,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 		$this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_category' || 
 	 		$this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_post'
 	 	) {
-	 		if(stripos($this->parent->config['article_info_format'], '%CATEGORY') !== FALSE && $prod) {				
+	 		if(stripos($this->parent->config['article_info_format'], '{CATEGORY}') !== FALSE && $prod) {				
 	 			$category .= ' ' . $prod->get_categories();
 	 		}
 	 	} else {
@@ -197,16 +197,16 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 		}
 	 	}
 	 	// check if there is a author in format
-	 	if(stripos($this->parent->config['article_info_format'], '%AUTHOR') !== FALSE) {	 			 		
+	 	if(stripos($this->parent->config['article_info_format'], '{AUTHOR}') !== FALSE) {	 			 		
 	 		$username = get_the_author_meta('display_name', $author_ID);
 	 		$author = '<a href="'.get_author_posts_url($author_ID).'" class="gk-nsp-author">'.$username.'</a>';
 	 	}
 	 	// check if there is a date in format
-	 	if(stripos($this->parent->config['article_info_format'], '%DATE') !== FALSE) {
+	 	if(stripos($this->parent->config['article_info_format'], '{DATE}') !== FALSE) {
 	 		$date = '<span class="gk-nsp-date">' . get_the_time($this->parent->config['article_info_date_format'], $art_ID) . '</span>';
 	 	}
 	 	// check if there is a comments in format
-	 	if(stripos($this->parent->config['article_info_format'], '%REVIEWS') !== FALSE) {
+	 	if(stripos($this->parent->config['article_info_format'], '{REVIEWS}') !== FALSE) {
 	 		$review_phrase = '';
 
 	 		if($review_count == 0) {
@@ -218,13 +218,13 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 		$reviews = '<a href="'.get_permalink($art_ID).'#tab-reviews">'.$review_phrase.'</a>';
 	 	}
 	 	// check if there is a price in format
-	 	if(stripos($this->parent->config['article_info_format'], '%PRICE') !== FALSE && $prod) {	 		
+	 	if(stripos($this->parent->config['article_info_format'], '{PRICE}') !== FALSE && $prod) {	 		
 	 		// generate the output
 	 		$price = $prod->get_price_html();
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('%CATEGORY', '%AUTHOR', '%DATE', '%REVIEWS', '%PRICE'),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{REVIEWS}', '{PRICE}'),
 	 		array($category, $author, $date, $reviews, $price),
 	 		$this->parent->config['article_info_format']
 	 	);
