@@ -27,7 +27,6 @@ class GK_NSP_Widget_Form {
 	// class fields
 	var $nsp;
 	var $instance;
-
 	/**
 	 *
 	 * Outputs the HTML code of the widget in the back-end

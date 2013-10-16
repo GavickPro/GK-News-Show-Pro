@@ -51,9 +51,15 @@ if(!class_exists('GK_NSP_Article_Wrapper_default')) {
 				$temp_output = file_get_contents($af_path . GK_DS . $config['article_format']);
 
 				if(is_array($results[0]) && isset($results[0][$i])) {
-					$replacements = $data_source_class::get_article_format_mapping($results[0][$i], $config);
+					// PHP >= 5.3.* version
+					// $replacements = $data_source_class::get_article_format_mapping($results[0][$i], $config);
+					// PHP 5.2.* version
+					$replacements = call_user_func(array($data_source_class, 'get_article_format_mapping'), $results[0][$i], $config);
 				} else {
-					$replacements = $data_source_class::get_article_format_mapping($results[$i], $config);
+					// PHP >= 5.3.* version
+					// $replacements = $data_source_class::get_article_format_mapping($results[$i], $config);
+					// PHP 5.2.* version
+					$replacements = call_user_func(array($data_source_class, 'get_article_format_mapping'), $results[$i], $config);
 				}
 
 				foreach($replacements as $toreplace => $replacement) {

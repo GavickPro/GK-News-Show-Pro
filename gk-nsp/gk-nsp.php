@@ -38,8 +38,8 @@ if ( !defined( 'GK_DS' ) ) {
 	define('GK_DS', DIRECTORY_SEPARATOR);
 }
 
-include(__DIR__ . '/gk-nsp-form.php');
-include(__DIR__ . '/gk-nsp-helpers.php');
+include(dirname(__FILE__) . '/gk-nsp-form.php');
+include(dirname(__FILE__) . '/gk-nsp-helpers.php');
 
 /**
  * i18n
@@ -53,7 +53,7 @@ load_plugin_textdomain( 'gk-nsp', false, dirname( dirname( plugin_basename( __FI
  * Hooks into the widgets_init action.
  */
 function gk_nsp_register() {
-	register_widget( 'GK_NSP_Widget' );
+	register_widget( 'GK_NewsShowPro_Widget' );
 }
 
 add_action( 'widgets_init', 'gk_nsp_register' );
@@ -61,13 +61,13 @@ add_action( 'widgets_init', 'gk_nsp_register' );
 /**
  * install & uninstall
  */
-register_activation_hook( __FILE__, array( 'GK_NSP_Widget', 'install' ) );
-register_deactivation_hook( __FILE__, array( 'GK_NSP_Widget', 'uninstall' ) );
+register_activation_hook( __FILE__, array( 'GK_NewsShowPro_Widget', 'install' ) );
+register_deactivation_hook( __FILE__, array( 'GK_NewsShowPro_Widget', 'uninstall' ) );
 
 /**
  * The main widget class
  */
-class GK_NSP_Widget extends WP_Widget {
+class GK_NewsShowPro_Widget extends WP_Widget {
 	// variable used to store the object configuration
 	public $config = array(
 		'title' => '',
@@ -157,7 +157,7 @@ class GK_NSP_Widget extends WP_Widget {
 		//
 		$this->WP_Widget(
 			'gk_nsp', 
-			__('GK News Show Pro', 'gk-nsp'), 
+			__('News Show Pro by GavickPro', 'gk-nsp'), 
 			array( 
 				'classname' => 'gk_nsp', 
 				'description' => __( 'Use this widget to show recent items with images and additional elements like title, date etc.', 'gk-nsp') 
@@ -392,7 +392,11 @@ class GK_NSP_Widget extends WP_Widget {
 		$article_wrapper_helper_class = 'GK_NSP_Article_Wrapper_' . $article_wrapper;
 
 		// get the results
-		$results = $data_source_class::get_results($this, $article_wrapper_helper_class::number_of_articles($this->config));
+		// PHP >= 5.3.* version
+		// $results = $data_source_class::get_results($this, $article_wrapper_helper_class::number_of_articles($this->config));
+		// PHP 5.2.* version
+		$num_of_arts = call_user_func(array($article_wrapper_helper_class, 'number_of_articles'), $this->config);
+		$results = call_user_func(array($data_source_class, "get_results"), $this, $num_of_arts);	
 
 		// back to the current blog
 		if(is_multisite() && $data_source_blog != '' && is_numeric($data_source_blog)) {
