@@ -3,7 +3,7 @@ GK-News-Show-Pro
 
 ## Important!
 
-Plese read the installation tutorial here: https://github.com/GavickPro/GK-News-Show-Pro/wiki/Installation
+Please read the installation tutorial here: https://github.com/GavickPro/GK-News-Show-Pro/wiki/Installation
 
 ## Description
 
