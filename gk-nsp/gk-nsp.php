@@ -109,7 +109,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'article_image_order' => '3',
 		// article info format
 		'article_info_state' => 'on',
-		'article_info_format' => '%DATE %CATEGORY %AUTHOR %COMMENTS',
+		'article_info_format' => '{DATE} {CATEGORY} {AUTHOR} {COMMENTS}',
 		'article_info_date_format' => 'd M Y',
 		'article_info_order' => '4',
 		// article readmore format
