@@ -3,147 +3,150 @@
  * GK News Show Pro - back-end CSS code
  *
  **/
-
+.activated .gk-nsp-ui .gk-loader {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
 .gk-nsp-ui {
-	position: relative;
-	width: 100%;
+  position: relative;
+  width: 100%;
 }
 .gk-nsp-ui .gk-loader {
-	background: #fff url('images/loader.gif') no-repeat center center;
-	height: 100%;
-	left: 0;
-	opacity: 1; filter: alpha(opacity=100);
-	position: absolute;
-	top: 0;
-	-webkit-transition: all .3s ease-out;
-	-moz-transition: all .3s ease-out;
-	-ms-transition: all .3s ease-out;
-	-o-transition: all .3s ease-out;
-	transition: all .3s ease-out;
-	width: 100%;
-	z-index: 1;
-}
-.activated .gk-nsp-ui .gk-loader {
-	opacity: 0; filter: alpha(opacity=0);
+  background: #ffffff url('images/loader.gif') no-repeat center center;
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  position: absolute;
+  top: 0;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  width: 100%;
+  z-index: 1;
 }
 .gk-nsp-ui input.short {
-	width: 32px;
+  width: 32px;
 }
 .gk-nsp-ui input.short-right {
-	text-align: right;
-	width: 48px;
+  text-align: right;
+  width: 48px;
 }
 .gk-nsp-ui input.medium {
-	width: 72px;
+  width: 72px;
 }
 .gk-nsp-ui input.medium-right {
-	text-align: right;
-	width: 64px;
+  text-align: right;
+  width: 64px;
 }
 .gk-nsp-ui input.long {
-	width: 120px;
-}
-.gk-nsp-ui p > label:first-child {
-	display: inline-block;
-	max-width: 90px;
-	text-align: right;
-	width: 90px;
+  width: 120px;
 }
 .gk-nsp-ui p > label.long-text {
-	font-size: 11px;
+  font-size: 11px;
 }
 .gk-nsp-ui p > label.no-indent:first-child {
-	min-width: 20px;
-	width: auto;
+  min-width: 20px;
+  width: auto;
+}
+.gk-nsp-ui p > label:first-child {
+  display: inline-block;
+  max-width: 90px;
+  text-align: right;
+  width: 90px;
 }
 .gk-nsp-ui .gk-right {
-	float: right;
+  float: right;
 }
 .gk-nsp-ui textarea {
-	height: 90px;
-	margin-left: 93px;
-	margin-top: 10px;
-	width: 75%;
+  height: 90px;
+  margin-left: 93px;
+  margin-top: 10px;
+  width: 75%;
 }
 .gk-nsp-ui big {
-	display: block;
-	margin: 18px 0;
-	border-bottom: 1px solid #dfdfdf;
-	font-size: 11px;
-	line-height: 0;
+  display: block;
+  margin: 18px 0;
+  border-bottom: 1px solid #dfdfdf;
+  font-size: 11px;
+  line-height: 0;
 }
 .gk-nsp-ui big > span {
-	background: #fff;
-	padding: 0 10px 0 0;
-}
-.gk-toggler {
-	background: #f1f1f1;
-	background-image: -webkit-gradient(linear,left bottom,left top,from(#ececec),to(#f9f9f9));
-	background-image: -webkit-linear-gradient(bottom,#ececec,#f9f9f9);
-	background-image: -moz-linear-gradient(bottom,#ececec,#f9f9f9);
-	background-image: -o-linear-gradient(bottom,#ececec,#f9f9f9);
-	background-image: linear-gradient(to top,#ececec,#f9f9f9);
-	border: 1px solid #dfdfdf;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	cursor: pointer;
-	font-size: 12px;
-	margin: 0 0 5px 0!important;
-	padding: 7px 12px!important;
-	position: relative;
-}
-.gk-toggler:after {
-	background: url('../../../wp-admin/images/arrows-dark.png') no-repeat 8px -101px;
-	content: "";
-	display: block;
-	height: 32px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 32px;
-}
-.gk-toggler.active:after {
-	background: url('../../../wp-admin/images/arrows-dark.png') no-repeat 8px 7px;
-}
-.gk-toggle {
-	overflow: hidden;
-}
-.gk-toggle > div {
-	background: #fff;
-	margin-top: -700px;
-	padding: 8px 12px;
-	opacity: 0; filter: alpha(opacity=0);
-	-webkit-transition: all .3s ease-out;
-	-moz-transition: all .3s ease-out;
-	-ms-transition: all .3s ease-out;
-	-o-transition: all .3s ease-out;
-	transition: all .3s ease-out;
-}
-.gk-toggler.active + .gk-toggle > div {
-	margin-top: 0;
-	opacity: 1; filter: alpha(opacity=100);
+  background: #fff;
+  padding: 0 10px 0 0;
 }
 .gk-nsp-ui .gk-article-element {
-	border: 1px solid #dfdfdf;
-	margin: 0!important;
-	padding: 6px!important;
+  border: 1px solid #dfdfdf;
+  margin: 0!important;
+  padding: 6px!important;
 }
 .gk-nsp-ui .gk-article-element label {
-	width: 70px!important;
+  width: 70px!important;
 }
 .gk-nsp-ui .gk-article-element + .gk-indent {
-	background: #eee;
-	margin: 0;
-	padding: 12px;
+  background: #eee;
+  margin: 0;
+  padding: 12px;
 }
 .gk-nsp-ui .gk-article-element + .gk-article-element {
-	border-top: none;
+  border-top: none;
 }
 .gk-nsp-ui .gk-format-textarea {
-	margin-top: -20px;
+  margin-top: -20px;
 }
 .gk-nsp-ui .gk-format-textarea + small {
-	display: block;
-	margin: 0 0 0 93px;
+  display: block;
+  margin: 0 0 0 93px;
+}
+.gk-toggler {
+  background: #f1f1f1;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#ececec), to(#f9f9f9));
+  background-image: -webkit-linear-gradient(bottom, #ececec, #f9f9f9);
+  background-image: -moz-linear-gradient(bottom, #ececec, #f9f9f9);
+  background-image: -o-linear-gradient(bottom, #ececec, #f9f9f9);
+  background-image: linear-gradient(to top, #ececec, #f9f9f9);
+  border: 1px solid #dfdfdf;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  margin: 0 0 5px 0!important;
+  padding: 7px 12px!important;
+  position: relative;
+}
+.gk-toggler:after {
+  background: url('../../../wp-admin/images/arrows-dark.png') no-repeat 8px -101px;
+  content: "";
+  display: block;
+  height: 32px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+}
+.gk-toggler.active:after {
+  background: url('../../../wp-admin/images/arrows-dark.png') no-repeat 8px 7px;
+}
+.gk-toggler.active + .gk-toggle > div {
+  margin-top: 0;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.gk-toggle {
+  overflow: hidden;
+}
+.gk-toggle > div {
+  background: #fff;
+  margin-top: -700px;
+  padding: 8px 12px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
