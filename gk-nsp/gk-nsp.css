@@ -196,20 +196,20 @@
   margin: 0;
   padding: 16px 0;
 }
-.gk-nsp-links ul li h4 {
+.gk-nsp-links ul li .gk-nsp-link-header {
   color: #2f3133;
   font-size: 16px;
   font-weight: bold;
   line-height: 28px;
   margin: 0;
 }
-.gk-nsp-links ul li h4 a {
+.gk-nsp-links ul li .gk-nsp-link-header a {
   color: #2f3133;
   text-decoration: none;
 }
-.gk-nsp-links ul li h4 a:active,
-.gk-nsp-links ul li h4 a:focus,
-.gk-nsp-links ul li h4 a:hover {
+.gk-nsp-links ul li .gk-nsp-link-header a:active,
+.gk-nsp-links ul li .gk-nsp-link-header a:focus,
+.gk-nsp-links ul li .gk-nsp-link-header a:hover {
   color: #418cd1;
 }
 .gk-nsp-links p {
