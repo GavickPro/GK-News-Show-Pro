@@ -1,4 +1,13 @@
-// GK NSP Widget back-end
+/* 
+* GK News Show Pro
+*
+* @version: 0.1 beta
+* @date: 25-10-2013
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
 
 function GK_NSP_UI() {
     // properties
