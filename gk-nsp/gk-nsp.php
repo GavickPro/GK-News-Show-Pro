@@ -107,6 +107,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'article_image_h' => '120',
 		'article_image_pos' => 'top',
 		'article_image_order' => '3',
+		'article_image_popup' => 'on', 
 		// article info format
 		'article_info_state' => 'on',
 		'article_info_format' => '{DATE} {CATEGORY} {AUTHOR} {COMMENTS}',

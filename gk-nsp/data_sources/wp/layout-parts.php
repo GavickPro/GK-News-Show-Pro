@@ -97,6 +97,7 @@ class GK_NSP_Layout_Parts_wp {
 	 
 	 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'single-post-thumbnail' );
 	 	$image_path = $image[0];
+	 	$image_popup_url = $image_path;
 	 	$upload_dir = wp_upload_dir();
 
 	 	if(is_multisite()) {
@@ -132,11 +133,22 @@ class GK_NSP_Layout_Parts_wp {
 		 			if($this->parent->config['image_block_padding'] != '' && $this->parent->config['image_block_padding'] != '0') {
 		 				$style = ' style="margin: '.$this->parent->config['image_block_padding'].';"';
 		 			}
+
+		 			// if the popup is enabled
+		 			$link_additional_classes = '';
+		 			if($this->parent->config['article_image_popup'] == 'on') {
+		 				$art_url = $image_popup_url;
+		 				$link_additional_classes = ' thickbox';
+		 			}
 		 		
 		 			if($this->parent->config['article_image_pos'] == 'left' && $this->parent->config['article_image_order'] == 1) {
-		 				return apply_filters('gk_nsp_art_image', '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link"><img src="'.$new_path.'" alt="" class="gk-nsp-image" '.$style.' /></a></div>');
+		 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"><img src="'.$new_path.'" alt="" class="gk-nsp-image" '.$style.' /></a></div>';
+
+		 				return apply_filters('gk_nsp_art_image', $output);
 		 			} else {
-		 				return apply_filters('gk_nsp_art_image', '<a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-responsive gk-image-link"><img src="'.$new_path.'" alt="" class="gk-nsp-image gk-responsive" '.$style.' /></a>');
+						$output = '<a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-responsive gk-image-link'.$link_additional_classes.'"><img src="'.$new_path.'" alt="" class="gk-nsp-image gk-responsive" '.$style.' /></a>';
+
+		 				return apply_filters('gk_nsp_art_image', $output);
 		 			}
 	 			} else {
 	 				return __('An error occured during creating the thumbnail.', 'gk-nsp');
