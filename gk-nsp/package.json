@@ -1,0 +1,10 @@
+{
+  "name": "gk-nsp",
+  "version": "0.2.0",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.0",
+    "grunt-jsbeautifier": "~0.2.2",
+    "grunt-cssbeautifier": "~0.1.1"
+  }
+}
