@@ -1,8 +1,8 @@
 /* GK NSP Title Overlay */
 .gk-title-overlay > figure {
     -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     float: left;
     max-width: 100%;
     overflow: hidden;
@@ -35,8 +35,8 @@
 
 .gk-title-overlay > figure > figcaption {
     -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     position: absolute;
     z-index: 1;
 }
@@ -57,11 +57,11 @@
 }
 
 .gk-title-overlay[data-textcolor="light"] > figure > figcaption a {
-    color: #fffefe!important;   
+    color: #fffefe!important;
 }
 
 .gk-title-overlay[data-textcolor="dark"] > figure > figcaption a {
-    color: #111!important;   
+    color: #111!important;
 }
 
 /* Image overlays */
@@ -90,10 +90,10 @@
 
 .gk-title-overlay .gk-img-overlay > span {
     color: #fff;
-    font-family: Georgia, serif;   
+    font-family: Georgia, serif;
     font-size: 32px;
     height: 32px;
-    line-height: 32px; 
+    line-height: 32px;
     position: absolute;
     right: 22px;
     text-align: center;

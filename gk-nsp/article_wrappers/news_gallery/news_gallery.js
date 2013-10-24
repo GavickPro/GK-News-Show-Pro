@@ -1,8 +1,8 @@
 // GK NSP News Gallery
-(function () {
+(function() {
     "use strict";
-    jQuery(document).ready(function () {
-        jQuery(document).find('.gk-news-gallery').each(function (i, module) {
+    jQuery(document).ready(function() {
+        jQuery(document).find('.gk-news-gallery').each(function(i, module) {
             module = jQuery(module);
 
             if (!module.hasClass('active')) {
@@ -12,7 +12,7 @@
         });
     });
 
-    var gkNspNewsGalleryInit = function (module) {
+    var gkNspNewsGalleryInit = function(module) {
         module = jQuery(module);
         // set the basic module variables
         module.attr('data-current', 1);
@@ -22,9 +22,9 @@
 
         // check if pagination exists
         if (module.find('.gk-pagination').length) {
-            module.find('.gk-pagination li').each(function (i, el) {
+            module.find('.gk-pagination li').each(function(i, el) {
                 el = jQuery(el);
-                el.click(function (e) {
+                el.click(function(e) {
                     e.preventDefault();
 
                     if (i + 1 !== module.attr('data-current') * 1.0) {
@@ -40,7 +40,7 @@
         var arts_time_start = 0;
         var arts_swipe = false;
 
-        module.bind('touchstart', function (e) {
+        module.bind('touchstart', function(e) {
             arts_swipe = true;
             var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
@@ -51,7 +51,7 @@
             }
         });
 
-        module.bind('touchmove', function (e) {
+        module.bind('touchmove', function(e) {
             var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
             if (touches.length > 0 && arts_swipe) {
@@ -65,7 +65,7 @@
             }
         });
 
-        module.bind('touchend', function (e) {
+        module.bind('touchend', function(e) {
             var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
             if (touches.length > 0 && arts_swipe) {
@@ -86,15 +86,15 @@
 
         // check if autoanimation is enabled
         if (module.hasClass('gk-auto-anim')) {
-            setTimeout(function () {
+            setTimeout(function() {
                 gkNspNewsGalleryAutoAnim(module);
             }, module.attr('data-autoanim-time'));
         }
 
         // add stop event
-        module.find('.gk-image').each(function (i, img) {
+        module.find('.gk-image').each(function(i, img) {
             img = jQuery(img);
-            img.mouseenter(function () {
+            img.mouseenter(function() {
                 module.attr('data-stop', 1);
                 var overlay = img.find('.gk-img-overlay');
                 var realImg = img.find('img');
@@ -105,7 +105,7 @@
                 overlay.attr('class', 'gk-img-overlay active');
             });
 
-            img.mouseleave(function () {
+            img.mouseleave(function() {
                 module.attr('data-stop', 0);
                 var overlay = img.find('.gk-img-overlay');
                 overlay.attr('class', 'gk-img-overlay');
@@ -113,22 +113,22 @@
         });
     };
 
-    var gkNspNewsGalleryAutoAnim = function (module) {
+    var gkNspNewsGalleryAutoAnim = function(module) {
         if (module.attr('data-blank') === 1 || module.attr('data-stop') === 1) {
-            setTimeout(function () {
+            setTimeout(function() {
                 module.attr('data-blank', 0);
                 gkNspNewsGalleryAutoAnim(module);
             }, module.attr('data-autoanim-time'));
         } else {
             gkNspNewsGalleryAnim(module, 'next');
 
-            setTimeout(function () {
+            setTimeout(function() {
                 gkNspNewsGalleryAutoAnim(module);
             }, module.attr('data-autoanim-time'));
         }
     };
 
-    var gkNspNewsGalleryAnim = function (module, dir) {
+    var gkNspNewsGalleryAnim = function(module, dir) {
         // amount of news per page
         var perPage = module.attr('data-cols') * 1.0;
         var current = module.attr('data-current') * 1.0;
@@ -155,7 +155,7 @@
         // set the current page
         module.attr('data-current', next);
         // hide current elements
-        module.find('.gk-image').each(function (i, img) {
+        module.find('.gk-image').each(function(i, img) {
             img = jQuery(img);
 
             if (img.hasClass('active')) {
@@ -170,8 +170,8 @@
             jQuery(items.get(next - 1)).addClass('active');
         }
         // show next elements	
-        setTimeout(function () {
-            module.find('.gk-image').each(function (i, img) {
+        setTimeout(function() {
+            module.find('.gk-image').each(function(i, img) {
                 img = jQuery(img);
 
                 if (i >= (next - 1) * perPage && i < (next * perPage)) {
@@ -182,11 +182,11 @@
         }, 300);
     };
 
-    var gkNspNewsGalleryImgClass = function (img, className, delay, time) {
+    var gkNspNewsGalleryImgClass = function(img, className, delay, time) {
         if (!delay) {
             img.attr('class', 'gk-image ' + className);
         } else {
-            setTimeout(function () {
+            setTimeout(function() {
                 img.attr('class', 'gk-image ' + className);
             }, time);
         }

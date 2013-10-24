@@ -1,16 +1,16 @@
 // GK NSP Widget
-(function () {
+(function() {
     "use strict";
 
-    jQuery(window).load(function () {
-        jQuery(document).find('.gk-nsp').each(function (i, widget) {
+    jQuery(window).load(function() {
+        jQuery(document).find('.gk-nsp').each(function(i, widget) {
             if (!jQuery(widget).hasClass('activated')) {
                 new GK_NSP(widget);
             }
         });
     });
 
-    var GK_NSP = function (widget) {
+    var GK_NSP = function(widget) {
         // init class fields
         this.init_fields(widget);
         // init the interface
@@ -36,7 +36,7 @@
         module: null,
         anim_property: '',
         //
-        init_fields: function (module) {
+        init_fields: function(module) {
             // the most important class field ;)
             this.module = jQuery(module);
             this.module.addClass('activated');
@@ -64,20 +64,20 @@
             this.pages_amount = Math.ceil(this.arts.length / this.arts_per_page);
             this.anim_property = jQuery('html').attr('dir') === 'rtl' ? 'right' : 'left';
         },
-        init_interface: function () {
+        init_interface: function() {
             var $this = this;
             // arts
             if (this.arts.length > 0) {
                 this.arts_block_width = 100;
             }
             // events
-            this.module.mouseenter(function () {
+            this.module.mouseenter(function() {
                 if (!$this.module.hasClass('onhover')) {
                     $this.module.addClass('onhover');
                 }
             });
             //
-            this.module.mouseleave(function () {
+            this.module.mouseleave(function() {
                 if ($this.module.hasClass('onhover')) {
                     $this.module.removeClass('onhover');
                 }
@@ -91,52 +91,52 @@
             this.nsp_art_list(0, 'bottom');
             //
             if (this.modInterface.top && this.modInterface.top.find('.gk-nsp-pagination')) {
-                this.modInterface.top.find('.gk-nsp-pagination li').each(function (i, item) {
-                    jQuery(item).click(function () {
+                this.modInterface.top.find('.gk-nsp-pagination li').each(function(i, item) {
+                    jQuery(item).click(function() {
                         $this.arts_anim(i);
                     });
                 });
             }
             //
             if (this.modInterface.top && this.modInterface.top.find('.gk-nsp-prev')) {
-                this.modInterface.top.find('.gk-nsp-prev').click(function () {
+                this.modInterface.top.find('.gk-nsp-prev').click(function() {
                     $this.arts_anim('prev');
                 });
 
-                this.modInterface.top.find('.gk-nsp-next').click(function () {
+                this.modInterface.top.find('.gk-nsp-next').click(function() {
                     $this.arts_anim('next');
                 });
             }
             // bottom interface
             if (this.modInterface.bottom && this.modInterface.bottom.find('.gk-nsp-pagination')) {
-                this.modInterface.bottom.find('.gk-nsp-pagination li').each(function (i, item) {
-                    jQuery(item).click(function () {
+                this.modInterface.bottom.find('.gk-nsp-pagination li').each(function(i, item) {
+                    jQuery(item).click(function() {
                         $this.lists_anim(i);
                     });
                 });
             }
             //
             if (this.modInterface.bottom && this.modInterface.bottom.find('.gk-nsp-prev')) {
-                this.modInterface.bottom.find('.gk-nsp-prev').click(function () {
+                this.modInterface.bottom.find('.gk-nsp-prev').click(function() {
                     $this.lists_anim('prev');
                 });
 
-                this.modInterface.bottom.find('.gk-nsp-next').click(function () {
+                this.modInterface.bottom.find('.gk-nsp-next').click(function() {
                     $this.lists_anim('next');
                 });
             }
 
             if (this.config.autoanim) {
-                setTimeout(function () {
+                setTimeout(function() {
                     $this.autoanim();
                 }, this.config.autoanim_interval);
 
                 if (this.config.autoanim_hover) {
-                    this.module.mouseenter(function () {
+                    this.module.mouseenter(function() {
                         $this.hover = true;
                     });
 
-                    this.module.mouseleave(function () {
+                    this.module.mouseleave(function() {
                         $this.hover = false;
                     });
                 }
@@ -148,7 +148,7 @@
             var arts_swipe = false;
             var arts_container = jQuery(this.module.find('.gk-nsp-arts'));
 
-            arts_container.bind('touchstart', function (e) {
+            arts_container.bind('touchstart', function(e) {
                 arts_swipe = true;
                 var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
@@ -159,7 +159,7 @@
                 }
             });
 
-            arts_container.bind('touchmove', function (e) {
+            arts_container.bind('touchmove', function(e) {
                 var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
                 if (touches.length > 0 && arts_swipe) {
@@ -173,7 +173,7 @@
                 }
             });
 
-            arts_container.bind('touchend', function (e) {
+            arts_container.bind('touchend', function(e) {
                 var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
                 if (touches.length > 0 && arts_swipe) {
@@ -196,7 +196,7 @@
             var links_swipe = false;
             var links_container = jQuery(this.module.find('.gk-nsp-links'));
 
-            links_container.bind('touchstart', function (e) {
+            links_container.bind('touchstart', function(e) {
                 links_swipe = true;
                 var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
@@ -207,7 +207,7 @@
                 }
             });
 
-            links_container.bind('touchmove', function (e) {
+            links_container.bind('touchmove', function(e) {
                 var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
                 if (touches.length > 0 && links_swipe) {
@@ -221,7 +221,7 @@
                 }
             });
 
-            links_container.bind('touchend', function (e) {
+            links_container.bind('touchend', function(e) {
                 var touches = e.originalEvent.changedTouches || e.originalEvent.touches;
 
                 if (touches.length > 0 && links_swipe) {
@@ -239,7 +239,7 @@
             });
         },
         //
-        nsp_art_list: function (i, pos) {
+        nsp_art_list: function(i, pos) {
             var num = (i !== null) ? i : (pos === 'top') ? this.arts_current : this.links_current;
 
             if (this.modInterface[pos] && this.modInterface[pos].find('.gk-nsp-pagination')) {
@@ -249,7 +249,7 @@
             }
         },
         //
-        arts_anim: function (dir) {
+        arts_anim: function(dir) {
             var $this = this;
             jQuery(this.arts_pages[this.arts_current]).removeClass('active');
 
@@ -271,18 +271,18 @@
                 }, $this.config.animation_speed);
             }
 
-            setTimeout(function () {
+            setTimeout(function() {
                 jQuery($this.arts_pages[$this.arts_current]).addClass('active');
             }, this.config.animation_speed * 0.5);
 
             this.nsp_art_list(this.arts_current, 'top');
             this.animation = false;
-            setTimeout(function () {
+            setTimeout(function() {
                 $this.animation = true;
             }, this.config.animation_interval * 0.8);
         },
         //
-        lists_anim: function (dir) {
+        lists_anim: function(dir) {
             var $this = this;
 
             for (var x = 0; x < 1; x++) {
@@ -300,7 +300,7 @@
                 $this.links_current = dir;
             }
 
-            setTimeout(function () {
+            setTimeout(function() {
                 for (var x = 0; x < 1; x++) {
                     var item = $this.links_pages[$this.links_current * 1 + x];
                     if (item) {
@@ -322,14 +322,14 @@
             this.nsp_art_list(null, 'bottom');
         },
         //
-        autoanim: function () {
+        autoanim: function() {
             var $this = this;
 
             if (!this.hover) {
                 this.arts_anim('next');
             }
 
-            setTimeout(function () {
+            setTimeout(function() {
                 $this.autoanim();
             }, this.config.autoanim_interval);
         }
