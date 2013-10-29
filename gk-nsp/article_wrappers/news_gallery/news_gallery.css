@@ -1,11 +1,30 @@
+/* 
+* GK News Show Pro
+*
+* @version: 0.1 beta
+* @date: 29-10-2013
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+
 /* GK NSP News Gallery */
-.gk-news-gallery {
+.gk-news-gallery,
+.gk-news-gallery .gk-images-wrapper > a,
+.gk-news-gallery .gk-images-wrapper > a img,
+.gk-news-gallery .gk-images-wrapper > a > .gk-img-overlay {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    display: block;
+    padding: 0;
+    position: relative;
+}
+
+.gk-news-gallery {
     overflow: hidden;
     padding: 50px 0;
-    position: relative;
 }
 
 .gk-news-gallery .gk-images-wrapper {
@@ -20,13 +39,9 @@
 }
 
 .gk-news-gallery .gk-images-wrapper > a {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     display: none;
     float: left;
     padding: 0 12px;
-    position: relative;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
@@ -92,26 +107,16 @@
 }
 
 .gk-news-gallery .gk-images-wrapper > a img {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
     margin: 0 auto;
     max-width: 100%;
-    padding: 0;
 }
 
 .gk-news-gallery .gk-images-wrapper > a > .gk-img-overlay {
     background: #DD5749;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
     filter: alpha(opacity=0);
     height: 100%;
     left: 50%;
     opacity: 0;
-    padding: 0;
     position: absolute;
     top: 0;
     -webkit-transform: translate3d(0, 0, 0);
@@ -182,19 +187,14 @@
 .gk-news-gallery .gk-pagination li:hover {
     background: #dd5749;
     cursor: pointer;
+}
+
+.gk-news-gallery .gk-pagination li:hover {
     -webkit-transform: scale(1.0);
     -moz-transform: scale(1.0);
     -ms-transform: scale(1.0);
     -o-transform: scale(1.0);
     transform: scale(1.0);
-}
-
-.gk-news-gallery .gk-pagination li.active {
-    -webkit-transform: scale(0.75);
-    -moz-transform: scale(0.75);
-    -ms-transform: scale(0.75);
-    -o-transform: scale(0.75);
-    transform: scale(0.75);
 }
 
 /* Mobile styles */

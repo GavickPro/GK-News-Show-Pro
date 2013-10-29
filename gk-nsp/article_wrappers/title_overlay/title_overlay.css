@@ -1,8 +1,23 @@
+/* 
+* GK News Show Pro
+*
+* @version: 0.1 beta
+* @date: 29-10-2013
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+
 /* GK NSP Title Overlay */
-.gk-title-overlay > figure {
+.gk-title-overlay > figure,
+.gk-title-overlay > figure > figcaption {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+.gk-title-overlay > figure {
     float: left;
     max-width: 100%;
     overflow: hidden;
@@ -34,9 +49,6 @@
 }
 
 .gk-title-overlay > figure > figcaption {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     position: absolute;
     z-index: 1;
 }
