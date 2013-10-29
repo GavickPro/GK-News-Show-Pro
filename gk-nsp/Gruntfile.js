@@ -2,6 +2,17 @@
 module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
+    csscss: {
+      options: {
+        colorize: true
+      },
+      dist: {
+        src: [
+          '*.css',
+          'article_wrappers/*/*.css'
+        ]
+      }
+    },
     jsbeautifier: {
         files : [
           'gk-nsp.js', 
@@ -59,9 +70,11 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-csscss');
   grunt.loadNpmTasks('grunt-jsbeautifier');
   grunt.loadNpmTasks('grunt-cssbeautifier');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-banner');
-  grunt.registerTask('default', ['jshint', 'cssbeautifier', 'jsbeautifier', 'usebanner']);
+
+  grunt.registerTask('default', ['csscss', 'jshint', 'cssbeautifier', 'jsbeautifier', 'usebanner']);
 };
