@@ -273,6 +273,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		$json_cache = get_option('widget_gk_nsp_json_cache');
 		$instances = get_option('widget_gk_nsp');
 		$loaded_files = array();
+		$thickbox_loaded = false;
 		// check if the instances are correct
 		if(is_array($instances) || is_object($instances)) {
 			// iterate through instances
@@ -292,6 +293,11 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 					// push the wrapper to teh list - avoid duplicates
 					array_push($loaded_files, $instance['article_wrapper']);
 				}
+				// load Thickbox script if popup is used
+				if(!$thickbox_loaded && $instance['article_image_popup'] === 'on') {
+					wp_enqueue_script('thickbox');
+					$thickbox_loaded = true;
+				}
 			}
 		}
 	}
@@ -301,6 +307,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		$json_cache = get_option('widget_gk_nsp_json_cache');
 		$instances = get_option('widget_gk_nsp');
 		$loaded_files = array();
+		$thickbox_loaded = false;
 		// check if the instances are correct
 		if(is_array($instances) || is_object($instances)) {
 			// iterate through instances
@@ -319,6 +326,11 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 					}
 					// push the wrapper to teh list - avoid duplicates
 					array_push($loaded_files, $instance['article_wrapper']);
+				}
+				// load Thickbox stylesheet if popup is used
+				if(!$thickbox_loaded && $instance['article_image_popup'] === 'on') {
+					wp_enqueue_style('thickbox');
+					$thickbox_loaded = true;
 				}
 			}
 		}
