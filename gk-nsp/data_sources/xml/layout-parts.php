@@ -84,17 +84,19 @@ class GK_NSP_Layout_Parts_xml {
 
 		 	// if the popup is enabled
  			$link_additional_classes = '';
+ 			$link_rel = '';
  			if($this->parent->config['article_image_popup'] == 'on') {
  				$art_url = $art_image;
  				$link_additional_classes = ' thickbox';
+ 				$link_rel = ' rel="gallery-gk-nsp-' . $this->parent->id . '"';
  			}
 		 		
  			if($this->parent->config['article_image_pos'] == 'left' && $this->parent->config['article_image_order'] == 1) {
- 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.'><img src="'.$art_image.'" alt="" class="gk-nsp-image" /></a></div>';
+ 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$art_image.'" alt="" class="gk-nsp-image" /></a></div>';
 
  				return apply_filters('gk_nsp_art_image', $output);
  			} else {
- 				$output = '<a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-responsive gk-image-link'.$link_additional_classes.'"'.$style.'><img src="'.$art_image.'" alt="" class="gk-nsp-image gk-responsive" /></a>';
+ 				$output = '<a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-responsive gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$art_image.'" alt="" class="gk-nsp-image gk-responsive" /></a>';
 
  				return apply_filters('gk_nsp_art_image', $output);
  			}
