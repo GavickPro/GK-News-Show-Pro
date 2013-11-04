@@ -125,7 +125,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'links_text_len' => '20',
 		'links_text_len_type' => 'words',
 		// paddings
-		'article_block_padding' => '0',
+		'article_block_padding' => '20px 0',
 		'image_block_padding' => '0',
 		// cache time
 		'cache_time' => '60',
