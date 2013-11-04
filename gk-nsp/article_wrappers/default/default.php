@@ -19,7 +19,7 @@ if($num_of_arts >= count($results)) {
 
 // generate the widget wrapper
 do_action('gk_nsp_before_wrapper');
-echo '<div class="'.$wdgt_class.'" data-cols="'.$article_cols.'" data-rows="'.$article_rows.'" data-links="'.$links_rows.'" data-autoanim="'.$autoanim.'" data-autoanimint="'.$autoanim_interval.'" data-autoanimhover="'.$autoanim_hover.'">';
+echo '<div class="'.$this->wdgt_class.'" data-cols="'.$article_cols.'" data-rows="'.$article_rows.'" data-links="'.$links_rows.'" data-autoanim="'.$autoanim.'" data-autoanimint="'.$autoanim_interval.'" data-autoanimhover="'.$autoanim_hover.'">';
 // wrap articles
 echo '<div class="gk-nsp-arts">';
 echo '<div class="gk-nsp-arts-scroll gk-nsp-pages-'.$num_of_art_pages.'">';

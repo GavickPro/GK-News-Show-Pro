@@ -50,6 +50,8 @@ class GK_NSP_Widget_Form {
 			<div class="gk-toggle">
 				<div>
 					<p><?php $this->input_text('title', $title, __( 'Title:', 'gk-nsp' ), '', ''); ?></p>
+
+					<p><?php $this->input_text('widget_css_suffix', $widget_css_suffix, __( 'CSS suffix:', 'gk-nsp' ), '', ''); ?></p>
 				
 					<p>
 						<label for="<?php echo esc_attr( $nsp->get_field_id( 'data_source_type' ) ); ?>"><?php _e( 'Data source:', 'gk-nsp' ); ?></label>

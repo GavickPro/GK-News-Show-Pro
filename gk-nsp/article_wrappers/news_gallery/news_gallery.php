@@ -48,7 +48,7 @@ if($num_of_arts >= count($results)) {
 
 // generate the widget wrapper
 echo '<div 
-		class="'.$wdgt_class.' gk-news-gallery" 
+		class="'.$this->wdgt_class.' gk-news-gallery" 
 		data-cols="'.$news_gallery_cols.'" 
 		data-pages="'.$news_gallery_pages.'" 
 		data-autoanim="'.$news_gallery_autoanimation.'" 

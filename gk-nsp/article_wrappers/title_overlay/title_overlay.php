@@ -39,7 +39,7 @@ if(isset($this->config['title_overlay_color'])) {
 
 // generate the widget wrapper
 echo '<div 
-		class="'.$wdgt_class.' gk-title-overlay" 
+		class="'.$this->wdgt_class.' gk-title-overlay" 
 		data-textpos="'.$title_overlay_pos.'" 
 		data-textcolor="'.$title_overlay_color.'" 
 >';

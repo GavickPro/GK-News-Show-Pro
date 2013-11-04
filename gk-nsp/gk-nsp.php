@@ -71,6 +71,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 	// variable used to store the object configuration
 	public $config = array(
 		'title' => '',
+		'widget_css_suffix' => '',
 		// data source
 		'data_source_type' => 'latest',
 		'data_source' => '',
@@ -134,8 +135,10 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'autoanim_interval' => '5000',
 		'autoanim_hover' => 'on'
 	);
-	// variable uset to store the object query results
+	// variable used to store the object query results
 	public $wdgt_results;
+	// variable used to store the widget CSS class
+	public $wdgt_class;
 	// variable used for the internal classes
 	private $generator;
 	// variables for storing pathes
@@ -418,8 +421,12 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		// restore the global $post variable
 		$post = $tmp_post;
 		// parse the data into a widget code
-		// prepare widhet classes
-		$wdgt_class = 'gk-nsp';
+		// prepare widget classes
+		$this->wdgt_class = 'gk-nsp';
+
+		if(trim($widget_css_suffix) != '') {
+			$this->wdgt_class .= ' ' . $this->config['widget_css_suffix'];
+		}
 		
 		// check if the results exists
 		if(count($results)) {
