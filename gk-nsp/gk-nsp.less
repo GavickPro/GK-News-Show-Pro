@@ -2,7 +2,7 @@
 * GK News Show Pro
 *
 * @version: 0.1 beta
-* @date: 29-10-2013
+* @date: 04-11-2013
 * @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
 * @author: GavickPro 
 * @email: info@gavick.com
@@ -170,7 +170,7 @@
 	font-weight: bold;
 	letter-spacing: -1px;
 	line-height: 1.2;
-	margin: 0 0 10px 0;
+	margin: 0 0 10px 0!important;
 
 	a {
 		color: @link_default_color;
@@ -201,11 +201,12 @@
 	margin: 0!important;
 
 	&  + .readon {
-		margin-top: 16px;	
+		display: block;
+		margin: 16px 0 0 0!important;	
 	}
 
 	&  + .gk-nsp-info {
-		margin-top: 6px;
+		margin: 6px 0 10px 0!important;
 	}
 }
 .gk-nsp-info {
