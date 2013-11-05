@@ -65,16 +65,22 @@ class GK_NSP_Widget_Form {
 							<option value="<?php echo $data_source_option[0]; ?>"<?php selected($data_source_type, $data_source_option[0]); ?>><?php echo $data_source_option[1]; ?></option>
 							<?php endforeach; ?>
 						</select>
-						
+					</p>
+					
+					<p>	
 						<textarea class="gk-data-source" id="<?php echo esc_attr( $nsp->get_field_id('data_source')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('data_source')); ?>" data-depends="<?php echo $json_data['data_source']; ?>"><?php echo esc_attr($data_source); ?></textarea>
+					</p>
+
+					<p>
+						<?php $this->input_switch('one_per_category', $one_per_category, __('One per category:', 'gk-nsp'), '', 'gk-one-per-category', ' data-depends="'.$json_data['one_per_category'].'"'); ?>
 					</p>
 				
 					<p>
-						<?php $this->input_select('orderby', $orderby, __('Order by:', 'gk-nsp'), array('ID' => __('ID', 'gk-nsp'), 'date' => __('Date', 'gk-nsp'), 'title' => __('Title', 'gk-nsp'), 'modified' => __('Modified', 'gk-nsp'), 'rand' => __('Random', 'gk-nsp')), '', ' data-depends="'.$json_data['orderby'].'"'); ?>
-						<?php $this->input_select('order', $order, '', array('ASC' => __('ASC', 'gk-nsp'), 'DESC' => __('DESC', 'gk-nsp')), '', ' data-depends="'.$json_data['order'].'"'); ?>
+						<?php $this->input_select('orderby', $orderby, __('Order by:', 'gk-nsp'), array('ID' => __('ID', 'gk-nsp'), 'date' => __('Date', 'gk-nsp'), 'title' => __('Title', 'gk-nsp'), 'modified' => __('Modified', 'gk-nsp'), 'rand' => __('Random', 'gk-nsp')), '', 'gk-order-by', ' data-depends="'.$json_data['orderby'].'"'); ?>
+						<?php $this->input_select('order', $order, '', array('ASC' => __('ASC', 'gk-nsp'), 'DESC' => __('DESC', 'gk-nsp')), '', 'gk-order', ' data-depends="'.$json_data['order'].'"'); ?>
 					</p>
 				
-					<p><?php $this->input_text('offset', $offset, __( 'Offset:', 'gk-nsp' ), '', 'short', ' data-depends="'. $json_data['offset'] .'"'); ?></p>
+					<p><?php $this->input_text('offset', $offset, __( 'Offset:', 'gk-nsp' ), '', 'short gk-offset', ' data-depends="'. $json_data['offset'] .'"'); ?></p>
 
 					<?php if(is_multisite()) : ?>
 						<p><?php $this->input_text('data_source_blog', $data_source_blog, __( 'Blog ID (leave blank for current blog): ', 'gk-nsp' ), '', 'short'); ?></p>
@@ -447,7 +453,8 @@ class GK_NSP_Widget_Form {
 							"orderby"          => '',
 							"order"            => '',
 							"offset"           => '',
-							"data_source"      => ''
+							"data_source"      => '',
+							"one_per_category" => ''
 						  );
 		$json_data_helper = array();
 		// parse the values in the founded files
@@ -459,10 +466,11 @@ class GK_NSP_Widget_Form {
 					array_push($json_data['data_source_type'], array($data_source->name, $data_source->label));	
 				}
 				
-				$json_data['orderby']     .= in_array('orderby', $data_source->fields) ? $data_source->name . ','     : ''; 
-				$json_data['order']       .= in_array('order', $data_source->fields) ? $data_source->name . ','       : ''; 
-				$json_data['offset']      .= in_array('offset', $data_source->fields) ? $data_source->name . ','      : ''; 
-				$json_data['data_source'] .= in_array('data_source', $data_source->fields) ? $data_source->name . ',' : ''; 
+				$json_data['orderby']          .= in_array('orderby', $data_source->fields) ? $data_source->name . ','     : ''; 
+				$json_data['order']            .= in_array('order', $data_source->fields) ? $data_source->name . ','       : ''; 
+				$json_data['offset']           .= in_array('offset', $data_source->fields) ? $data_source->name . ','      : ''; 
+				$json_data['data_source']      .= in_array('data_source', $data_source->fields) ? $data_source->name . ',' : '';
+				$json_data['one_per_category'] .= in_array('one_per_category', $data_source->fields) ? $data_source->name . ',' : ''; 
 			}
 		}
 		// change the ordering of data source options
@@ -470,10 +478,11 @@ class GK_NSP_Widget_Form {
 			array_unshift($json_data['data_source_type'], $json_data_helper[$i]);
 		}
 		//
-		$json_data['orderby']     = $json_data['orderby'] != ''     ? substr($json_data['orderby'], 0, -1)     : $json_data['orderby'];
-		$json_data['order']       = $json_data['order'] != ''       ? substr($json_data['order'], 0, -1)       : $json_data['order'];
-		$json_data['offset']      = $json_data['offset'] != ''      ? substr($json_data['offset'], 0, -1)      : $json_data['offset'];
-		$json_data['data_source'] = $json_data['data_source'] != '' ? substr($json_data['data_source'], 0, -1) : $json_data['data_source'];
+		$json_data['orderby']          = $json_data['orderby'] != ''     ? substr($json_data['orderby'], 0, -1)     : $json_data['orderby'];
+		$json_data['order']            = $json_data['order'] != ''       ? substr($json_data['order'], 0, -1)       : $json_data['order'];
+		$json_data['offset']           = $json_data['offset'] != ''      ? substr($json_data['offset'], 0, -1)      : $json_data['offset']; 
+		$json_data['data_source']      = $json_data['data_source'] != '' ? substr($json_data['data_source'], 0, -1) : $json_data['data_source'];
+		$json_data['one_per_category'] = $json_data['one_per_category'] != '' ? substr($json_data['one_per_category'], 0, -1) : $json_data['data_source'];
 
 		return $json_data;
 	}

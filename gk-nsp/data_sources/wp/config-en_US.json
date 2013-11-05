@@ -26,7 +26,8 @@
 						"data_source",
 						"offset",
 						"orderby",
-						"order"
+						"order",
+						"one_per_category"
 						]
 		},
 		{

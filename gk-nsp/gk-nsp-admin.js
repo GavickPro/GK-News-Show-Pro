@@ -2,7 +2,7 @@
 * GK News Show Pro
 *
 * @version: 0.1 beta
-* @date: 25-10-2013
+* @date: 04-11-2013
 * @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
 * @author: GavickPro 
 * @email: info@gavick.com
@@ -33,19 +33,37 @@ function GK_NSP_UI() {
             });
         });
         // data source config
-        var data_source = wrapper.find('.gk-data-source');
         var data_source_type = wrapper.find('.gk-data-source-type');
-        var data_source_depends = data_source.attr('data-depends').split(',');
-
-        if (data_source_depends.indexOf(data_source_type.val()) === -1) {
-            data_source.css('display', 'none');
-        }
-
+        var depends = {};
         var selected = data_source_type.val();
-        if (selected.indexOf('-') !== -1) {
-            selected = selected.substr(0, selected.indexOf('-'));
-        }
 
+        jQuery.each(
+            [
+                wrapper.find('.gk-data-source'),
+                wrapper.find('.gk-one-per-category'),
+                wrapper.find('.gk-order-by'),
+                wrapper.find('.gk-order'),
+                wrapper.find('.gk-offset')
+            ], 
+            function(i, item){
+                depends[item.attr('class')] = item.attr('data-depends').split(',');
+
+                if (depends[item.attr('class')].indexOf(data_source_type.val()) === -1) {
+                    if(item.attr('class') === 'gk-order') {
+                        item.css('display', 'none');
+                    } else {
+                        item.parent().css('display', 'none');
+                    }
+                }
+
+                
+                if (selected.indexOf('-') !== -1) {
+                    selected = selected.substr(0, selected.indexOf('-'));
+                }
+            }
+        );
+
+        //
         wrapper.find('.gk-article-wrapper-selector option').each(function(i, item) {
             item = jQuery(item);
             var support = item.attr('data-support') === 'all' ? false : item.attr('data-support').split(',');
@@ -59,7 +77,23 @@ function GK_NSP_UI() {
         });
 
         data_source_type.change(function() {
-            data_source.css('display', data_source_depends.indexOf(data_source_type.val()) === -1 ? 'none' : 'block');
+            jQuery.each(
+                [
+                    wrapper.find('.gk-data-source'),
+                    wrapper.find('.gk-one-per-category'),
+                    wrapper.find('.gk-order-by'),
+                    wrapper.find('.gk-order'),
+                    wrapper.find('.gk-offset')
+                ], 
+                function(i,item) {
+                    var state = depends[item.attr('class')].indexOf(data_source_type.val()) === -1 ? 'none' : 'block';
+                    if(item.attr('class') === 'gk-order') {
+                        item.css('display', state === 'block' ? 'inline' : 'none');
+                    } else {
+                        item.parent().css('display', state);
+                    }
+                }
+            );
 
             var selected = data_source_type.val();
             if (selected.indexOf('-') !== -1) {

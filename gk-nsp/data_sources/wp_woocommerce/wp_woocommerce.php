@@ -42,14 +42,27 @@ class GK_NSP_Data_Source_wp_woocommerce {
 				'order' => $order
 			));
 		} else if($data_source_type == 'wp_woocommerce-wooc_category') {
-			$results = get_posts(array(
-				'post_type' => 'product',
-				'product_cat' => $data_source,
-				'posts_per_page' => $amount_of_posts,
-				'offset' => $offset, 
-				'orderby' => $orderby,
-				'order' => $order
-			));
+			if($one_per_category == 'on') {
+				$post_ids = array(0);
+				
+				foreach( explode(',', $data_source) as $cat_name ) {
+				    if ( $posts = get_posts(array('post_type' => 'product', 'product_cat' => $cat_name, 'showposts' => 1)) ) {
+				        $first = array_shift($posts);
+				        $post_ids[] = $first->ID;
+				    }
+				}
+
+				$results = get_posts(array('post_type' => 'product', 'post__in' => $post_ids));
+			} else {
+				$results = get_posts(array(
+					'post_type' => 'product',
+					'product_cat' => $data_source,
+					'posts_per_page' => $amount_of_posts,
+					'offset' => $offset, 
+					'orderby' => $orderby,
+					'order' => $order
+				));
+			}
 		} else if($data_source_type == 'wp_woocommerce-wooc_post') {			
 			$products_skus = explode(',', $data_source);
 			foreach($products_skus as $sku) {

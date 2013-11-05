@@ -16,7 +16,8 @@
 			"fields": [
 						"data_source",
 						"orderby",
-						"order"
+						"order",
+						"one_per_category"
 						]
 		},
 		{
