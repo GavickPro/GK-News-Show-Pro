@@ -204,6 +204,11 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 				'content' 	=> ''
 			),
 			array(
+				'base' 		=> $upload_dir['basedir'] . '/gk_nsp_cache/overrides',
+				'file' 		=> 'index.html',
+				'content' 	=> ''
+			),
+			array(
 				'base' 		=> $upload_dir['basedir'] . '/gk_nsp_external_data',
 				'file' 		=> 'index.html',
 				'content' 	=> ''
@@ -359,7 +364,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 	 *
 	 **/
 	function widget($args, $instance) {
-		$cache = get_transient('widget_gk_nsp-' . md5($this->id));
+		$cache = get_transient('widget_gk_nsp-' . $this->id);
 		// the part with the title and widget wrappers cannot be cached! 
 		// in order to avoid problems with the calculating columns
 		//
@@ -453,7 +458,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		// save the cache results
 		$cache_output = ob_get_flush();
 		$cache_time = ($cache_time == '' || !is_numeric($cache_time)) ? 60 : (int) $cache_time;
-		set_transient('widget_gk_nsp-' . md5($this->id) , $cache_output, $cache_time * 60);
+		set_transient('widget_gk_nsp-' . $this->id, $cache_output, $cache_time * 60);
 		// 
 		echo $after_widget;
 	}
@@ -555,11 +560,11 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		    $ids = array_keys(get_option('widget_gk_nsp'));
 		    for($i = 0; $i < count($ids); $i++) {
 		        if(is_numeric($ids[$i])) {
-		            delete_transient(md5('widget_gk_nsp-' . $ids[$i]));
+		            delete_transient('widget_gk_nsp-' . $ids[$i]);
 		        }
 		    }
 	    } else {
-	    	delete_transient(md5('widget_gk_nsp-' . $this->id));
+	    	delete_transient('widget_gk_nsp-' . $this->id);
 	    }
 	}
 }
