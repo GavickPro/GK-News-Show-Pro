@@ -64,6 +64,12 @@ add_action( 'widgets_init', 'gk_nsp_register' );
 register_activation_hook( __FILE__, array( 'GK_NewsShowPro_Widget', 'install' ) );
 register_deactivation_hook( __FILE__, array( 'GK_NewsShowPro_Widget', 'uninstall' ) );
 
+//
+add_action('edit_post', array('GK_NewsShowPro_Widget', 'refresh_cache'));
+add_action('delete_post', array('GK_NewsShowPro_Widget', 'refresh_cache'));
+add_action('trashed_post', array('GK_NewsShowPro_Widget', 'refresh_cache'));
+add_action('save_post', array('GK_NewsShowPro_Widget', 'refresh_cache'));
+
 /**
  * The main widget class
  */
@@ -173,11 +179,6 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		);
 		//
 		$this->alt_option_name = 'gk_nsp';
-		//
-		add_action('edit_post', array(&$this, 'refresh_cache'));
-		add_action('delete_post', array(&$this, 'refresh_cache'));
-		add_action('trashed_post', array(&$this, 'refresh_cache'));
-		add_action('save_post', array(&$this, 'refresh_cache'));
 		//
 		add_action('wp_enqueue_scripts', array($this, 'add_js'));
 		add_action('wp_enqueue_scripts', array($this, 'add_css'));
@@ -364,7 +365,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 	 *
 	 **/
 	function widget($args, $instance) {
-		$cache = get_transient('widget_gk_nsp-' . $this->id);
+		$cache = get_transient('widget_' . $this->id);
 		// the part with the title and widget wrappers cannot be cached! 
 		// in order to avoid problems with the calculating columns
 		//
@@ -458,7 +459,8 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		// save the cache results
 		$cache_output = ob_get_flush();
 		$cache_time = ($cache_time == '' || !is_numeric($cache_time)) ? 60 : (int) $cache_time;
-		set_transient('widget_gk_nsp-' . $this->id, $cache_output, $cache_time * 60);
+		set_transient('widget_' . $this->id, $cache_output, $cache_time * 60);
+		echo 'widget_' . $this->id;
 		// 
 		echo $after_widget;
 	}
@@ -536,8 +538,8 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 				$instance[$key] = esc_attr(strip_tags($new_instance[$key]));
 			}
 		}
-		
-		$this->refresh_cache();
+
+		delete_transient('widget_' . $this->id);
 
 		$alloptions = wp_cache_get('alloptions', 'options');
 		if(isset($alloptions['gk_nsp'])) {
@@ -549,13 +551,13 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 
 	/**
 	 *
-	 * Refreshes the widget cache data
+	 * Refreshes the widget cache data (for all instances)
 	 *
 	 * @return void
 	 *
 	 **/
-	
-	function refresh_cache() {
+
+	static function refresh_cache() {
 		if(is_array(get_option('widget_gk_nsp'))) {
 		    $ids = array_keys(get_option('widget_gk_nsp'));
 		    for($i = 0; $i < count($ids); $i++) {
@@ -563,8 +565,6 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		            delete_transient('widget_gk_nsp-' . $ids[$i]);
 		        }
 		    }
-	    } else {
-	    	delete_transient('widget_gk_nsp-' . $this->id);
 	    }
 	}
 }
