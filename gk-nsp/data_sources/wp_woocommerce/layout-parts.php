@@ -110,7 +110,10 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	
 	 	$image_path = str_replace($upload_dir['baseurl'] . '/', '', $image_path);
 	 	$img_override = FALSE;
-	 	$img_editor = wp_get_image_editor( $upload_dir['basedir'] . '/' . $image_path);
+	 	$img_editor = wp_get_image_editor( 
+			$upload_dir['basedir'] . '/' . $image_path, 
+			array( 'methods' => array( 'gk_nsp_sepia', 'gk_nsp_greyscale' ) ) 
+		);
 	 	
 	 	if(!is_wp_error($img_editor)) {
 	 		$img_override = $img_editor->generate_filename( $this->parent->id, $upload_dir_basedir . '/' . 'gk_nsp_cache' . '/overrides' );
@@ -127,6 +130,15 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 			} else {
 			 		$img_editor->resize($this->parent->config['article_image_w'], $this->parent->config['article_image_h'], true);
 			 		$img_filename = $img_editor->generate_filename( $this->parent->id, $upload_dir_basedir . '/' . 'gk_nsp_cache');
+
+					if($this->parent->config['article_image_filter'] == 'greyscale') {
+						$img_editor->gk_nsp_greyscale();	
+					}
+
+					if($this->parent->config['article_image_filter'] == 'sepia') {
+						$img_editor->gk_nsp_sepia();	
+					}
+
 			 		$img_editor->save($img_filename);
 			 		
 			 		$new_path = basename($img_filename);  

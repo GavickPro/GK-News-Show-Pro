@@ -209,6 +209,8 @@ class GK_NSP_Widget_Form {
 				</p>	
 				
 				<div class="gk-indent">	
+					<p><?php $this->input_select('article_image_filter', $article_image_filter, __('Image filter:', 'gk-nsp'), array('none' => __('None', 'gk-nsp'), 'greyscale' => __('Greyscale', 'gk-nsp'), 'sepia' => __('Sepia', 'gk-nsp'))); ?></p>
+					
 					<p><?php $this->input_switch('article_image_popup', $article_image_popup, __('Image popup:', 'gk-nsp'), __('This option works only with the WordPress and WooCommerce data sources', 'gk-nsp')); ?></p>
 
 					<p><?php $this->input_text('image_block_padding', $image_block_padding, __( 'Margin: ', 'gk-nsp' ), '', 'long'); ?></p>
