@@ -114,7 +114,7 @@
 		float: left;
 		width: 10px;
 		height: 10px;
-		margin: -2px 4px 0 0;
+		margin: -2px 4px 0 0!important;
 		background: @ui_default_color;
 		border: none;
 		padding: 0;
@@ -211,7 +211,7 @@
 }
 .gk-nsp-info {
 	color: @info_color;
-	font-size: 10px;
+	font-size: 10px!important;
 	font-style: normal;
 	font-weight: 300;
 	line-height: 1.0;
@@ -233,6 +233,10 @@
 		&:hover {
 			color: @info_hover_color;
 		}
+	}
+
+	.amount {
+		font-size: 10px;
 	}
 }
 
