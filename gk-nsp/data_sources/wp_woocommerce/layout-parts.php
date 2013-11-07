@@ -109,51 +109,63 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	}
 	 	
 	 	$image_path = str_replace($upload_dir['baseurl'] . '/', '', $image_path);
+	 	$img_override = FALSE;
+	 	$img_editor = wp_get_image_editor( $upload_dir['basedir'] . '/' . $image_path);
 	 	
+	 	if(!is_wp_error($img_editor)) {
+	 		$img_override = $img_editor->generate_filename( $this->parent->id, $upload_dir_basedir . '/' . 'gk_nsp_cache' . '/overrides' );
+	 	}
+
 	 	if($image_path != '') {
 	 		$img_editor = wp_get_image_editor( $upload_dir['basedir'] . '/' . $image_path);
 	 		
 	 		if(!is_wp_error($img_editor)) {
-		 		$img_editor->resize($this->parent->config['article_image_w'], $this->parent->config['article_image_h'], true);
-		 		$img_filename = $img_editor->generate_filename( $this->parent->id, $upload_dir_basedir . '/' . 'gk_nsp_cache');
-		 		$img_editor->save($img_filename);
-		 		
-		 		$new_path = basename($img_filename);  
-		 		$cache_uri = $upload_dir_baseurl . '/gk_nsp_cache/';
-		 		
-		 		if(is_string($new_path)) {
-			 		$new_path = $cache_uri . $new_path;
-		 		
-			 		if($only_value) {
-			 			return apply_filters('gk_nsp_art_raw_image', $new_path);
-			 		}
-
-		 			$style = '';
-		 			
-		 			if($this->parent->config['image_block_padding'] != '' && $this->parent->config['image_block_padding'] != '0') {
-		 				$style = ' style="margin: '.$this->parent->config['image_block_padding'].';"';
-		 			}
-
-		 			// if the popup is enabled
-		 			$link_additional_classes = '';
-		 			$link_rel = '';
-		 			if($this->parent->config['article_image_popup'] == 'on') {
-		 				$art_url = $image_popup_url;
-		 				$link_additional_classes = ' thickbox';
-		 				$link_rel = ' rel="gallery-gk-nsp-' . $this->parent->id . '"';
-		 			}
-
-		 			if($this->parent->config['article_image_pos'] == 'left' && $this->parent->config['article_image_order'] == 1) {
-		 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" /></a></div>';
-
-		 				return apply_filters('gk_nsp_art_image', $output);
-		 			} else {
-		 				$output = '<a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-responsive gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image gk-responsive" /></a>';
-
-		 				return apply_filters('gk_nsp_art_image', $output);
-		 			}
+		 		if($img_override !== FALSE && file_exists($img_override)) {
+	 				$new_path = basename($img_override);
+	 				$cache_uri = $upload_dir_baseurl . '/gk_nsp_cache/overrides/';
+	 				$new_path = $cache_uri . $new_path;
 	 			} else {
-	 				return __('An error occured during creating the thumbnail.', 'gk-nsp');
+			 		$img_editor->resize($this->parent->config['article_image_w'], $this->parent->config['article_image_h'], true);
+			 		$img_filename = $img_editor->generate_filename( $this->parent->id, $upload_dir_basedir . '/' . 'gk_nsp_cache');
+			 		$img_editor->save($img_filename);
+			 		
+			 		$new_path = basename($img_filename);  
+			 		$cache_uri = $upload_dir_baseurl . '/gk_nsp_cache/';
+
+			 		if(is_string($new_path)) {
+			 			$new_path = $cache_uri . $new_path;
+			 		} else {
+	 					return __('An error occured during creating the thumbnail.', 'gk-nsp');
+	 				}
+			 	}	
+	 		
+		 		if($only_value) {
+		 			return apply_filters('gk_nsp_art_raw_image', $new_path);
+		 		}
+
+	 			$style = '';
+	 			
+	 			if($this->parent->config['image_block_padding'] != '' && $this->parent->config['image_block_padding'] != '0') {
+	 				$style = ' style="margin: '.$this->parent->config['image_block_padding'].';"';
+	 			}
+
+	 			// if the popup is enabled
+	 			$link_additional_classes = '';
+	 			$link_rel = '';
+	 			if($this->parent->config['article_image_popup'] == 'on') {
+	 				$art_url = $image_popup_url;
+	 				$link_additional_classes = ' thickbox';
+	 				$link_rel = ' rel="gallery-gk-nsp-' . $this->parent->id . '"';
+	 			}
+
+	 			if($this->parent->config['article_image_pos'] == 'left' && $this->parent->config['article_image_order'] == 1) {
+	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" /></a></div>';
+
+	 				return apply_filters('gk_nsp_art_image', $output);
+	 			} else {
+	 				$output = '<a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-responsive gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image gk-responsive" /></a>';
+
+	 				return apply_filters('gk_nsp_art_image', $output);
 	 			}
  			} else {
  				return __('An error occured during creating the thumbnail.', 'gk-nsp');
