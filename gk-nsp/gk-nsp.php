@@ -460,7 +460,6 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		$cache_output = ob_get_flush();
 		$cache_time = ($cache_time == '' || !is_numeric($cache_time)) ? 60 : (int) $cache_time;
 		set_transient('widget_' . $this->id, $cache_output, $cache_time * 60);
-		echo 'widget_' . $this->id;
 		// 
 		echo $after_widget;
 	}
