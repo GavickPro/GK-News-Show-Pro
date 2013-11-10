@@ -1,0 +1,139 @@
+/* 
+* GK News Show Pro
+*
+* @version: 0.1 beta
+* @date: 07-11-2013
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+
+/* GK NSP Title Overlay */
+.gk-title-overlay > figure,
+.gk-title-overlay > figure > figcaption {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.gk-title-overlay {
+    > figure {
+        float: left;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        -webkit-perspective: 1200;
+        -moz-perspective: 1200;
+        -ms-perspective: 1200;
+        perspective: 1200;
+
+        > img {
+            display: block;
+            height: auto;
+            margin: 0;
+            max-width: 100%;
+            -webkit-transition: all .3s linear;
+            -moz-transition: all .3s linear;
+            -ms-transition: all .3s linear;
+            -o-transition: all .3s linear;
+            transition: all .3s linear;
+        }
+
+        &:hover > img {
+            -webkit-transform: scale(1.1) rotateZ(-3deg);
+            -moz-transform: scale(1.1) rotateZ(-3deg);
+            -ms-transform: scale(1.1) rotateZ(-3deg);
+            -o-transform: scale(1.1) rotateZ(-3deg);
+            transform: scale(1.1) rotateZ(-3deg);
+        }
+
+        > figcaption {
+            position: absolute;
+            z-index: 1;
+
+            h3 {
+                font-size: 18px;
+                font-weight: bold;
+                line-height: 18px;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &[data-textpos="bottom"] > figure > figcaption {
+        bottom: 0;
+    }
+
+    &[data-textpos="top"] > figure > figcaption {
+        top: 0;
+    }
+
+    &[data-textcolor="light"] > figure > figcaption a {
+        color: #fffefe!important;
+    }
+
+    &[data-textcolor="dark"] > figure > figcaption a {
+        color: #111!important;
+    }
+
+    .gk-img-overlay {
+        background: #000;
+        cursor: pointer;
+        height: 100%;
+        left: -30%;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        -webkit-transition: all .2s ease-out;
+        -moz-transition: all .2s ease-out;
+        -ms-transition: all .2s ease-out;
+        -o-transition: all .2s ease-out;
+        transition: all .2s ease-out;
+        width: 100%;
+        z-index: 2;
+
+        > span {
+            color: #fff;
+            font-family: Georgia, serif;
+            font-size: 32px;
+            height: 32px;
+            line-height: 32px;
+            position: absolute;
+            right: 22px;
+            text-align: center;
+            width: 24px;
+        }
+    }
+
+    &.hover .gk-img-overlay {
+        filter: alpha(opacity=75);
+        opacity: 0.75;
+        left: 0;
+    }
+
+    &[data-textpos="bottom"] .gk-img-overlay > span {
+        top: 12px;
+    }
+
+    &[data-textpos="top"] .gk-img-overlay > span {
+        bottom: 12px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 1030px) {
+    .gk-title-overlay figure {
+        float: none;
+    }
+
+    .gk-title-overlay img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .gk-title-overlay > figure > figcaption {
+        width: 100%!important;
+    }
+}

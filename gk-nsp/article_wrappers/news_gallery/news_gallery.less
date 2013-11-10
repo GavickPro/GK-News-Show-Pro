@@ -1,0 +1,209 @@
+/* 
+* GK News Show Pro
+*
+* @version: 0.1 beta
+* @date: 07-11-2013
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+
+/* GK NSP News Gallery */
+.gk-news-gallery,
+.gk-news-gallery .gk-images-wrapper > a,
+.gk-news-gallery .gk-images-wrapper > a img,
+.gk-news-gallery .gk-images-wrapper > a > .gk-img-overlay {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    padding: 0;
+    position: relative;
+}
+
+.gk-news-gallery {
+    overflow: hidden;
+    padding: 50px 0;
+
+    .gk-images-wrapper {
+        width: 100%;
+
+        > a {
+            display: none;
+            float: left;
+            padding: 0 12px;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: -webkit-transform .3s ease-out;
+            -moz-transition: -moz-transform .3s ease-out;
+            -ms-transition: -ms-transform .3s ease-out;
+            -o-transition: -o-transform .3s ease-out;
+            transition: transform .3s ease-out;
+
+            &.active {
+                display: block;
+            }
+
+            &.show {
+                -webkit-transform: scale(1.0);
+                -moz-transform: scale(1.0);
+                -ms-transform: scale(1.0);
+                -o-transform: scale(1.0);
+                transform: scale(1.0);
+            }
+
+            img {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            > .gk-img-overlay {
+                background: #DD5749;
+                filter: alpha(opacity=0);
+                height: 100%;
+                left: 50%;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                -webkit-transform: translate3d(0, 0, 0);
+                -moz-transform: translate3d(0, 0, 0);
+                -ms-transform: translate3d(0, 0, 0);
+                -o-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                -webkit-transition: opacity .3s ease-out;
+                -moz-transition: opacity .3s ease-out;
+                -ms-transition: opacity .3s ease-out;
+                -o-transition: opacity .3s ease-out;
+                transition: opacity .3s ease-out;
+                width: 100%;
+                z-index: 1;
+
+                &.active {
+                    filter: alpha(opacity=100);
+                    opacity: 1;
+                }
+
+                > span {
+                    color: #fff;
+                    display: block;
+                    font-family: Georgia, serif;
+                    font-size: 32px;
+                    left: 50%;
+                    line-height: 32px;
+                    margin: -16px 0 0 -16px;
+                    position: absolute;
+                    text-align: center;
+                    top: 50%;
+                    width: 32px;
+                }
+            }
+        }
+
+        &.gk-images-cols1 > a {
+            width: 100%;
+        }
+
+        &.gk-images-cols2 > a {
+            width: 50%;
+        }
+
+        &.gk-images-cols3 > a {
+            width: 33.3%;
+        }
+
+        &.gk-images-cols4 > a {
+            width: 25%;
+        }
+
+        &.gk-images-cols5 > a {
+            width: 20%;
+        }
+
+        &.gk-images-cols6 > a {
+            width: 16.66%;
+        }
+
+        &.gk-images-cols7 > a {
+            width: 14.28%;
+        }
+
+        &.gk-images-cols8 > a {
+            width: 12.5%;
+        }
+
+        &.gk-images-cols9 > a {
+            width: 11.11%;
+        }
+
+        &.gk-images-cols10 > a {
+            width: 10%;
+        }
+    }
+
+    &:after,
+    .gk-images-wrapper:after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+
+    .gk-pagination {
+        display: block;
+        position: relative;
+        text-align: center;
+        top: 50px;
+
+        li {
+            background: #ccc;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-block;
+            height: 16px;
+            margin: 0!important;
+            padding: 0;
+            text-indent: -9999px;
+            -webkit-transform: scale(0.75);
+            -moz-transform: scale(0.75);
+            -ms-transform: scale(0.75);
+            -o-transform: scale(0.75);
+            transform: scale(0.75);
+            -webkit-transition: all .15s ease-out;
+            -moz-transition: all .15s ease-out;
+            -ms-transition: all .15s ease-out;
+            -o-transition: all .15s ease-out;
+            transition: all .15s ease-out;
+            width: 16px;
+
+            &.active,
+            &:hover {
+                background: #dd5749;
+                cursor: pointer;
+            }
+
+            &:hover {
+                -webkit-transform: scale(1.0);
+                -moz-transform: scale(1.0);
+                -ms-transform: scale(1.0);
+                -o-transform: scale(1.0);
+                transform: scale(1.0);
+            }
+        }
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+    .gk-news-gallery {
+        padding: 10px 0;
+
+        .gk-images-wrapper > a {
+            padding: 0 2px;
+        }
+    }
+}
