@@ -125,6 +125,7 @@ class GK_NSP_Data_Source_wp_woocommerce {
 						"{ID}" => $art_ID,
 						"{URL}" => $art_URL,
 						"{TITLE}" => $art_title,
+						"{TITLE_ESC}" => esc_attr($art_title),
 						"{TEXT}" => $art_text,
 						"{IMAGE_FULL}" => $art_image_full,
 						"{IMAGE_LARGE}" => $art_image_large,
@@ -135,6 +136,7 @@ class GK_NSP_Data_Source_wp_woocommerce {
 						"{AUTHOR_NAME}" => $art_author_name,
 						"{AUTHOR_URL}" => $art_author_URL,
 						"{DATE}" => $art_date,
+						"{DATE_W3C}" => get_the_time('c', $art_ID),
 						"{COMMENT_COUNT}" => $art_comment_count,
 						"{COMMENTS}" => $art_comment,
 						"{PRICE}" => $art_price

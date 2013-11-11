@@ -85,10 +85,12 @@ class GK_NSP_Data_Source_rss {
 		return array(
 						"{URL}" => $art_URL,
 						"{TITLE}" => $art_title,
+						"{TITLE_ESC}" => esc_attr($art_title),
 						"{TEXT}" => $art_text,
 						"{CATEGORY}" => $art_category,
 						"{IMAGE}" => $art_image,
-						"{DATE}" => $art_date
+						"{DATE}" => $art_date,
+						"{DATE_W3C}" => $item->get_date('c')
 					);
 	}
 }

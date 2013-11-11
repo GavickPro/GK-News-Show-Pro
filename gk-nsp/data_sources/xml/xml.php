@@ -79,12 +79,14 @@ class GK_NSP_Data_Source_xml {
 		return array(
 						"{URL}" => $art_URL,
 						"{TITLE}" => $art_title,
+						"{TITLE_ESC}" => esc_attr($art_title),
 						"{TEXT}" => $art_text,
 						"{IMAGE}" => $art_image,
 						"{CATEGORIES}" => $art_categories,
 						"{AUTHOR_NAME}" => $art_author_name,
 						"{AUTHOR_URL}" => $art_author_URL,
 						"{DATE}" => $art_date,
+						"{DATE_W3C}" => date(DATE_W3C, strtotime($item['date'])),
 						"{COMMENT_COUNT}" => $art_comment_count,
 						"{COMMENTS}" => $art_comment
 					);
