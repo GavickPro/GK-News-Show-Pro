@@ -67,6 +67,7 @@ register_deactivation_hook( __FILE__, array( 'GK_NewsShowPro_Widget', 'uninstall
 
 //
 add_action('edit_post', array('GK_NewsShowPro_Widget', 'refresh_cache'));
+add_action('post_updated', array('GK_NewsShowPro_Widget', 'refresh_slugs'), 10, 3);
 add_action('delete_post', array('GK_NewsShowPro_Widget', 'refresh_cache'));
 add_action('trashed_post', array('GK_NewsShowPro_Widget', 'refresh_cache'));
 add_action('save_post', array('GK_NewsShowPro_Widget', 'refresh_cache'));
@@ -348,12 +349,12 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 	}
 
 	function add_admin_js() {
-		wp_register_script( 'gk-nsp', plugins_url('gk-nsp-admin.js', __FILE__), array('jquery'), false, 'all');
+		wp_register_script( 'gk-nsp', home_url() . '/wp-content/plugins/gk-nsp/gk-nsp-admin.js', array('jquery'), false, 'all');
 		wp_enqueue_script('gk-nsp');
 	}
 
 	function add_admin_css() {
-		wp_register_style( 'gk-nsp', plugins_url('gk-nsp-admin.css', __FILE__), array(), false, 'all');
+		wp_register_style( 'gk-nsp', home_url() . '/wp-content/plugins/gk-nsp/gk-nsp-admin.css', array(), false, 'all');
 		wp_enqueue_style('gk-nsp');
 	}
 
@@ -567,6 +568,34 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		        }
 		    }
 	    }
+	}
+
+	/**
+	 *
+	 * Refreshes the post slugs (for all instances)
+	 *
+	 * @return void
+	 *
+	 **/
+
+	static function refresh_slugs($id, $post_after, $post_before) {
+		$instances = get_option('widget_gk_nsp');
+		// check if the instances are correct
+		if(is_array($instances) || is_object($instances)) {
+			// iterate through instances
+			foreach($instances as $widget_id => $instance) {
+				// check if the wrapper exist in the specific instance and isn't duplicated
+				if(
+					$instance['data_source_type'] == 'wp-post' && 
+					in_array($post_before->post_name, explode(',', $instance['data_source']))
+				) {
+					$instance['data_source'] = str_replace($post_before->post_name, $post_after->post_name, $instance['data_source']);
+					$instances[$widget_id]['data_source'] = $instance['data_source'];
+				}
+			}
+		}
+
+		update_option('widget_gk_nsp', $instances);
 	}
 }
 
