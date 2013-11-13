@@ -180,7 +180,7 @@ class GK_NSP_Widget_Form {
 					<?php $this->input_select('article_title_len_type', $article_title_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
 
 					<span class="gk-right">
-						<?php $this->input_select('article_title_order', $article_title_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-title-order gk-order'); ?>
+						<?php $this->input_select('article_title_order', $article_title_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-title-order'); ?>
 					</span>
 				</p>
 							
@@ -190,7 +190,7 @@ class GK_NSP_Widget_Form {
 					<?php $this->input_select('article_text_len_type', $article_text_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
 
 					<span class="gk-right">
-						<?php $this->input_select('article_text_order', $article_text_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-text-order gk-order'); ?>
+						<?php $this->input_select('article_text_order', $article_text_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-text-order'); ?>
 					</span>
 				</p>	
 				
@@ -204,7 +204,7 @@ class GK_NSP_Widget_Form {
 					<input id="<?php echo esc_attr( $nsp->get_field_id( 'article_image_h' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_image_h' ) ); ?>" type="text" value="<?php echo esc_attr( $article_image_h ); ?>" class="short" />
 					
 					<span class="gk-right">
-						<?php $this->input_select('article_image_order', $article_image_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-image-order gk-order'); ?>
+						<?php $this->input_select('article_image_order', $article_image_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-image-order'); ?>
 					</span>
 				</p>	
 				
@@ -222,7 +222,7 @@ class GK_NSP_Widget_Form {
 					<?php $this->input_switch('article_info_state', $article_info_state, __('Info block', 'gk-nsp')); ?>
 					
 					<span class="gk-right">
-						<?php $this->input_select('article_info_order', $article_info_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-info-order gk-order'); ?>
+						<?php $this->input_select('article_info_order', $article_info_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-info-order'); ?>
 					</span>
 				</p>
 				
@@ -249,7 +249,7 @@ class GK_NSP_Widget_Form {
 					<?php $this->input_switch('article_readmore_state', $article_readmore_state, __('Read more', 'gk-nsp')); ?>
 					
 					<span class="gk-right">
-						<?php $this->input_select('article_readmore_order', $article_readmore_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-readmore-order gk-order'); ?>
+						<?php $this->input_select('article_readmore_order', $article_readmore_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-readmore-order'); ?>
 					</span>
 				</p>
 				</div>
