@@ -54,12 +54,12 @@ if(!class_exists('GK_NSP_Article_Wrapper_default')) {
 					// PHP >= 5.3.* version
 					// $replacements = $data_source_class::get_article_format_mapping($results[0][$i], $config);
 					// PHP 5.2.* version
-					$replacements = call_user_func(array($data_source_class, 'get_article_format_mapping'), $results[0][$i], $config);
+					$replacements = call_user_func(array($data_source_class, 'get_article_format_mapping'), $results[0][$i], $config, $generator, $i);
 				} else {
 					// PHP >= 5.3.* version
 					// $replacements = $data_source_class::get_article_format_mapping($results[$i], $config);
 					// PHP 5.2.* version
-					$replacements = call_user_func(array($data_source_class, 'get_article_format_mapping'), $results[$i], $config);
+					$replacements = call_user_func(array($data_source_class, 'get_article_format_mapping'), $results[$i], $config, $generator, $i);
 				}
 
 				foreach($replacements as $toreplace => $replacement) {

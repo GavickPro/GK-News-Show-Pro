@@ -45,7 +45,7 @@ class GK_NSP_Data_Source_rss {
 		return $results;
 	}
 
-	static function get_article_format_mapping($item, $config) {
+	static function get_article_format_mapping($item, $config, $generator, $i) {
 		// base item data
 		$art_URL = $item->get_permalink();
 		$art_title = GK_NSP_Widget_Helpers::cut_text('article_title', $item->get_title(), $config['article_title_len_type'], $config['article_title_len']);
