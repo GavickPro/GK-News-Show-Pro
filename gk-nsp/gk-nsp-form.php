@@ -458,6 +458,13 @@ class GK_NSP_Widget_Form {
 							"data_source"      => '',
 							"one_per_category" => ''
 						  );
+		$fields = array(
+						'orderby', 
+						'order', 
+						'offset', 
+						'data_source', 
+						'one_per_category'
+						);
 		$json_data_helper = array();
 		// parse the values in the founded files
 		foreach($results as $dir => $json) {
@@ -468,24 +475,20 @@ class GK_NSP_Widget_Form {
 					array_push($json_data['data_source_type'], array($data_source->name, $data_source->label));	
 				}
 				
-				$json_data['orderby']          .= in_array('orderby', $data_source->fields) ? $data_source->name . ','     : ''; 
-				$json_data['order']            .= in_array('order', $data_source->fields) ? $data_source->name . ','       : ''; 
-				$json_data['offset']           .= in_array('offset', $data_source->fields) ? $data_source->name . ','      : ''; 
-				$json_data['data_source']      .= in_array('data_source', $data_source->fields) ? $data_source->name . ',' : '';
-				$json_data['one_per_category'] .= in_array('one_per_category', $data_source->fields) ? $data_source->name . ',' : ''; 
+				foreach($fields as $field) {
+					$json_data[$field] .= in_array($field, $data_source->fields) ? $data_source->name . ',' : '';	
+				} 
 			}
 		}
 		// change the ordering of data source options
 		for($i = count($json_data_helper) - 1; $i >= 0; $i--) {
 			array_unshift($json_data['data_source_type'], $json_data_helper[$i]);
 		}
-		//
-		$json_data['orderby']          = $json_data['orderby'] != ''     ? substr($json_data['orderby'], 0, -1)     : $json_data['orderby'];
-		$json_data['order']            = $json_data['order'] != ''       ? substr($json_data['order'], 0, -1)       : $json_data['order'];
-		$json_data['offset']           = $json_data['offset'] != ''      ? substr($json_data['offset'], 0, -1)      : $json_data['offset']; 
-		$json_data['data_source']      = $json_data['data_source'] != '' ? substr($json_data['data_source'], 0, -1) : $json_data['data_source'];
-		$json_data['one_per_category'] = $json_data['one_per_category'] != '' ? substr($json_data['one_per_category'], 0, -1) : $json_data['data_source'];
 
+		foreach($fields as $field) {
+			$json_data[$field] = $json_data[$field] != '' ? substr($json_data[$field], 0, -1) : $json_data[$field];	
+		}
+		
 		return $json_data;
 	}
 }
