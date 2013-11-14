@@ -2,7 +2,7 @@
 * GK News Show Pro
 *
 * @version: 0.1 beta
-* @date: 10-11-2013
+* @date: 14-11-2013
 * @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
 * @author: GavickPro 
 * @email: info@gavick.com
@@ -45,7 +45,8 @@ function GK_NSP_UI() {
                 wrapper.find('.gk-order'),
                 wrapper.find('.gk-offset'),
                 wrapper.find('.gk-wp-category-list'),
-                wrapper.find('.gk-woocommerce-category-list')
+                wrapper.find('.gk-woocommerce-category-list'),
+                wrapper.find('.gk-post-types-list')
             ],
             function(i, item) {
                 depends[item.attr('class')] = item.attr('data-depends').split(',');
@@ -87,7 +88,8 @@ function GK_NSP_UI() {
                     wrapper.find('.gk-order'),
                     wrapper.find('.gk-offset'),
                     wrapper.find('.gk-wp-category-list'),
-                    wrapper.find('.gk-woocommerce-category-list')
+                    wrapper.find('.gk-woocommerce-category-list'),
+                    wrapper.find('.gk-post-types-list')
                 ],
                 function(i, item) {
                     var state = depends[item.attr('class')].indexOf(data_source_type.val()) === -1 ? 'none' : 'block';

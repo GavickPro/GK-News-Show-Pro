@@ -84,7 +84,9 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		// data source
 		'data_source_type' => 'latest',
 		'data_source' => '',
-		'wp_category_list' => '',
+		'wp_category_list' => array(),
+		'woocommerce_category_list' => array(),
+		'post_types_list' => array(),
 		'orderby' => 'ID',
 		'order' => 'DESC',
 		'offset' => '0',
@@ -550,7 +552,6 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 						$instance[$key] = $new_instance[$key];
 					}
 				}
-				
 			}
 		}
 

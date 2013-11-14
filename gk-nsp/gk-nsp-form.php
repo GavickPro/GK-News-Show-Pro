@@ -97,6 +97,30 @@ class GK_NSP_Widget_Form {
 						</div>
 					</div>
 
+					<div class="categorydiv">
+						<div class="tabs-panel">	
+							<ul class="gk-post-types-list" id="<?php echo esc_attr( $nsp->get_field_id('post_types_list')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('post_types_list')); ?>" data-depends="<?php echo $json_data['post_types_list']; ?>">
+								<?php
+									$post_types = get_post_types(array(
+															'public' => true,
+															'_builtin' => false
+														), 'names');
+
+									if(count($post_types)) {
+										foreach($post_types as $key => $value) {
+											?>
+											<li><label class="selectit"><input value="<?php echo $value; ?>" type="checkbox" name="<?php echo $nsp->get_field_name('post_types_list'); ?>[]" <?php checked( in_array( $value, $post_types_list ), true, true); ?> /> <?php echo $key; ?></label></li>
+											<?php
+										}
+									} else {
+										_e('There is no custom post types', 'gk-nsp');
+									}
+									
+								?>
+							</ul>
+						</div>
+					</div>
+
 					<p>
 						<?php $this->input_switch('one_per_category', $one_per_category, __('One per category:', 'gk-nsp'), '', 'gk-one-per-category', ' data-depends="'.$json_data['one_per_category'].'"'); ?>
 					</p>
@@ -477,14 +501,15 @@ class GK_NSP_Widget_Form {
 		}
 		// variables for storing the results
 		$json_data = array(
-							"data_source_type" => array(),
-							"orderby"          => '',
-							"order"            => '',
-							"offset"           => '',
-							"data_source"      => '',
-							"one_per_category" => '',
-							"wp_category_list" => '',
-							"woocommerce_category_list" => ''
+							"data_source_type"          => array(),
+							"orderby"                   => '',
+							"order"                     => '',
+							"offset"                    => '',
+							"data_source"               => '',
+							"one_per_category"          => '',
+							"wp_category_list"          => '',
+							"woocommerce_category_list" => '',
+							"post_types_list"           => ''
 						  );
 		$fields = array(
 						'orderby', 
@@ -493,7 +518,8 @@ class GK_NSP_Widget_Form {
 						'data_source', 
 						'one_per_category',
 						'wp_category_list',
-						'woocommerce_category_list'
+						'woocommerce_category_list',
+						'post_types_list'
 						);
 		$json_data_helper = array();
 		// parse the values in the founded files
@@ -522,3 +548,5 @@ class GK_NSP_Widget_Form {
 		return $json_data;
 	}
 }
+
+// EOF

@@ -51,7 +51,7 @@
 			"name": "wp-custom",
 			"label": "Custom post types",
 			"fields": [
-						"data_source"
+						"post_types_list"
 						]
 		}
 	]
