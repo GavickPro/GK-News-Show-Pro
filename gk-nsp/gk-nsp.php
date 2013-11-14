@@ -88,6 +88,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'woocommerce_category_list' => array(),
 		'post_types_list' => array(),
 		'orderby' => 'ID',
+		'one_per_category' => 'off',
 		'order' => 'DESC',
 		'offset' => '0',
 		'data_source_blog' => '',
