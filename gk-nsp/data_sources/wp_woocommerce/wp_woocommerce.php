@@ -46,7 +46,19 @@ class GK_NSP_Data_Source_wp_woocommerce {
 				$post_ids = array(0);
 				
 				foreach($woocommerce_category_list as $cat_id ) {
-				    if ( $posts = get_posts(array('post_type' => 'product', 'product_cat' => $cat_id, 'showposts' => 1)) ) {
+				    if ( $posts = get_posts(array(
+				    			'post_type' => 'product', 
+				    			'tax_query'  => array(
+					                array(
+					                    'taxonomy'  => 'product_cat',
+					                    'field'     => 'id',
+					                    'terms'     => $cat_id
+					                )
+					            ),
+				    			'showposts' => 1
+				    		)
+				    	) 
+				    	) {
 				        $first = array_shift($posts);
 				        $post_ids[] = $first->ID;
 				    }
@@ -56,7 +68,13 @@ class GK_NSP_Data_Source_wp_woocommerce {
 			} else {
 				$results = get_posts(array(
 					'post_type' => 'product',
-					'product_cat' => implode(',', $woocommerce_category_list),
+					'tax_query'  => array(
+		                array(
+		                    'taxonomy'  => 'product_cat',
+		                    'field'     => 'id',
+		                    'terms'     => $woocommerce_category_list
+		                )
+		            ),
 					'posts_per_page' => $amount_of_posts,
 					'offset' => $offset, 
 					'orderby' => $orderby,
