@@ -14,7 +14,7 @@
 			"name": "wp_woocommerce-wooc_category",
 			"label": "WooCommerce Categories slugs",
 			"fields": [
-						"data_source",
+						"woocommerce_category_list",
 						"orderby",
 						"order",
 						"one_per_category"

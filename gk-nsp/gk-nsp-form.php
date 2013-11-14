@@ -71,6 +71,32 @@ class GK_NSP_Widget_Form {
 						<textarea class="gk-data-source" id="<?php echo esc_attr( $nsp->get_field_id('data_source')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('data_source')); ?>" data-depends="<?php echo $json_data['data_source']; ?>"><?php echo esc_attr($data_source); ?></textarea>
 					</p>
 
+					<div class="categorydiv">
+						<div class="tabs-panel">	
+							<ul class="gk-wp-category-list" id="<?php echo esc_attr( $nsp->get_field_id('wp_category_list')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('wp_category_list')); ?>" data-depends="<?php echo $json_data['wp_category_list']; ?>">
+								<?php
+									wp_category_checklist( 0, 0, $wp_category_list, false, new GK_NSP_Walker_Category_Checklist($nsp->get_field_name('wp_category_list')), true);
+								?>
+							</ul>
+						</div>
+					</div>
+
+					<div class="categorydiv">
+						<div class="tabs-panel">	
+							<ul class="gk-woocommerce-category-list" id="<?php echo esc_attr( $nsp->get_field_id('woocommerce_category_list')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('woocommerce_category_list')); ?>" data-depends="<?php echo $json_data['woocommerce_category_list']; ?>">
+								<?php
+									wp_terms_checklist( 0, array(	
+										'selected_cats' => $woocommerce_category_list, 
+										'popular_cats' => false, 
+										'walker' => new GK_NSP_Walker_Category_Checklist($nsp->get_field_name('woocommerce_category_list')), 
+										'taxonomy' => 'product_cat',
+										'checked_ontop' => true
+									));
+								?>
+							</ul>
+						</div>
+					</div>
+
 					<p>
 						<?php $this->input_switch('one_per_category', $one_per_category, __('One per category:', 'gk-nsp'), '', 'gk-one-per-category', ' data-depends="'.$json_data['one_per_category'].'"'); ?>
 					</p>
@@ -456,14 +482,18 @@ class GK_NSP_Widget_Form {
 							"order"            => '',
 							"offset"           => '',
 							"data_source"      => '',
-							"one_per_category" => ''
+							"one_per_category" => '',
+							"wp_category_list" => '',
+							"woocommerce_category_list" => ''
 						  );
 		$fields = array(
 						'orderby', 
 						'order', 
 						'offset', 
 						'data_source', 
-						'one_per_category'
+						'one_per_category',
+						'wp_category_list',
+						'woocommerce_category_list'
 						);
 		$json_data_helper = array();
 		// parse the values in the founded files

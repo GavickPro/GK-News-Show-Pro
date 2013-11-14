@@ -2,7 +2,7 @@
 * GK News Show Pro
 *
 * @version: 0.1 beta
-* @date: 04-11-2013
+* @date: 10-11-2013
 * @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
 * @author: GavickPro 
 * @email: info@gavick.com
@@ -43,20 +43,22 @@ function GK_NSP_UI() {
                 wrapper.find('.gk-one-per-category'),
                 wrapper.find('.gk-order-by'),
                 wrapper.find('.gk-order'),
-                wrapper.find('.gk-offset')
-            ], 
-            function(i, item){
+                wrapper.find('.gk-offset'),
+                wrapper.find('.gk-wp-category-list'),
+                wrapper.find('.gk-woocommerce-category-list')
+            ],
+            function(i, item) {
                 depends[item.attr('class')] = item.attr('data-depends').split(',');
 
                 if (depends[item.attr('class')].indexOf(data_source_type.val()) === -1) {
-                    if(item.attr('class') === 'gk-order') {
+                    if (item.attr('class') === 'gk-order') {
                         item.css('display', 'none');
                     } else {
                         item.parent().css('display', 'none');
                     }
                 }
 
-                
+
                 if (selected.indexOf('-') !== -1) {
                     selected = selected.substr(0, selected.indexOf('-'));
                 }
@@ -83,11 +85,13 @@ function GK_NSP_UI() {
                     wrapper.find('.gk-one-per-category'),
                     wrapper.find('.gk-order-by'),
                     wrapper.find('.gk-order'),
-                    wrapper.find('.gk-offset')
-                ], 
-                function(i,item) {
+                    wrapper.find('.gk-offset'),
+                    wrapper.find('.gk-wp-category-list'),
+                    wrapper.find('.gk-woocommerce-category-list')
+                ],
+                function(i, item) {
                     var state = depends[item.attr('class')].indexOf(data_source_type.val()) === -1 ? 'none' : 'block';
-                    if(item.attr('class') === 'gk-order') {
+                    if (item.attr('class') === 'gk-order') {
                         item.css('display', state === 'block' ? 'inline' : 'none');
                     } else {
                         item.parent().css('display', state);

@@ -51,8 +51,8 @@ class GK_NSP_Data_Source_wp {
 			if($one_per_category == 'on') {
 				$post_ids = array(0);
 				
-				foreach( explode(',', $data_source) as $cat_name ) {
-				    if ( $posts = get_posts(array('category_name' => $cat_name, 'showposts' => 1)) ) {
+				foreach($wp_category_list as $cat_id ) {
+				    if ( $posts = get_posts(array('category' => $cat_id, 'showposts' => 1)) ) {
 				        $first = array_shift($posts);
 				        $post_ids[] = $first->ID;
 				    }
@@ -61,7 +61,7 @@ class GK_NSP_Data_Source_wp {
 				$results = get_posts(array('post__in' => $post_ids));
 			} else {
 				$results = get_posts(array(
-					'category_name' => $data_source,
+					'category' => implode(',', $wp_category_list),
 					'posts_per_page' => $amount_of_posts,
 					'offset' => $offset, 
 					'orderby' => $orderby,

@@ -23,7 +23,7 @@
 			"name": "wp-category",
 			"label": "Categories slugs",
 			"fields": [
-						"data_source",
+						"wp_category_list",
 						"offset",
 						"orderby",
 						"order",

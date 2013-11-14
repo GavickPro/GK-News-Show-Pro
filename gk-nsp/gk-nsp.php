@@ -39,6 +39,7 @@ if ( !defined( 'GK_DS' ) ) {
 }
 
 include(dirname(__FILE__) . '/gk-nsp-form.php');
+include(dirname(__FILE__) . '/gk-nsp-form-walkers.php');
 include(dirname(__FILE__) . '/gk-nsp-helpers.php');
 include(dirname(__FILE__) . '/gk-nsp-image-filters.php');
 
@@ -83,6 +84,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		// data source
 		'data_source_type' => 'latest',
 		'data_source' => '',
+		'wp_category_list' => '',
 		'orderby' => 'ID',
 		'order' => 'DESC',
 		'offset' => '0',
@@ -534,10 +536,21 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		//
 
 		$instance = $old_instance;
-		
+
 		if(count($new_instance) > 0) {
 			foreach($new_instance as $key => $option) {
-				$instance[$key] = esc_attr(strip_tags($new_instance[$key]));
+				if(is_string($new_instance[$key])) {
+					$instance[$key] = esc_attr(strip_tags($new_instance[$key]));	
+				} else {
+					if(is_array($new_instance[$key])) {
+						foreach($new_instance[$key] as $id => $value) {
+							$new_instance[$key][$id] = esc_attr(strip_tags($value));
+						}
+
+						$instance[$key] = $new_instance[$key];
+					}
+				}
+				
 			}
 		}
 

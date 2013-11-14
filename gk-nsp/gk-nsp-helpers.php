@@ -62,3 +62,5 @@ class GK_NSP_Widget_Helpers {
 	 	return $text;
 	 }
 }
+
+// EOF
