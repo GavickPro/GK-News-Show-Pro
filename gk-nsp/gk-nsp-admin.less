@@ -183,3 +183,54 @@
                 transition: all .3s ease-out;
         }
 }
+
+/* WordPress 3.8 CSS adjustments */
+.branch-3-8 {
+        .gk-nsp-ui {
+                margin: 0 -10px;
+                width: auto;
+
+                label {
+                        line-height: 15px;
+                        vertical-align: text-bottom;
+                }
+                
+                input,
+                select {
+                        font-size: 11px;
+                }
+
+                textarea {
+                        margin-left: 105px;
+                        width: 71%;
+                }
+
+                .gk-format-textarea + small {
+                        margin: 0 0 0 105px;
+                }
+
+                p > label:first-child {
+                        max-width: 100px;
+                        padding-right: 5px;
+                        width: 100px;
+                }
+        }
+
+        .gk-toggle > div {
+                margin-top: -800px;
+        }
+
+        .gk-toggler {
+                background: #fafafa;
+                background-image: none;
+                border: 1px solid #ddd;
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                border-radius: 0;
+                margin: 5px 0!important;
+
+                &:after {
+                        opacity: 0.5; filter: alpha(opacity=50);
+                }
+        }
+}
