@@ -81,6 +81,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 	public $config = array(
 		'title' => '',
 		'widget_css_suffix' => '',
+		'use_css' => 'on',
 		// data source
 		'data_source_type' => 'latest',
 		'data_source' => '',
@@ -330,7 +331,11 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 			// iterate through instances
 			foreach($instances as $instance) {
 				// check if the wrapper exist in the specific instance and isn't duplicated
-				if($instance['article_wrapper'] != '' && !in_array($instance['article_wrapper'], $loaded_files)) {
+				if(	
+					$instance['use_css'] == 'on' &&
+					$instance['article_wrapper'] != '' && 
+					!in_array($instance['article_wrapper'], $loaded_files)
+				) {
 					// check the type of wrapper
 					if($instance['article_wrapper'] == 'default') {
 						wp_register_style( 'gk-nsp', plugins_url('gk-nsp.css', __FILE__), array(), false, 'all');

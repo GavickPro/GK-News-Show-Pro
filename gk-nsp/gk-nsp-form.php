@@ -135,6 +135,10 @@ class GK_NSP_Widget_Form {
 					<?php if(is_multisite()) : ?>
 						<p><?php $this->input_text('data_source_blog', $data_source_blog, __( 'Blog ID (leave blank for current blog): ', 'gk-nsp' ), '', 'short'); ?></p>
 					<?php endif; ?>
+
+					<p>
+						<?php $this->input_switch('use_css', $use_css, __('Use default CSS:', 'gk-nsp'), ''); ?>
+					</p>
 				</div>
 			</div>
 			
