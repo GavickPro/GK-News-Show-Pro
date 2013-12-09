@@ -210,102 +210,106 @@ class GK_NSP_Widget_Form {
 			<h3 class="gk-toggler"><?php _e('Article layout', 'gk-nsp'); ?></h3>	
 			<div class="gk-toggle">
 				<div>
-				<p>
-					<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_format' ) ); ?>"><?php _e('Article format:', 'gk-nsp'); ?></label>
-					
-					<select id="<?php echo esc_attr( $nsp->get_field_id('article_format')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('article_format')); ?>">
-						<option value="none"<?php selected($article_format, 'none'); ?>><?php _e('None', 'gk-nsp'); ?></option>
-						<?php 
-							$format_files = scandir($nsp->af_path); 
-							foreach($format_files as $file) :
-								if($file != '.' && $file != '..' && substr($file, -7) == '.format') :
-						?>
-							<option value="<?php echo $file; ?>"<?php selected($article_format, $file); ?>><?php echo $file; ?></option>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					</select>
-				</p>
-
-				<p><?php $this->input_text('article_block_padding', $article_block_padding, __( 'Padding: ', 'gk-nsp' ), '', ''); ?></p>
-							
-				<p class="gk-article-element">
-					<?php $this->input_switch('article_title_state', $article_title_state, __('Title', 'gk-nsp')); ?>
-					<?php $this->input_text('article_title_len', $article_title_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>				
-					<?php $this->input_select('article_title_len_type', $article_title_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
-
-					<span class="gk-right">
-						<?php $this->input_select('article_title_order', $article_title_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-title-order'); ?>
-					</span>
-				</p>
-							
-				<p class="gk-article-element">
-					<?php $this->input_switch('article_text_state', $article_text_state, __('Text', 'gk-nsp')); ?>
-					<?php $this->input_text('article_text_len', $article_text_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>
-					<?php $this->input_select('article_text_len_type', $article_text_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
-
-					<span class="gk-right">
-						<?php $this->input_select('article_text_order', $article_text_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-text-order'); ?>
-					</span>
-				</p>	
-				
-				<p class="gk-article-element">
-					<?php $this->input_switch('article_image_state', $article_image_state, __('Image', 'gk-nsp')); ?>
-					
-					<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_image_w' ) ); ?>"><?php _e( 'size:', 'gk-nsp' ); ?></label>
-					
-					<input id="<?php echo esc_attr( $nsp->get_field_id( 'article_image_w' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_image_w' ) ); ?>" type="text" value="<?php echo esc_attr( $article_image_w ); ?>" class="short" />
-					&times;
-					<input id="<?php echo esc_attr( $nsp->get_field_id( 'article_image_h' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_image_h' ) ); ?>" type="text" value="<?php echo esc_attr( $article_image_h ); ?>" class="short" />
-					
-					<span class="gk-right">
-						<?php $this->input_select('article_image_order', $article_image_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-image-order'); ?>
-					</span>
-				</p>	
-				
-				<div class="gk-indent">	
-					<p><?php $this->input_select('article_image_filter', $article_image_filter, __('Image filter:', 'gk-nsp'), array('none' => __('None', 'gk-nsp'), 'greyscale' => __('Greyscale', 'gk-nsp'), 'sepia' => __('Sepia', 'gk-nsp'))); ?></p>
-					
-					<p><?php $this->input_switch('article_image_popup', $article_image_popup, __('Image popup:', 'gk-nsp'), __('This option works only with the WordPress and WooCommerce data sources', 'gk-nsp')); ?></p>
-
-					<p><?php $this->input_text('image_block_padding', $image_block_padding, __( 'Margin: ', 'gk-nsp' ), '', 'long'); ?></p>
-					
-					<p><?php $this->input_select('article_image_pos', $article_image_pos, __( 'Position:', 'gk-nsp' ), array('top' => __('Top', 'gk-nsp'), 'left' => __('Left', 'gk-nsp'))); ?></p>	
-				</div>
-							
-				<p class="gk-article-element">
-					<?php $this->input_switch('article_info_state', $article_info_state, __('Info block', 'gk-nsp')); ?>
-					
-					<span class="gk-right">
-						<?php $this->input_select('article_info_order', $article_info_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-info-order'); ?>
-					</span>
-				</p>
-				
-				<div class="gk-indent">
 					<p>
-						<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_info_format' ) ); ?>"><?php _e( 'Format:', 'gk-nsp' ); ?></label>
+						<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_format' ) ); ?>"><?php _e('Article format:', 'gk-nsp'); ?></label>
 						
-						<textarea class="gk-format-textarea" id="<?php echo esc_attr( $nsp->get_field_id( 'article_info_format' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_info_format' ) ); ?>" type="text"><?php echo esc_attr( $article_info_format ); ?></textarea>
+						<select id="<?php echo esc_attr( $nsp->get_field_id('article_format')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('article_format')); ?>">
+							<option value="none"<?php selected($article_format, 'none'); ?>><?php _e('None', 'gk-nsp'); ?></option>
+							<?php 
+								$format_files = scandir($nsp->af_path); 
+								foreach($format_files as $file) :
+									if($file != '.' && $file != '..' && substr($file, -7) == '.format') :
+							?>
+								<option value="<?php echo $file; ?>"<?php selected($article_format, $file); ?>><?php echo $file; ?></option>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						</select>
+					</p>
 
-						<small>
-							<?php _e('You can use in the Format option following tags:', 'gk-nsp'); ?>
-							<br />{DATE}, {CATEGORY}, {AUTHOR}, {COMMENTS}, {PRICE}, {REVIEWS}
-						</small>
-					</p>
+					<p><?php $this->input_text('article_block_padding', $article_block_padding, __( 'Padding: ', 'gk-nsp' ), '', ''); ?></p>
 					
-					<p>	
-						<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_info_date_format' ) ); ?>"><?php _e( 'Date format:', 'gk-nsp' ); ?></label>
+					<div class="gk-article-elements">		
+						<div class="gk-article-element" data-element-name="title" data-sort-pos="<?php echo $article_title_order; ?>">
+							<?php $this->input_switch('article_title_state', $article_title_state, __('Title', 'gk-nsp')); ?>
+							<?php $this->input_text('article_title_len', $article_title_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>				
+							<?php $this->input_select('article_title_len_type', $article_title_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
+
+							<span class="gk-right">
+								<?php $this->input_select('article_title_order', $article_title_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-title-order'); ?>
+							</span>
+						</div>
+									
+						<div class="gk-article-element" data-element-name="text" data-sort-pos="<?php echo $article_text_order; ?>">
+							<?php $this->input_switch('article_text_state', $article_text_state, __('Text', 'gk-nsp')); ?>
+							<?php $this->input_text('article_text_len', $article_text_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>
+							<?php $this->input_select('article_text_len_type', $article_text_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
+
+							<span class="gk-right">
+								<?php $this->input_select('article_text_order', $article_text_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-text-order'); ?>
+							</span>
+						</div>	
 						
-						<input id="<?php echo esc_attr( $nsp->get_field_id( 'article_info_date_format' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_info_date_format' ) ); ?>" type="text" value="<?php echo esc_attr( $article_info_date_format ); ?>" class="medium" />
-					</p>
-				</div>
+						<div class="gk-article-element" data-element-name="image" data-sort-pos="<?php echo $article_image_order; ?>">
+							<?php $this->input_switch('article_image_state', $article_image_state, __('Image', 'gk-nsp')); ?>
 							
-				<p class="gk-article-element">
-					<?php $this->input_switch('article_readmore_state', $article_readmore_state, __('Read more', 'gk-nsp')); ?>
-					
-					<span class="gk-right">
-						<?php $this->input_select('article_readmore_order', $article_readmore_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-readmore-order'); ?>
-					</span>
-				</p>
+							<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_image_w' ) ); ?>"><?php _e( 'size:', 'gk-nsp' ); ?></label>
+							
+							<input id="<?php echo esc_attr( $nsp->get_field_id( 'article_image_w' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_image_w' ) ); ?>" type="text" value="<?php echo esc_attr( $article_image_w ); ?>" class="short" />
+							&times;
+							<input id="<?php echo esc_attr( $nsp->get_field_id( 'article_image_h' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_image_h' ) ); ?>" type="text" value="<?php echo esc_attr( $article_image_h ); ?>" class="short" />
+							
+							<span class="gk-right">
+								<?php $this->input_select('article_image_order', $article_image_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-image-order'); ?>
+							</span>
+
+							<div class="gk-indent">	
+								<p><?php $this->input_select('article_image_filter', $article_image_filter, __('Image filter:', 'gk-nsp'), array('none' => __('None', 'gk-nsp'), 'greyscale' => __('Greyscale', 'gk-nsp'), 'sepia' => __('Sepia', 'gk-nsp'))); ?></p>
+								
+								<p><?php $this->input_switch('article_image_popup', $article_image_popup, __('Image popup:', 'gk-nsp'), __('This option works only with the WordPress and WooCommerce data sources', 'gk-nsp')); ?></p>
+
+								<p><?php $this->input_text('image_block_padding', $image_block_padding, __( 'Margin: ', 'gk-nsp' ), '', 'long'); ?></p>
+								
+								<p><?php $this->input_select('article_image_pos', $article_image_pos, __( 'Position:', 'gk-nsp' ), array('top' => __('Top', 'gk-nsp'), 'left' => __('Left', 'gk-nsp'))); ?></p>	
+							</div>
+						</div>	
+						
+						
+									
+						<div class="gk-article-element" data-element-name="info" data-sort-pos="<?php echo $article_info_order; ?>">
+							<?php $this->input_switch('article_info_state', $article_info_state, __('Info block', 'gk-nsp')); ?>
+							
+							<span class="gk-right">
+								<?php $this->input_select('article_info_order', $article_info_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-info-order'); ?>
+							</span>
+						
+							<div class="gk-indent">
+								<p>
+									<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_info_format' ) ); ?>"><?php _e( 'Format:', 'gk-nsp' ); ?></label>
+									
+									<textarea class="gk-format-textarea" id="<?php echo esc_attr( $nsp->get_field_id( 'article_info_format' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_info_format' ) ); ?>" type="text"><?php echo esc_attr( $article_info_format ); ?></textarea>
+
+									<small>
+										<?php _e('You can use in the Format option following tags:', 'gk-nsp'); ?>
+										<br />{DATE}, {CATEGORY}, {AUTHOR}, {COMMENTS}, {PRICE}, {REVIEWS}
+									</small>
+								</p>
+								
+								<p>	
+									<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_info_date_format' ) ); ?>"><?php _e( 'Date format:', 'gk-nsp' ); ?></label>
+									
+									<input id="<?php echo esc_attr( $nsp->get_field_id( 'article_info_date_format' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'article_info_date_format' ) ); ?>" type="text" value="<?php echo esc_attr( $article_info_date_format ); ?>" class="medium" />
+								</p>
+							</div>
+						</div>
+									
+						<div class="gk-article-element" data-element-name="readmore" data-sort-pos="<?php echo $article_readmore_order; ?>">
+							<?php $this->input_switch('article_readmore_state', $article_readmore_state, __('Read more', 'gk-nsp')); ?>
+							
+							<span class="gk-right">
+								<?php $this->input_select('article_readmore_order', $article_readmore_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-readmore-order'); ?>
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 			

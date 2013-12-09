@@ -149,6 +149,37 @@ function GK_NSP_UI() {
                 wrapper.find('*[data-aw]').css('display', 'none');
             }
         });
+
+        // reorder elements on start
+        var elements_list = wrapper.find('.gk-article-elements');
+        var elements_list_items = [
+                                    elements_list.find('.gk-article-element[data-sort-pos="1"]'),
+                                    elements_list.find('.gk-article-element[data-sort-pos="2"]'),
+                                    elements_list.find('.gk-article-element[data-sort-pos="3"]'),
+                                    elements_list.find('.gk-article-element[data-sort-pos="4"]'),
+                                    elements_list.find('.gk-article-element[data-sort-pos="5"]')
+                                ];
+
+        for(var num = 1; num <= 5; num++) {
+            var el = jQuery(elements_list_items[num]);
+            var x = el.attr('data-sort-pos');
+
+            if(x == 1) {
+                el.insertBefore(elements_list.find('.gk-article-element[data-sort-pos="2"]'));
+            } else {
+                el.insertAfter(elements_list.find('.gk-article-element[data-sort-pos="'+(x - 1)+'"]'));
+            }
+        }
+
+
+        // adding sortable UI to article elements
+        elements_list.sortable({
+            update: function(event, ui) {
+                wrapper.find('.gk-article-element').each(function(i, el) {
+                    wrapper.find('.gk-article-'+jQuery(el).attr('data-element-name')+'-order').val(i+1);
+                });
+            }
+        });
     };
 
     var changeOrder = function(current) {

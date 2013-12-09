@@ -69,6 +69,7 @@
                 }
         }
         .gk-right {
+                display: none;
                 float: right;
         }
         textarea {
@@ -91,7 +92,9 @@
         }
 
         .gk-article-element {
+                background: #fff;
                 border: 1px solid #dfdfdf;
+                cursor: move;
                 margin: 0!important;
                 padding: 6px!important;
 
@@ -99,9 +102,9 @@
                         width: 70px!important;
                 }
 
-                & + .gk-indent {
+                .gk-indent {
                         background: #eee;
-                        margin: 0;
+                        margin: 6px -6px -6px -6px;
                         padding: 12px;
                 }
 
@@ -198,7 +201,11 @@
                 label,
                 input,
                 select {
-                        font-size: 11px;
+                        font-size: 11px!important;
+                }
+
+                input {
+                        padding: 6px 4px!important;
                 }
 
                 textarea {
@@ -216,7 +223,7 @@
                         width: 90px;
                 }
 
-                .gk-article-element + .gk-indent {
+                .gk-article-element > .gk-indent {
                         padding: 1px;
                 }
         }
@@ -237,8 +244,5 @@
                 &:after {
                         opacity: 0.5; filter: alpha(opacity=50);
                 }
-        }
-        .widget[id*="gk_nsp"] .widget-inside {
-                min-width: 420px;
         }
 }
