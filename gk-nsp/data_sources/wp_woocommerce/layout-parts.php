@@ -41,13 +41,8 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	$art_ID = '';
 	 	$art_url = '';
 	 	
-	 	if( $this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_post' ) {	 		
-	 		$art_title = $this->parent->wdgt_results[0][$i]->post_title;
-	 		$art_ID = $this->parent->wdgt_results[0][$i]->ID;
-	 	} else {
-	 		$art_title = $this->parent->wdgt_results[$i]->post_title;
-	 		$art_ID = $this->parent->wdgt_results[$i]->ID;
-	 	}
+	 	$art_title = $this->parent->wdgt_results[$i]->post_title;
+	 	$art_ID = $this->parent->wdgt_results[$i]->ID;
 	 	
 	 	$art_url = get_permalink($art_ID);
 	 	$art_title_short = GK_NSP_Widget_Helpers::cut_text('article_title', $art_title, $this->parent->config['article_title_len_type'], $this->parent->config['article_title_len']);
@@ -64,11 +59,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 function art_text($i, $only_value = false) {
 	 	$art_text = '';
 
-	 	if( $this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_post' ) {
-	 		$art_text = $this->parent->wdgt_results[0][$i]->post_content;
-	 	} else {
-	 		$art_text = $this->parent->wdgt_results[$i]->post_content;
-	 	}
+	 	$art_text = $this->parent->wdgt_results[$i]->post_content;	 	
 	 	
 	 	$art_text = GK_NSP_Widget_Helpers::cut_text('article_text', $art_text, $this->parent->config['article_text_len_type'], $this->parent->config['article_text_len']);
 	 	$art_text = preg_replace('@\[.+?\]@mis', '', $art_text);
@@ -85,13 +76,8 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 function art_image($i, $only_value = false) {
 	 	$art_ID = '';
 
-	 	if( $this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_post' ) {
- 	 		$art_ID = $this->parent->wdgt_results[0][$i]->ID;
- 	 		$art_title = $this->parent->wdgt_results[0][$i]->post_title;
- 	 	} else {
- 	 		$art_ID = $this->parent->wdgt_results[$i]->ID;
- 	 		$art_title = $this->parent->wdgt_results[$i]->post_title;
- 	 	}
+	 	$art_ID = $this->parent->wdgt_results[$i]->ID;
+	 	$art_title = $this->parent->wdgt_results[$i]->post_title;
 	 	
 	 	$art_url = get_permalink($art_ID);
 	 
@@ -195,15 +181,9 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	$reviews = '';
 	 	$price = '';
 	 	//
-	 	if( $this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_post' ) {
-	 		$art_ID = $this->parent->wdgt_results[0][$i]->ID;
-	 		$review_count = $this->parent->wdgt_results[0][$i]->comment_count;
-	 		$author_ID = $this->parent->wdgt_results[0][$i]->post_author;
-	 	} else {
-	 		$art_ID = $this->parent->wdgt_results[$i]->ID;
-	 		$review_count = $this->parent->wdgt_results[$i]->comment_count;
-	 		$author_ID = $this->parent->wdgt_results[$i]->post_author;
-	 	}
+	 	$art_ID = $this->parent->wdgt_results[$i]->ID;
+	 	$review_count = $this->parent->wdgt_results[$i]->comment_count;
+	 	$author_ID = $this->parent->wdgt_results[$i]->post_author;
 	 	// get the product object
 	 	$prod = false;
 
@@ -274,11 +254,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	$art_ID = '';
 	 	$art_url = '';
 
-	 	if( $this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_post' ) {
-	 		$art_ID = $this->parent->wdgt_results[0][$i]->ID;
-	 	} else {
-	 		$art_ID = $this->parent->wdgt_results[$i]->ID;
-	 	}
+	 	$art_ID = $this->parent->wdgt_results[$i]->ID;
 	 	
 	 	$art_url = get_permalink($art_ID);
 
@@ -302,13 +278,8 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 		$art_ID = '';
 		$art_url = '';
 		
-		if( $this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_post' ) {
-	  		$art_title = $this->parent->wdgt_results[0][$i]->post_title;
-	  		$art_ID = $this->parent->wdgt_results[0][$i]->ID;
-	  	} else {
-	  		$art_title = $this->parent->wdgt_results[$i]->post_title;
-	  		$art_ID = $this->parent->wdgt_results[$i]->ID;
-	  	}
+	  	$art_title = $this->parent->wdgt_results[$i]->post_title;
+	  	$art_ID = $this->parent->wdgt_results[$i]->ID;
 		
 		$art_url = get_permalink($art_ID);
 		$art_title_short = GK_NSP_Widget_Helpers::cut_text('links_title', $art_title, $this->parent->config['links_title_len_type'], $this->parent->config['links_title_len']);
@@ -321,11 +292,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	function link_text($i) {
 		$art_text = '';
 		
-		if( $this->parent->config['data_source_type'] == 'wp_woocommerce-wooc_post' ) {
-	  		$art_text = $this->parent->wdgt_results[0][$i]->post_content;
-	  	} else {
-	  		$art_text = $this->parent->wdgt_results[$i]->post_content;
-	  	}
+	  	$art_text = $this->parent->wdgt_results[$i]->post_content;
 		
 		$art_text = GK_NSP_Widget_Helpers::cut_text('links_text', $art_text, $this->parent->config['links_text_len_type'], $this->parent->config['links_text_len']);
 		$art_text = preg_replace('@\[.+?\]@mis', '', $art_text);
