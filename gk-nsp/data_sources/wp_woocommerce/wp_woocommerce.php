@@ -84,9 +84,8 @@ class GK_NSP_Data_Source_wp_woocommerce {
 		} else if($data_source_type == 'wp_woocommerce-wooc_post') {			
 			$products_skus = explode(',', $data_source);
 			foreach($products_skus as $sku) {
-				$id = $this->get_product_by_sku($sku);
+				$id = GK_NSP_Widget_Helpers::get_product_by_sku($sku);
 				array_push($results, get_post($id));
-				$results = array($results);
 			}
 		}
 

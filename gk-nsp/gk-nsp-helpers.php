@@ -61,6 +61,24 @@ class GK_NSP_Widget_Helpers {
 	 	//
 	 	return $text;
 	 }
+	 
+	 /**
+	  *
+	  * Functions used to get products by sku
+	  *
+	  **/
+	 static function get_product_by_sku($sku) {
+	 	global $wpdb;
+	 	global $post;
+	   
+	 	$product_id = $wpdb->get_var($wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='_sku' AND meta_value='%s' LIMIT 1", $sku));
+	 	
+	 	if($product_id) {
+	 		return $product_id; //new WC_Product($product_id);
+	 	}
+	 	
+	 	return null;
+	 }
 }
 
 // EOF
