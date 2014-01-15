@@ -135,10 +135,14 @@ class GK_NSP_Layout_Parts_json {
 
 	 		$comments = '<a href="'.$item->comment_link.'#comments">'.$comment_phrase.'</a>';
 	 	}
+	 	// check if there is a comments_count in format
+	 	if(stripos($this->parent->config['article_info_format'], '{COMMENT_COUNT}') !== FALSE) {
+	 		$comment_count = '<a href="'.$item->comment_link.'#comments" class="gk-nsp-comment-count">' .$comment_count. '</a>';
+	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}'),
-	 		array($category, $author, $date, $comments),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}', '{COMMENT_COUNT}'),
+	 		array($category, $author, $date, $comments, $comment_count),
 	 		$this->parent->config['article_info_format']
 	 	);
 
