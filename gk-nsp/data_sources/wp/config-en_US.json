@@ -21,7 +21,7 @@
 		},
 		{
 			"name": "wp-category",
-			"label": "Categories slugs",
+			"label": "Categories",
 			"fields": [
 						"wp_category_list",
 						"offset",

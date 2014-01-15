@@ -12,7 +12,7 @@
 		},
 		{
 			"name": "wp_woocommerce-wooc_category",
-			"label": "WooCommerce Categories slugs",
+			"label": "WooCommerce Categories",
 			"fields": [
 						"woocommerce_category_list",
 						"orderby",
