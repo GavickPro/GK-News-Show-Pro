@@ -192,6 +192,7 @@ class GK_NSP_Layout_Parts_wp {
 	 	$date = '';
 	 	$comments = '';
 	 	$price = '';
+	 	$stars = '';
 	 	//
 	 	if( $this->parent->config['data_source_type'] == 'wp-custom' ) {
 	 		$art_ID = $this->parent->wdgt_results[0][$i]->ID;
@@ -221,6 +222,36 @@ class GK_NSP_Layout_Parts_wp {
 	 	if(stripos($this->parent->config['article_info_format'], '{DATE}') !== FALSE) {
 	 		$date = '<span class="gk-nsp-date">' . get_the_time($this->parent->config['article_info_date_format'], $art_ID) . '</span>';
 	 	}
+	 	// check if there are the stars in format
+	 	if(stripos($this->parent->config['article_info_format'], '{STARS}') !== FALSE) {
+	 		$rating = get_post_custom_values('gk-nsp-rate', $art_ID);
+	 		if(isset($rating[0]) && trim($rating[0]) != '') {
+	 			$rating = explode('/', $rating[0]);
+	 			if(count($rating) == 2) {
+	 				if(
+	 					is_numeric(trim($rating[0])) && 
+	 					is_numeric(trim($rating[1])) && 
+	 					trim($rating[0]) * 1 <= trim($rating[1]) * 1 &&
+	 					trim($rating[0]) * 1 >= 0 && trim($rating[1]) > 0
+	 				) {
+	 					$rate = trim($rating[0]) * 1;
+	 					$total = trim($rating[1]) * 1;
+
+	 					$stars = '<span class="gk-nsp-stars">';
+	 					for($i = 0; $i < $total; $i++) {
+							$stars .= $i < $rate ? '<span class="gk-nsp-star-1"></span>' : '<span class="gk-nsp-star-0"></span>';
+						}
+						$stars .= '</span>';
+	 				} else {
+	 					$stars = 'Wrong rating data received';
+	 				}
+	 			} else {
+	 				$stars = 'Wrong rating data received';
+	 			}
+	 		} else {
+	 			$stars = 'Not rated yet';
+	 		}
+	 	}
 	 	// check if there is a comments in format
 	 	if(stripos($this->parent->config['article_info_format'], '{COMMENTS}') !== FALSE) {
 	 		$comment_phrase = '';
@@ -239,8 +270,8 @@ class GK_NSP_Layout_Parts_wp {
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}', '{COMMENT_COUNT}'),
-	 		array($category, $author, $date, $comments, $comment_count),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}', '{COMMENT_COUNT}', '{STARS}'),
+	 		array($category, $author, $date, $comments, $comment_count, $stars),
 	 		$this->parent->config['article_info_format']
 	 	);
 

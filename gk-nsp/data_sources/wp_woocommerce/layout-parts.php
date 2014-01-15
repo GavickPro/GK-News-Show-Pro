@@ -180,6 +180,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	$date = '';
 	 	$reviews = '';
 	 	$price = '';
+	 	$stars = '';
 	 	//
 	 	$art_ID = $this->parent->wdgt_results[$i]->ID;
 	 	$review_count = $this->parent->wdgt_results[$i]->comment_count;
@@ -223,6 +224,17 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	if(stripos($this->parent->config['article_info_format'], '{DATE}') !== FALSE) {
 	 		$date = '<span class="gk-nsp-date">' . get_the_time($this->parent->config['article_info_date_format'], $art_ID) . '</span>';
 	 	}
+	 	// check if there are the stars in format
+	 	if(stripos($this->parent->config['article_info_format'], '{STARS}') !== FALSE) {
+	 		$rate = ceil($prod->get_average_rating());
+	 		$total = 5;
+
+			$stars = '<span class="gk-nsp-stars">';
+			for($i = 0; $i < $total; $i++) {
+				$stars .= $i < $rate ? '<span class="gk-nsp-star-1"></span>' : '<span class="gk-nsp-star-0"></span>';
+			}
+			$stars .= '</span>';
+	 	}
 	 	// check if there is a comments in format
 	 	if(stripos($this->parent->config['article_info_format'], '{REVIEWS}') !== FALSE) {
 	 		$review_phrase = '';
@@ -242,8 +254,8 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{REVIEWS}', '{PRICE}'),
-	 		array($category, $author, $date, $reviews, $price),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{REVIEWS}', '{PRICE}', '{STARS}'),
+	 		array($category, $author, $date, $reviews, $price, $stars),
 	 		$this->parent->config['article_info_format']
 	 	);
 

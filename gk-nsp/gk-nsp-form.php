@@ -290,7 +290,7 @@ class GK_NSP_Widget_Form {
 
 									<small>
 										<?php _e('You can use in the Format option following tags:', 'gk-nsp'); ?>
-										<br />{DATE}, {CATEGORY}, {AUTHOR}, {COMMENTS}, {COMMENT_COUNT}, {PRICE}, {REVIEWS}
+										<br />{DATE}, {CATEGORY}, {AUTHOR}, {COMMENTS}, {COMMENT_COUNT}, {STARS}, {PRICE}, {REVIEWS}
 									</small>
 								</p>
 								

@@ -360,6 +360,24 @@ img.gk-responsive {
 	overflow: hidden;
 }
 
+/* Rating styles */
+.gk-nsp-art {
+	.gk-nsp-stars {
+		display: inline-block;
+		padding: 5px 10px 5px 0!important;
+	}
+	.gk-nsp-star-0:before,
+	.gk-nsp-star-1:before {
+		content: "★";
+		color: #6c6c6c;
+		font-family: Arial, sans-serif;
+		font-size: 14px;
+	}
+	.gk-nsp-star-1:before {
+		color: #f7a834;
+	}
+}
+
 /* Mobile styles */
 @media (max-width: 600px) {
 	.gk-nsp .gk-nsp-art {
