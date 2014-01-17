@@ -66,6 +66,9 @@
   display: none;
   float: right;
 }
+.gk-nsp-ui .gk-additional {
+  float: right;
+}
 .gk-nsp-ui textarea {
   height: 90px;
   margin-left: 93px;
@@ -118,6 +121,12 @@
 .gk-nsp-ui .tabs-panel .children {
   margin: 5px 0 0 20px;
 }
+.gk-nsp-ui input[type=checkbox] {
+  margin: 8px 2px!important;
+}
+.gk-nsp-ui input[type=checkbox]:checked:before {
+  margin: -9px 0 0 -8px;
+}
 .gk-toggler {
   background: #f1f1f1;
   background-image: -webkit-gradient(linear, left bottom, left top, from(#ececec), to(#f9f9f9));
@@ -136,17 +145,19 @@
   position: relative;
 }
 .gk-toggler:after {
-  background: url('../../../wp-admin/images/arrows-dark.png') no-repeat 8px -101px;
-  content: "";
+  border: 0;
+  background: 0 0;
+  content: '\f140';
   display: block;
-  height: 32px;
+  font: 400 20px/1 dashicons;
+  margin-top: 4px!important;
+  padding: 0;
   position: absolute;
-  right: 0;
+  right: 7px;
+  speak: none;
+  text-indent: 0;
+  text-align: center;
   top: 0;
-  width: 32px;
-}
-.gk-toggler.active:after {
-  background: url('../../../wp-admin/images/arrows-dark.png') no-repeat 8px 7px;
 }
 .gk-toggler.active + .gk-toggle > div {
   margin-top: 0;
