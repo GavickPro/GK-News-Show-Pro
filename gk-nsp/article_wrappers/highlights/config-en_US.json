@@ -1,0 +1,38 @@
+{
+	"name": "highlights",
+	"tab_name": "Highlights options",
+	"css": true,
+	"js": false,
+	"support": [
+		"wp",
+		"wp_woocommerce",
+		"json",
+		"xml"
+	],
+	"params": [
+		{
+			"name": "more",
+			"label": "Read more link",
+			"tooltip": "Specify URL of the Read more link",
+			"classes": "",
+			"type": "text",
+			"default": "#readon"
+		},
+		{
+			"name": "more_text",
+			"label": "Read more text",
+			"tooltip": "Specify text of the Read more link",
+			"classes": "",
+			"type": "text",
+			"default": "More..."
+		},
+		{
+			"name": "articles",
+			"label": "Number of articles",
+			"tooltip": "Specify number of articles displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 5
+		}
+	]
+}

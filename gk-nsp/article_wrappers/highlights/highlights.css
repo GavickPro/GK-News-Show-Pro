@@ -1,0 +1,91 @@
+/* 
+* GK News Show Pro
+*
+* @version: 0.1 beta
+* @date: 10-11-2013
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+/* GK NSP Highlights */
+.box.highlights h3 {
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.box.highlights h3 a:active,
+.box.highlights h3 a:focus,
+.box.highlights h3 a:hover {
+	color: #fff;
+}
+.box.highlights .gk-nsp-highlights p {
+	color: #fff;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 1.6;
+	margin-top: 6px;
+}
+.box.highlights .gk-nsp-highlights {
+	margin: 0;
+}
+.box.highlights .gk-nsp-highlights li {
+	border-bottom: 1px solid #e73f48;
+	list-style-type: none;
+	line-height: 1.6;
+	padding: 16px 16px 16px 60px;
+	position: relative;
+}
+.box.highlights .gk-nsp-highlights {
+	counter-reset: gkhighlights;
+}
+.box.highlights .gk-nsp-highlights li:before {
+	border: 1px solid #fff;
+	counter-increment: gkhighlights;
+	content: counter(gkhighlights);
+	height: 22px;
+	left: 19px;
+	line-height: 23px;
+	position: absolute;
+	text-align: center;
+	top: 22px;
+	width: 22px;
+	color: #fff;
+}
+.box.highlights .gk-nsp-highlights li:after {
+	border-style: solid;
+	border-width: 4px 0 4px 4px;
+	border-color: transparent transparent transparent #fff;
+	content: "";
+	height: 0px;
+	left: 42px;
+	position: absolute;
+	top: 30px;
+	width: 0px;
+}
+.box.highlights .gk-nsp-highlights li h3:before {
+	border-style: solid;
+	border-width: 3px 0 3px 3px;
+	border-color: transparent transparent transparent #d82731;
+	content: "";
+	height: 0px;
+	left: 42px;
+	position: absolute;
+	top: 31px;
+	width: 0px;
+	z-index: 1;
+}
+.box.highlights .gk-nsp-highlights + a {
+	color: #fff;
+	display: block;
+	line-height: 50px; 
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.box.highlights .gk-nsp-highlights + a:active,
+.box.highlights .gk-nsp-highlights + a:focus,
+.box.highlights .gk-nsp-highlights + a:hover {
+	color: #111;
+}
