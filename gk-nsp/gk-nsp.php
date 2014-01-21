@@ -304,8 +304,10 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 						wp_enqueue_script('gk-nsp-default');
 					} else {
 						if(isset($json_cache[$instance['article_wrapper']]) && $json_cache[$instance['article_wrapper']]) {
-							wp_register_script( 'gk-nsp-' . $instance['article_wrapper'], plugins_url('article_wrappers/'.$instance['article_wrapper'].'/'. $instance['article_wrapper'] .'.js', __FILE__), array('jquery'), false, true);
-							wp_enqueue_script('gk-nsp-' . $instance['article_wrapper']);
+							if($json_cache[$instance['article_wrapper']]->js == true) {
+								wp_register_script( 'gk-nsp-' . $instance['article_wrapper'], plugins_url('article_wrappers/'.$instance['article_wrapper'].'/'. $instance['article_wrapper'] .'.js', __FILE__), array('jquery'), false, true);
+								wp_enqueue_script('gk-nsp-' . $instance['article_wrapper']);
+							}
 						}
 					}
 					// push the wrapper to teh list - avoid duplicates
@@ -342,8 +344,10 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 						wp_enqueue_style('gk-nsp');
 					} else {
 						if(isset($json_cache[$instance['article_wrapper']]) && $json_cache[$instance['article_wrapper']]) {
-							wp_register_style( 'gk-nsp-' . $instance['article_wrapper'], plugins_url('article_wrappers/'.$instance['article_wrapper'].'/'. $instance['article_wrapper'] .'.css', __FILE__), array(), false, 'all');
-							wp_enqueue_style('gk-nsp-' . $instance['article_wrapper']);
+							if($json_cache[$instance['article_wrapper']]->css == true) {
+								wp_register_style( 'gk-nsp-' . $instance['article_wrapper'], plugins_url('article_wrappers/'.$instance['article_wrapper'].'/'. $instance['article_wrapper'] .'.css', __FILE__), array(), false, 'all');
+								wp_enqueue_style('gk-nsp-' . $instance['article_wrapper']);
+							}
 						}
 					}
 					// push the wrapper to teh list - avoid duplicates
