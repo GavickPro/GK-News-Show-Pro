@@ -1,0 +1,7 @@
+<div class="showcase-wrap">
+<a href="{URL}" title="{TITLE}" class="gk-responsive gk-nsp-image-wrapper">
+<img src="{IMAGE}" alt="" class="gk-nsp-image gk-responsive">
+</a>
+<h3 class="gk-nsp-header"><a href="{URL}" title="{TITLE}">{TITLE}</a></h3>
+</div>
+
