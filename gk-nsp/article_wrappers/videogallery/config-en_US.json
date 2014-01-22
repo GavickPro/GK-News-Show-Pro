@@ -1,0 +1,58 @@
+{
+	"name": "videogallery",
+	"tab_name": "Videogallery options",
+	"css": true,
+	"js": true,
+	"support": [
+		"wp"
+	],
+	"params": [
+		{
+			"name": "popup_switcher",
+			"label": "Video Popup",
+			"tooltip": "You can disable the video popup",
+			"classes": "",
+			"type": "switch",
+			"default": 1
+		},
+		{
+			"name": "popup_w",
+			"label": "Popup Width",
+			"classes": "short",
+			"type": "text",
+			"default": 623
+		},
+		{
+			"name": "popup_h",
+			"label": "Popup Height",
+			"classes": "short",
+			"type": "text",
+			"default": 350
+		},
+		{
+			"name": "pages",
+			"label": "Number of pages",
+			"tooltip": "Specify number of pages with video displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 2
+		},
+		{
+			"name": "cols",
+			"label": "Articles per page",
+			"tooltip": "Amount of articles displayed on one page",
+			"classes": "short",
+			"type": "text",
+			"default": 3
+		},
+		{
+			"name": "animation_interval",
+			"label": "Animation interval",
+			"tooltip": "Specify the interval of autoanimation in miliseconds",
+			"classes": "medium-right",
+			"type": "text",
+			"default": 5000,
+			"after": "ms"
+		}
+	]
+}
