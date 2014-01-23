@@ -169,11 +169,11 @@ class GK_NSP_Layout_Parts_wp {
 	 			}
 	 		
 	 			if($this->parent->config['article_image_pos'] == 'left' && $this->parent->config['article_image_order'] == 1) {
-	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" /></a></div>';
+	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" width="'.$this->parent->config['article_image_w'].'" height="'.$this->parent->config['article_image_h'].'" /></a></div>';
 
 	 				return apply_filters('gk_nsp_art_image', $output);
 	 			} else {
-					$output = '<a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-responsive gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image gk-responsive" /></a>';
+					$output = '<a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-responsive gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image gk-responsive" width="'.$this->parent->config['article_image_w'].'" height="'.$this->parent->config['article_image_h'].'" /></a>';
 
 	 				return apply_filters('gk_nsp_art_image', $output);
 	 			}
