@@ -196,6 +196,9 @@
 .branch-3-8 .gk-nsp-ui input {
   padding: 6px 4px!important;
 }
+.branch-3-8 .gk-nsp-ui input.button {
+  padding: 0 6px!important;
+}
 .branch-3-8 .gk-nsp-ui textarea {
   margin-left: 105px;
   width: 71%;

@@ -78,6 +78,12 @@ class GK_NSP_Layout_Parts_rss {
 				$art_image = $enclosure->get_link();				
 			}
 		}
+		
+		// check for the default image
+		if($art_image == '' && $this->parent->config['default_image'] != '') {
+	 		$art_image = $this->parent->config['default_image'];
+	 	}
+
 		// if the image in the feed data doesn't exist - try to get it from the content text
 		if($art_image == '') {
 			$art_text = $this->parent->wdgt_results[$i]->get_content();	

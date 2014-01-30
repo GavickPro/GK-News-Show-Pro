@@ -97,6 +97,11 @@ class GK_NSP_Layout_Parts_wp {
 	 
 	 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'single-post-thumbnail' );
 	 	$image_path = $image[0];
+	 	// check for the default image
+	 	if($image_path == '' && $this->parent->config['default_image'] != '') {
+	 		$image_path = $this->parent->config['default_image'];
+	 	}
+
 	 	$image_popup_url = $image_path;
 	 	$upload_dir = wp_upload_dir();
 
@@ -109,6 +114,7 @@ class GK_NSP_Layout_Parts_wp {
 	 	}
 	 
 	 	$image_path = str_replace($upload_dir['baseurl'] . '/', '', $image_path);
+
 	 	$img_override = FALSE;
 	 	$img_editor = wp_get_image_editor( 
 	 		$upload_dir['basedir'] . '/' . $image_path, 

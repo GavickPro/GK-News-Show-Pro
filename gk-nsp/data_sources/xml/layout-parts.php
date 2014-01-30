@@ -87,6 +87,11 @@ class GK_NSP_Layout_Parts_xml {
 		 	$art_url = $this->parent->wdgt_results[$i]['URL'];
 		 	$art_image = $this->parent->wdgt_results[$i]['image'];
 		 	
+		 	// check for the default image
+		 	if($art_image == '' && $this->parent->config['default_image'] != '') {
+	 			$art_image = $this->parent->config['default_image'];
+	 		}
+
 		 	if($art_image != '') {
 		 		$style = '';
 			 	

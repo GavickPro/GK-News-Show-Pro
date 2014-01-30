@@ -205,11 +205,38 @@ function GK_NSP_UI() {
             }
         });
     };
+    // id of the clicked field
+    var uploadID = '';
+
+    var gkMediaInit = function()  {
+        // image uploaders
+        jQuery('.gk-nsp-ui .gk-media-input').each(
+            function (i, el) {
+                el = jQuery(el);
+                var btnid = el.attr('id') + '_button';
+
+                jQuery('#' + btnid).click(function () {
+                    uploadID = jQuery(this).prev('input');
+                    tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
+
+                    return false;
+                });
+            }
+        );
+    };
+    //
+    window.send_to_editor = function (html) {
+        var imgurl = jQuery('img', html).attr('src');
+        uploadID.val(imgurl);
+        tb_remove();
+    };
+
     // public API
     var API = {
         init: function(wrap) {
             wrapper = wrap;
             initUI();
+            gkMediaInit();
         }
     };
 
