@@ -1,0 +1,8 @@
+<div class="gk-nsp-image-wrap"><a href="{URL}" title="{TITLE}" class="gk-image-link"><img src="{IMAGE}" alt="" class="gk-nsp-image"></a>
+</div>
+<div class="gk-nsp-content-wrap">
+{CATEGORIES}
+<h3 class="gk-nsp-header"><a href="{URL}" title="{TITLE}">{TITLE}</a></h3>
+<p class="gk-nsp-info"> <span class="gk-nsp-date">{DATE}</span></p>
+<p class="gk-nsp-text">{TEXT}</p>
+</div>
