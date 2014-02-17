@@ -83,7 +83,10 @@ class GK_NSP_Data_Source_wp {
                                 array_push($results, $res[0]);
                         }
                 } else if($data_source_type == 'wp-custom') {
-                        array_push($results, get_posts(array('post_type' => $post_types_list, 'numberposts' => $amount_of_posts)));
+                        $results = get_posts(array(
+                        	'post_type' => $post_types_list,
+                        	'numberposts' => $amount_of_posts
+                        ));
                 }
 
                 return $results;
