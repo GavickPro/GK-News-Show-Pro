@@ -357,10 +357,12 @@ class GK_NSP_Widget_Form {
 				</div>
 			</div>
 			
-			<h3 class="gk-toggler"><?php _e('Cache settings', 'gk-nsp'); ?></h3>
+			<h3 class="gk-toggler"><?php _e('Advanced settings', 'gk-nsp'); ?></h3>
 			<div class="gk-toggle">
 				<div>
 					<p><?php $this->input_text('cache_time', $cache_time, __( 'Cache time: ', 'gk-nsp' ), '', 'medium-right', ' min="0" max="9999999999"', 'number', __('min', 'gk-nsp')); ?></p>
+
+					<p><?php $this->input_checkbox('parse_shortcodes', $parse_shortcodes, __('Parse shortcodes in the article text', 'gk-nsp')); ?></p>
 				</div>
 			</div>
 		</div>

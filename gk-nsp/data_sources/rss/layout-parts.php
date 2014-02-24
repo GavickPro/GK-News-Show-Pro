@@ -55,7 +55,12 @@ class GK_NSP_Layout_Parts_rss {
 	 	$art_text = $this->parent->wdgt_results[$i]->get_content();
 	 	
 	 	$art_text = GK_NSP_Widget_Helpers::cut_text('article_text', $art_text, $this->parent->config['article_text_len_type'], $this->parent->config['article_text_len']);
-	 	$art_text = preg_replace('@\[.+?\]@mis', '', $art_text);
+	 	// parsing shortcodes
+	 	if($this->parent->config['parse_shortcodes'] == 'on') {
+ 			$art_text = do_shortcode($art_text);
+ 		} else {
+ 			$art_text = preg_replace('@\[.+?\]@mis', '', $art_text);
+ 		}
 	 	
 	 	if($only_value) {
 	 		return apply_filters('gk_nsp_art_raw_text', $art_text);

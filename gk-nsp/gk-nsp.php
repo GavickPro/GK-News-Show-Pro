@@ -116,6 +116,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'article_text_len' => '20',
 		'article_text_len_type' => 'words',
 		'article_text_order' => '2',
+		'parse_shortcodes' => 'off',
 		// article text format
 		'article_image_state' => 'on',
 		'article_image_w' => '160',
