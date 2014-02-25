@@ -42,6 +42,7 @@ include(dirname(__FILE__) . '/gk-nsp-form.php');
 include(dirname(__FILE__) . '/gk-nsp-form-walkers.php');
 include(dirname(__FILE__) . '/gk-nsp-helpers.php');
 include(dirname(__FILE__) . '/gk-nsp-image-filters.php');
+include(dirname(__FILE__) . '/gk-nsp-shortcodes.php');
 
 /**
  * i18n
@@ -83,7 +84,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'widget_css_suffix' => '',
 		'use_css' => 'on',
 		// data source
-		'data_source_type' => 'latest',
+		'data_source_type' => 'wp-latest',
 		'data_source' => '',
 		'wp_category_list' => array(),
 		'woocommerce_category_list' => array(),
@@ -125,6 +126,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'article_image_order' => '3',
 		'article_image_popup' => 'on', 
 		'article_image_filter' => 'none',
+		'default_image' => '',
 		// article info format
 		'article_info_state' => 'on',
 		'article_info_format' => '{DATE} {CATEGORY} {AUTHOR} {COMMENTS}',
@@ -391,11 +393,13 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		//
 		extract($args, EXTR_SKIP);
 		//
-		foreach($instance as $key => $value) {
-			if($key == 'title') {
-				$this->config['title'] = apply_filters('widget_title', !isset($instance['title']) ? $this->config['title'] : $instance['title'], $instance, $this->id_base);
-			} else {
-				$this->config[$key] = !isset($instance[$key]) ? $this->config[$key] : $instance[$key];
+		if((is_array($instance) || is_object($instance)) && count($instance)) {
+			foreach($instance as $key => $value) {
+				if($key == 'title') {
+					$this->config['title'] = apply_filters('widget_title', !isset($instance['title']) ? $this->config['title'] : $instance['title'], $instance, $this->id_base);
+				} else {
+					$this->config[$key] = !isset($instance[$key]) ? $this->config[$key] : $instance[$key];
+				}
 			}
 		}
 		
