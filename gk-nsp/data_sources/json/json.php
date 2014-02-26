@@ -33,7 +33,7 @@ class GK_NSP_Data_Source_json {
 		if($data_source_type == 'json-file') {
 			$upload_dir = wp_upload_dir();
 			// ToDo: Add validation
-			$results = json_decode(file_get_contents($upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'gk_nsp_external_data' . DIRECTORY_SEPARATOR . $data_source));
+			$results = json_decode(file_get_contents($upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'gk_nsp_external_data' . DIRECTORY_SEPARATOR . $json_filelist));
 		}
 
 		return $results;

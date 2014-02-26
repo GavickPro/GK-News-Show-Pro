@@ -33,7 +33,7 @@ class GK_NSP_Data_Source_xml {
 		if($data_source_type == 'xml-file') {
 			$upload_dir = wp_upload_dir();
 			// ToDo: Add validation
-			$file_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'gk_nsp_external_data' . DIRECTORY_SEPARATOR . $data_source;
+			$file_path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . 'gk_nsp_external_data' . DIRECTORY_SEPARATOR . $xml_filelist;
 			if(is_file($file_path)) {
 				$file_content = file_get_contents($file_path);
 				//

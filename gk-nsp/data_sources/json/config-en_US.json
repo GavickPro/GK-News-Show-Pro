@@ -5,7 +5,7 @@
 			"name": "json-file",
 			"label": "JSON file",
 			"fields": [
-						"data_source"
+						"json_filelist"
 						]
 		}
 	]

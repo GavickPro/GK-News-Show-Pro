@@ -13,6 +13,8 @@
   filter: alpha(opacity=0);
 }
 .gk-nsp-ui {
+  max-height: 300px;
+  overflow: hidden;
   position: relative;
   width: 100%;
 }
@@ -75,6 +77,9 @@
   margin-top: 10px;
   width: 75%;
 }
+.gk-nsp-ui .gk-filelist {
+  margin-left: 98px;
+}
 .gk-nsp-ui big {
   display: block;
   margin: 18px 0;
@@ -126,6 +131,9 @@
 }
 .gk-nsp-ui input[type=checkbox]:checked:before {
   margin: -9px 0 0 -8px;
+}
+.activated .gk-nsp-ui {
+  max-height: inherit;
 }
 .gk-toggler {
   background: #f1f1f1;
@@ -202,6 +210,9 @@
 .branch-3-8 .gk-nsp-ui textarea {
   margin-left: 105px;
   width: 71%;
+}
+.branch-3-8 .gk-nsp-ui .gk-filelist {
+  margin-left: 98px;
 }
 .branch-3-8 .gk-nsp-ui .gk-format-textarea + small {
   margin: 0 0 0 105px;

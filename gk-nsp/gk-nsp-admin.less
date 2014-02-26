@@ -14,6 +14,8 @@
 }
 
 .gk-nsp-ui {
+        max-height: 300px;
+        overflow: hidden;
         position: relative;
         width: 100%;
 
@@ -81,6 +83,9 @@
                 margin-top: 10px;
                 width: 75%;
         }
+        .gk-filelist {
+                margin-left: 98px;
+        }
         big {
                 display: block;
                 margin: 18px 0;
@@ -141,6 +146,10 @@
         input[type=checkbox]:checked:before {
                 margin: -9px 0 0 -8px;
         }
+}
+
+.activated .gk-nsp-ui {
+        max-height: inherit;
 }
 
 .gk-toggler {
@@ -225,6 +234,10 @@
                 textarea {
                         margin-left: 105px;
                         width: 71%;
+                }
+
+                .gk-filelist {
+                        margin-left: 98px;
                 }
 
                 .gk-format-textarea + small {

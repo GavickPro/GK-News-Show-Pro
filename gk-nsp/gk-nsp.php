@@ -86,6 +86,8 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		// data source
 		'data_source_type' => 'wp-latest',
 		'data_source' => '',
+		'json_filelist' => '',
+		'xml_filelist' => '',
 		'wp_category_list' => array(),
 		'woocommerce_category_list' => array(),
 		'post_types_list' => array(),

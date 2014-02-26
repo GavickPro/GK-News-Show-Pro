@@ -71,6 +71,38 @@ class GK_NSP_Widget_Form {
 						<textarea class="gk-data-source" id="<?php echo esc_attr( $nsp->get_field_id('data_source')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('data_source')); ?>" data-depends="<?php echo $json_data['data_source']; ?>"><?php echo esc_attr($data_source); ?></textarea>
 					</p>
 
+					<div class="gk-filelist">
+						<select class="gk-json-filelist" id="<?php echo esc_attr( $nsp->get_field_id('json_filelist')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('json_filelist')); ?>" data-depends="<?php echo $json_data['json_filelist']; ?>">
+							<option value=""><?php _e('Please select a JSON file', 'gk-nsp'); ?></option>
+							<?php 
+							
+							$upload_dir =  wp_upload_dir();
+							$json_files=glob($upload_dir['basedir'] . '/gk_nsp_external_data/*.json');
+
+							foreach ($json_files as $file) { 
+								$filename = str_replace($upload_dir['basedir'] . '/gk_nsp_external_data/', '', $file); 
+							?>
+							<option value="<?php echo $filename; ?>"><?php echo $filename; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+
+					<div class="gk-filelist">
+						<select class="gk-xml-filelist" id="<?php echo esc_attr( $nsp->get_field_id('xml_filelist')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('xml_filelist')); ?>" data-depends="<?php echo $json_data['xml_filelist']; ?>">
+							<option value=""><?php _e('Please select a XML file', 'gk-nsp'); ?></option>
+							<?php 
+							
+							$upload_dir =  wp_upload_dir();
+							$xml_files=glob($upload_dir['basedir'] . '/gk_nsp_external_data/*.xml');
+
+							foreach ($xml_files as $file) { 
+								$filename = str_replace($upload_dir['basedir'] . '/gk_nsp_external_data/', '', $file); 
+							?>
+							<option value="<?php echo $filename; ?>"><?php echo $filename; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+
 					<div class="categorydiv">
 						<div class="tabs-panel">	
 							<ul class="gk-wp-category-list" id="<?php echo esc_attr( $nsp->get_field_id('wp_category_list')); ?>" name="<?php echo esc_attr( $nsp->get_field_name('wp_category_list')); ?>" data-depends="<?php echo $json_data['wp_category_list']; ?>">
@@ -538,7 +570,7 @@ class GK_NSP_Widget_Form {
 		$default_language = 'en_US';
 		$language = get_locale() != '' ? get_locale() : $default_language;
 		// find all data sources
-		$data_source_path =$this->nsp->ds_path;
+		$data_source_path = $this->nsp->ds_path;
 		$dirs = scandir($data_source_path);
 		$results = array();
 		// iterate through founded files
@@ -564,6 +596,8 @@ class GK_NSP_Widget_Form {
 							"offset"                    => '',
 							"data_source"               => '',
 							"one_per_category"          => '',
+							"json_filelist"				=> '',
+							"xml_filelist"				=> '',
 							"wp_category_list"          => '',
 							"woocommerce_category_list" => '',
 							"post_types_list"           => ''
@@ -574,6 +608,8 @@ class GK_NSP_Widget_Form {
 						'offset', 
 						'data_source', 
 						'one_per_category',
+						'json_filelist',
+						'xml_filelist',
 						'wp_category_list',
 						'woocommerce_category_list',
 						'post_types_list'

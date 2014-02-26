@@ -44,6 +44,8 @@ function GK_NSP_UI() {
                 wrapper.find('.gk-order-by'),
                 wrapper.find('.gk-order'),
                 wrapper.find('.gk-offset'),
+                wrapper.find('.gk-xml-filelist'),
+                wrapper.find('.gk-json-filelist'),
                 wrapper.find('.gk-wp-category-list'),
                 wrapper.find('.gk-woocommerce-category-list'),
                 wrapper.find('.gk-post-types-list')
@@ -87,6 +89,8 @@ function GK_NSP_UI() {
                     wrapper.find('.gk-order-by'),
                     wrapper.find('.gk-order'),
                     wrapper.find('.gk-offset'),
+                    wrapper.find('.gk-json-filelist'),
+                    wrapper.find('.gk-xml-filelist'),
                     wrapper.find('.gk-wp-category-list'),
                     wrapper.find('.gk-woocommerce-category-list'),
                     wrapper.find('.gk-post-types-list')
