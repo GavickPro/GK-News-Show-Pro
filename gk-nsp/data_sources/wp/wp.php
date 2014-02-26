@@ -98,16 +98,21 @@ class GK_NSP_Data_Source_wp {
                 $art_URL = get_permalink($art_ID);
                 $art_title = GK_NSP_Widget_Helpers::cut_text('article_title', $item->post_title, $config['article_title_len_type'], $config['article_title_len']);
                 $art_text = GK_NSP_Widget_Helpers::cut_text('article_text', $item->post_content, $config['article_text_len_type'], $config['article_text_len']);
-                 $art_text = preg_replace('@\[.+?\]@mis', '', $art_text);;
-                 // images
-                 $art_image_full = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'full' );
-                 $art_image_full = $art_image_full[0];
-                 $art_image_large = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'large' );
-                 $art_image_large = $art_image_large[0];
-                 $art_image_medium = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'medium' );
-                 $art_image_medium = $art_image_medium[0];
-                 $art_image_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'thumbnail' );
-                 $art_image_thumbnail = $art_image_thumbnail[0];
+                // parsing shortcodes
+                if($this->parent->config['parse_shortcodes'] == 'on') {
+                    $art_text = do_shortcode($art_text);
+                } else {
+                    $art_text = preg_replace('@\[.+?\]@mis', '', $art_text);
+                }
+                // images
+                $art_image_full = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'full' );
+                $art_image_full = $art_image_full[0];
+                $art_image_large = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'large' );
+                $art_image_large = $art_image_large[0];
+                $art_image_medium = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'medium' );
+                $art_image_medium = $art_image_medium[0];
+                $art_image_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'thumbnail' );
+                $art_image_thumbnail = $art_image_thumbnail[0];
                 // categories
                  $art_categories = '';
                  $categories = get_the_category($art_ID);
