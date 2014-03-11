@@ -96,7 +96,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	$image_popup_url = $image_path;
 	 	$upload_dir = wp_upload_dir();
 	 	
-	 	if(is_multisite()) {
+	 	if(is_multisite() && stripos($upload_dir['baseurl'], '/sites/') !== FALSE) {
 	 		$upload_dir_baseurl = substr($upload_dir['baseurl'], 0, stripos($upload_dir['baseurl'], '/sites/'));
 	 		$upload_dir_basedir = substr($upload_dir['basedir'], 0, stripos($upload_dir['basedir'], '/sites/'));
 	 	} else {
@@ -125,7 +125,13 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 				$new_path = $cache_uri . $new_path;
 	 			} else {
 			 		$img_editor->resize($this->parent->config['article_image_w'], $this->parent->config['article_image_h'], true);
-			 		$img_filename = $img_editor->generate_filename( $this->parent->id, $upload_dir_basedir . '/' . 'gk_nsp_cache');
+			 		$multisite_suffix = '';
+			 		
+			 		if(is_multisite()) {
+			 			$multisite_suffix = '_blog-' . get_current_blog_id();
+			 		}
+			 		
+			 		$img_filename = $img_editor->generate_filename( $this->parent->id . $multisite_suffix, $upload_dir_basedir . '/' . 'gk_nsp_cache');
 
 					if($this->parent->config['article_image_filter'] == 'greyscale') {
 						$img_editor->gk_nsp_greyscale();	
