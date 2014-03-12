@@ -242,14 +242,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	}
 	 	// check if there are the stars in format
 	 	if(stripos($this->parent->config['article_info_format'], '{STARS}') !== FALSE) {
-	 		$rate = ceil($prod->get_average_rating());
-	 		$total = 5;
-
-			$stars = '<span class="gk-nsp-stars">';
-			for($i = 0; $i < $total; $i++) {
-				$stars .= $i < $rate ? '<span class="gk-nsp-star-1"></span>' : '<span class="gk-nsp-star-0"></span>';
-			}
-			$stars .= '</span>';
+	 		$stars = $this->art_rating($prod);
 	 	}
 	 	// check if there is a comments in format
 	 	if(stripos($this->parent->config['article_info_format'], '{REVIEWS}') !== FALSE) {
@@ -277,6 +270,20 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 
 	 	return apply_filters('gk_nsp_art_info', '<p class="gk-nsp-info">' . $output . '</p>');
 	 }
+
+	 function art_rating($prod) {
+		$stars = '';
+	 	$rate = ceil($prod->get_average_rating());
+ 		$total = 5;
+
+		$stars = '<span class="gk-nsp-stars">';
+		for($i = 0; $i < $total; $i++) {
+			$stars .= $i < $rate ? '<span class="gk-nsp-star-1"></span>' : '<span class="gk-nsp-star-0"></span>';
+		}
+		$stars .= '</span>';
+
+		return $stars;
+	}
 	 
 	 function art_readmore($i, $only_value = false) {
 	 	$art_ID = '';

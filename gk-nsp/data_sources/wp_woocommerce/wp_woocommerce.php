@@ -159,6 +159,7 @@ class GK_NSP_Data_Source_wp_woocommerce {
 						"{AUTHOR_NAME}" => $art_author_name,
 						"{AUTHOR_URL}" => $art_author_URL,
 						"{DATE}" => $art_date,
+						"{RATING}" => $generator->art_rating($prod),
 						"{DATE_W3C}" => get_the_time('c', $art_ID),
 						"{COMMENT_COUNT}" => $art_comment_count,
 						"{COMMENTS}" => $art_comment,

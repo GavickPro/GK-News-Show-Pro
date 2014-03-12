@@ -221,33 +221,7 @@ class GK_NSP_Layout_Parts_wp {
 	 	}
 	 	// check if there are the stars in format
 	 	if(stripos($this->parent->config['article_info_format'], '{STARS}') !== FALSE) {
-	 		$rating = get_post_custom_values('gk-nsp-rate', $art_ID);
-	 		if(isset($rating[0]) && trim($rating[0]) != '') {
-	 			$rating = explode('/', $rating[0]);
-	 			if(count($rating) == 2) {
-	 				if(
-	 					is_numeric(trim($rating[0])) && 
-	 					is_numeric(trim($rating[1])) && 
-	 					trim($rating[0]) * 1 <= trim($rating[1]) * 1 &&
-	 					trim($rating[0]) * 1 >= 0 && trim($rating[1]) > 0
-	 				) {
-	 					$rate = trim($rating[0]) * 1;
-	 					$total = trim($rating[1]) * 1;
-
-	 					$stars = '<span class="gk-nsp-stars">';
-	 					for($i = 0; $i < $total; $i++) {
-							$stars .= $i < $rate ? '<span class="gk-nsp-star-1"></span>' : '<span class="gk-nsp-star-0"></span>';
-						}
-						$stars .= '</span>';
-	 				} else {
-	 					$stars = 'Wrong rating data received';
-	 				}
-	 			} else {
-	 				$stars = 'Wrong rating data received';
-	 			}
-	 		} else {
-	 			$stars = 'Not rated yet';
-	 		}
+	 		$stars = $this->art_rating($art_ID);
 	 	}
 	 	// check if there is a comments in format
 	 	if(stripos($this->parent->config['article_info_format'], '{COMMENTS}') !== FALSE) {
@@ -275,6 +249,39 @@ class GK_NSP_Layout_Parts_wp {
 	 	return apply_filters('gk_nsp_art_info', '<p class="gk-nsp-info">' . $output . '</p>');
 	 }
 	 
+	 function art_rating($art_ID) {
+	 	$stars = '';
+	 	$rating = get_post_custom_values('gk-nsp-rate', $art_ID);
+ 		if(isset($rating[0]) && trim($rating[0]) != '') {
+ 			$rating = explode('/', $rating[0]);
+ 			if(count($rating) == 2) {
+ 				if(
+ 					is_numeric(trim($rating[0])) && 
+ 					is_numeric(trim($rating[1])) && 
+ 					trim($rating[0]) * 1 <= trim($rating[1]) * 1 &&
+ 					trim($rating[0]) * 1 >= 0 && trim($rating[1]) > 0
+ 				) {
+ 					$rate = trim($rating[0]) * 1;
+ 					$total = trim($rating[1]) * 1;
+
+ 					$stars = '<span class="gk-nsp-stars">';
+ 					for($i = 0; $i < $total; $i++) {
+						$stars .= $i < $rate ? '<span class="gk-nsp-star-1"></span>' : '<span class="gk-nsp-star-0"></span>';
+					}
+					$stars .= '</span>';
+ 				} else {
+ 					$stars = 'Wrong rating data received';
+ 				}
+ 			} else {
+ 				$stars = 'Wrong rating data received';
+ 			}
+ 		} else {
+ 			$stars = 'Not rated yet';
+ 		}
+
+ 		return $stars;
+	 }
+
 	 function art_readmore($i, $only_value = false) {
 	 	$art_ID = '';
 	 	$art_url = '';

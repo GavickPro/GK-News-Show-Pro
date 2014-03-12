@@ -73,6 +73,7 @@ class GK_NSP_Data_Source_json {
 						"{AUTHOR_NAME}" => $art_author_name,
 						"{AUTHOR_URL}" => $art_author_URL,
 						"{DATE}" => $art_date,
+						"{RATING}" => $generator->art_rating($item),
 						"{DATE_W3C}" => date(DATE_W3C, strtotime($item->date)),
 						"{COMMENT_COUNT}" => $art_comment_count,
 						"{COMMENTS}" => $art_comment
