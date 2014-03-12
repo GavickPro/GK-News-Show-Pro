@@ -82,7 +82,7 @@ class GK_NSP_Widget_Form {
 							foreach ($json_files as $file) { 
 								$filename = str_replace($upload_dir['basedir'] . '/gk_nsp_external_data/', '', $file); 
 							?>
-							<option value="<?php echo $filename; ?>"><?php echo $filename; ?></option>
+							<option value="<?php echo $filename; ?>" <?php selected($filename, $json_filelist, true); ?>><?php echo $filename; ?></option>
 							<?php } ?>
 						</select>
 					</div>
@@ -98,7 +98,7 @@ class GK_NSP_Widget_Form {
 							foreach ($xml_files as $file) { 
 								$filename = str_replace($upload_dir['basedir'] . '/gk_nsp_external_data/', '', $file); 
 							?>
-							<option value="<?php echo $filename; ?>"><?php echo $filename; ?></option>
+							<option value="<?php echo $filename; ?>" <?php selected($filename, $xml_filelist, true); ?>><?php echo $filename; ?></option>
 							<?php } ?>
 						</select>
 					</div>
