@@ -190,6 +190,7 @@
 /* WordPress 3.8 CSS adjustments */
 .branch-3-8 .gk-nsp-ui {
   margin: 0 -10px;
+  padding: 0 0 15px 0;
   width: auto;
 }
 .branch-3-8 .gk-nsp-ui label {
