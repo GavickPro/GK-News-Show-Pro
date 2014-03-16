@@ -78,7 +78,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	return apply_filters('gk_nsp_art_text', $output);
 	 }
 	 
-	 function art_image($i, $only_value = false) {
+	 function art_image($i, $only_value = false, $type = 'article') {
 	 	$art_ID = '';
 
 	 	$art_ID = $this->parent->wdgt_results[$i]->ID;
@@ -89,8 +89,8 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $art_ID ), 'single-post-thumbnail' );
 	 	$image_path = $image[0];
 	 	// check for the default image
-	 	if($image_path == '' && $this->parent->config['default_image'] != '') {
-	 		$image_path = $this->parent->config['default_image'];
+	 	if($image_path == '' && $this->parent->config[$type . '_default_image'] != '') {
+	 		$image_path = $this->parent->config[$type . '_default_image'];
 	 	}
 
 	 	$image_popup_url = $image_path;
@@ -112,7 +112,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 		);
 	 	
 	 	if(!is_wp_error($img_editor)) {
-	 		$img_override = $img_editor->generate_filename( $this->parent->id, $upload_dir_basedir . '/' . 'gk_nsp_cache' . '/overrides' );
+	 		$img_override = $img_editor->generate_filename( $this->parent->id . '_' . $type, $upload_dir_basedir . '/' . 'gk_nsp_cache' . '/overrides' );
 	 	}
 
 	 	if($image_path != '') {
@@ -124,20 +124,20 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 				$cache_uri = $upload_dir_baseurl . '/gk_nsp_cache/overrides/';
 	 				$new_path = $cache_uri . $new_path;
 	 			} else {
-			 		$img_editor->resize($this->parent->config['article_image_w'], $this->parent->config['article_image_h'], true);
+			 		$img_editor->resize($this->parent->config[$type . '_image_w'], $this->parent->config[$type . '_image_h'], true);
 			 		$multisite_suffix = '';
 			 		
 			 		if(is_multisite()) {
 			 			$multisite_suffix = '_blog-' . get_current_blog_id();
 			 		}
 			 		
-			 		$img_filename = $img_editor->generate_filename( $this->parent->id . $multisite_suffix, $upload_dir_basedir . '/' . 'gk_nsp_cache');
+			 		$img_filename = $img_editor->generate_filename( $this->parent->id . $multisite_suffix . '_' . $type, $upload_dir_basedir . '/' . 'gk_nsp_cache');
 
-					if($this->parent->config['article_image_filter'] == 'greyscale') {
+					if($this->parent->config[$type . '_image_filter'] == 'greyscale') {
 						$img_editor->gk_nsp_greyscale();	
 					}
 
-					if($this->parent->config['article_image_filter'] == 'sepia') {
+					if($this->parent->config[$type . '_image_filter'] == 'sepia') {
 						$img_editor->gk_nsp_sepia();	
 					}
 
@@ -159,21 +159,27 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 
 	 			$style = '';
 	 			
-	 			if($this->parent->config['image_block_padding'] != '' && $this->parent->config['image_block_padding'] != '0') {
-	 				$style = ' style="margin: '.$this->parent->config['image_block_padding'].';"';
+	 			if($this->parent->config[($type == 'links' ? 'links_' : '') . 'image_block_padding'] != '' && $this->parent->config[($type == 'links' ? 'links_' : '') . 'image_block_padding'] != '0') {
+	 				$style = ' style="margin: '.$this->parent->config[($type == 'links' ? 'links_' : '') . 'image_block_padding'].';"';
 	 			}
 
 	 			// if the popup is enabled
 	 			$link_additional_classes = '';
 	 			$link_rel = '';
-	 			if($this->parent->config['article_image_popup'] == 'on') {
+	 			if($this->parent->config[$type . '_image_popup'] == 'on') {
 	 				$art_url = $image_popup_url;
 	 				$link_additional_classes = ' thickbox';
 	 				$link_rel = ' rel="gallery-gk-nsp-' . $this->parent->id . '"';
 	 			}
 
-	 			if($this->parent->config['article_image_pos'] == 'left' && $this->parent->config['article_image_order'] == 1) {
-	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" width="'.$this->parent->config['article_image_w'].'" height="'.$this->parent->config['article_image_h'].'" /></a></div>';
+	 			if(
+	 				$type == 'links' ||
+	 				(
+	 					$this->parent->config['article_image_pos'] == 'left' && 
+	 					$this->parent->config['article_image_order'] == 1
+	 				)
+	 			) {
+	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" width="'.$this->parent->config[$type . '_image_w'].'" height="'.$this->parent->config[$type . '_image_h'].'" /></a></div>';
 
 	 				return apply_filters('gk_nsp_art_image', $output);
 	 			} else {
@@ -335,6 +341,15 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 		$output = '<p class="gk-nsp-link-text">'.$art_text.'</p>';
 		
 		return apply_filters('gk_nsp_link_text', $output);
+	}
+
+
+	function link_image($i, $only_value = false) {
+		return $this->art_image($i, $only_value, 'links');
+	}
+
+	function link_readmore() {
+		return '<a class="gk-nsp-links-readon" href="'. $this->parent->config['links_readmore_url'] .'">'. $this->parent->config['links_readmore_text'] .'</a>';
 	}
 }
 

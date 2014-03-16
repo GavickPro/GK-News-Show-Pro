@@ -307,20 +307,20 @@ class GK_NSP_Widget_Form {
 							<div class="gk-indent">	
 								<p>
 									<label 
-			                        	for="<?php echo esc_attr( $this->nsp->get_field_id( 'default_image' )); ?>"
+			                        	for="<?php echo esc_attr( $this->nsp->get_field_id( 'article_default_image' )); ?>"
 			                        	title=""
 			                        >
 			                                <?php _e('Default image', 'gk-nsp'); ?>
 			                        </label>
 			                        <input 
-			                                id="<?php echo esc_attr( $this->nsp->get_field_id( 'default_image' )); ?>" 
+			                                id="<?php echo esc_attr( $this->nsp->get_field_id( 'article_default_image' )); ?>" 
 			                                type="text" 
 			                                size="24" 
-			                                name="<?php echo esc_attr( $this->nsp->get_field_name( 'default_image' )); ?>" 
-			                                value="" 
+			                                name="<?php echo esc_attr( $this->nsp->get_field_name( 'article_default_image' )); ?>" 
+			                                value="<?php echo $article_default_image; ?>" 
 			                                 class="gk-media-input"                                 
 			                        />
-			                        <input id="<?php echo esc_attr( $this->nsp->get_field_id( 'default_image' )); ?>_button" class="gk-media button button-primary" type="button" value="<?php _e('Upload Image', 'gk-nsp'); ?>" />
+			                        <input id="<?php echo esc_attr( $this->nsp->get_field_id( 'article_default_image' )); ?>_button" class="gk-media button button-primary" type="button" value="<?php _e('Upload Image', 'gk-nsp'); ?>" />
                     			</p>
 								<p><?php $this->input_select('article_image_filter', $article_image_filter, __('Image filter:', 'gk-nsp'), array('none' => __('None', 'gk-nsp'), 'greyscale' => __('Greyscale', 'gk-nsp'), 'sepia' => __('Sepia', 'gk-nsp'))); ?></p>
 								
@@ -375,17 +375,74 @@ class GK_NSP_Widget_Form {
 			<h3 class="gk-toggler gk-article-wrapper-hide"><?php _e('Link format', 'gk-nsp'); ?></h3>
 			<div class="gk-toggle gk-article-wrapper-hide">		
 				<div>
-					<p>
-						<?php $this->input_checkbox('links_title_state', $links_title_state, __('Show links title', 'gk-nsp')); ?>
-						<?php $this->input_text('links_title_len', $links_title_len, __( 'length: ', 'gk-nsp' ), '', 'short-right', ' min="0" ', 'number'); ?>
-						<?php $this->input_select('links_title_len_type', $links_title_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
-					</p>
-					
-					<p>				
-						<?php $this->input_checkbox('links_text_state', $links_text_state, __('Show links text', 'gk-nsp')); ?>
-						<?php $this->input_text('links_text_len', $links_text_len, __( 'length: ', 'gk-nsp' ), '', 'short-right', ' min="0" ', 'number'); ?>
-						<?php $this->input_select('links_text_len_type', $links_text_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
-					</p>
+					<div class="gk-link-elements">		
+						<div class="gk-link-element" data-element-name="title">
+							<?php $this->input_checkbox('links_title_state', $links_title_state, __('Show title', 'gk-nsp')); ?>
+							
+							<div class="gk-additional">
+								<?php $this->input_text('links_title_len', $links_title_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>		
+								<?php $this->input_select('links_title_len_type', $links_title_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
+							</div>
+						</div>
+									
+						<div class="gk-link-element" data-element-name="text">
+							<?php $this->input_checkbox('links_text_state', $links_text_state, __('Show text', 'gk-nsp')); ?>
+							
+							<div class="gk-additional">
+								<?php $this->input_text('links_text_len', $links_text_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>
+								<?php $this->input_select('links_text_len_type', $links_text_len_type, '', array('chars' => __('Chars', 'gk-nsp'), 'words' => __('Words', 'gk-nsp'))); ?>
+							</div>
+						</div>	
+						
+						<div class="gk-link-element" data-element-name="image">
+							<?php $this->input_checkbox('links_image_state', $links_image_state, __('Show image', 'gk-nsp')); ?>
+							
+							<div class="gk-additional">
+								<label for="<?php echo esc_attr( $nsp->get_field_id( 'links_image_w' ) ); ?>"><?php _e( 'size:', 'gk-nsp' ); ?></label>
+								
+								<input id="<?php echo esc_attr( $nsp->get_field_id( 'links_image_w' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'links_image_w' ) ); ?>" type="text" value="<?php echo esc_attr( $links_image_w ); ?>" class="short" />
+								&times;
+								<input id="<?php echo esc_attr( $nsp->get_field_id( 'links_image_h' ) ); ?>" name="<?php echo esc_attr( $nsp->get_field_name( 'links_image_h' ) ); ?>" type="text" value="<?php echo esc_attr( $links_image_h ); ?>" class="short" />
+							</div>
+
+							<div class="gk-indent">	
+								<p>
+									<label 
+			                        	for="<?php echo esc_attr( $this->nsp->get_field_id( 'links_default_image' )); ?>"
+			                        	title=""
+			                        >
+			                                <?php _e('Default image', 'gk-nsp'); ?>
+			                        </label>
+			                        <input 
+			                                id="<?php echo esc_attr( $this->nsp->get_field_id( 'links_default_image' )); ?>" 
+			                                type="text" 
+			                                size="24" 
+			                                name="<?php echo esc_attr( $this->nsp->get_field_name( 'links_default_image' )); ?>" 
+			                                value="<?php echo $links_default_image; ?>" 
+			                                 class="gk-media-input"                                 
+			                        />
+			                        <input id="<?php echo esc_attr( $this->nsp->get_field_id( 'links_default_image' )); ?>_button" class="gk-media button button-primary" type="button" value="<?php _e('Upload Image', 'gk-nsp'); ?>" />
+                    			</p>
+								<p><?php $this->input_select('links_image_filter', $links_image_filter, __('Image filter:', 'gk-nsp'), array('none' => __('None', 'gk-nsp'), 'greyscale' => __('Greyscale', 'gk-nsp'), 'sepia' => __('Sepia', 'gk-nsp'))); ?></p>
+								
+								<p><?php $this->input_switch('links_image_popup', $links_image_popup, __('Image popup:', 'gk-nsp'), __('This option works only with the WordPress and WooCommerce data sources', 'gk-nsp')); ?></p>
+
+								<p><?php $this->input_text('links_image_block_padding', $links_image_block_padding, __( 'Margin: ', 'gk-nsp' ), '', 'long'); ?></p>
+							</div>
+						</div>
+
+						<div class="gk-link-element" data-element-name="readmore">
+							<?php $this->input_checkbox('links_readmore_state', $links_readmore_state, __('Show read more button under links', 'gk-nsp')); ?>
+							
+							<div class="gk-indent">	
+								<p><?php $this->input_text('links_readmore_text', $links_readmore_text, __( 'Link text: ', 'gk-nsp' ), '', 'long'); ?></p>
+
+								<p><?php $this->input_text('links_readmore_url', $links_readmore_url, __( 'Link URL: ', 'gk-nsp' ), '', 'long'); ?></p>
+
+								<p><?php $this->input_checkbox('links_readmore_title_state', $links_readmore_title_state, __('Use this link also in the widget title', 'gk-nsp')); ?></p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			

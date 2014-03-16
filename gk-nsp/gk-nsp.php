@@ -128,7 +128,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'article_image_order' => '3',
 		'article_image_popup' => 'on', 
 		'article_image_filter' => 'none',
-		'default_image' => '',
+		'article_default_image' => '',
 		// article info format
 		'article_info_state' => 'on',
 		'article_info_format' => '{DATE} {CATEGORY} {AUTHOR} {COMMENTS}',
@@ -145,6 +145,19 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'links_text_state' => 'on',
 		'links_text_len' => '20',
 		'links_text_len_type' => 'words',
+		// links image format
+		'links_image_state'	=> 'off',				
+		'links_image_w' => '80',
+		'links_image_h' => '60',
+		'links_default_image' => '',
+		'links_image_filter' => 'none',		
+		'links_image_popup' => 'off',
+		'links_image_block_padding' => '',
+		// links readmore format
+		'links_readmore_state' => 'off',
+		'links_readmore_text' => '',
+		'links_readmore_url' => '',
+		'links_readmore_title_state' => 'on',
 		// paddings
 		'article_block_padding' => '20px 0',
 		'image_block_padding' => '0',
@@ -410,8 +423,20 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		echo $before_widget;
 		
 		if($title != '') {
+			// check if the links should be displayed in the title
+			$title_link = $links_readmore_title_state == 'on' && $links_readmore_url != '';
+
 			echo $before_title;
+			// open the link
+			if($title_link) {
+				echo '<a href="'.$links_readmore_url.'">';
+			}
+			// output the title
 			echo $title;
+			// close the link
+			if($title_link) {
+				echo '</a>';
+			}
 			echo $after_title;
 		}
 		

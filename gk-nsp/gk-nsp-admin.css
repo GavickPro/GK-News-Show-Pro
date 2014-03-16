@@ -91,22 +91,28 @@
   background: #fff;
   padding: 0 10px 0 0;
 }
-.gk-nsp-ui .gk-article-element {
+.gk-nsp-ui .gk-article-element,
+.gk-nsp-ui .gk-link-element {
   background: #fff;
   border: 1px solid #dfdfdf;
   cursor: move;
   margin: 0!important;
   padding: 6px!important;
 }
-.gk-nsp-ui .gk-article-element label {
+.gk-nsp-ui .gk-article-element label,
+.gk-nsp-ui .gk-link-element label {
   width: 70px!important;
 }
-.gk-nsp-ui .gk-article-element .gk-indent {
+.gk-nsp-ui .gk-article-element .gk-indent,
+.gk-nsp-ui .gk-link-element .gk-indent {
   background: #eee;
   margin: 6px -6px -6px -6px;
   padding: 12px;
 }
-.gk-nsp-ui .gk-article-element + .gk-article-element {
+.gk-nsp-ui .gk-article-element + .gk-article-element,
+.gk-nsp-ui .gk-link-element + .gk-article-element,
+.gk-nsp-ui .gk-article-element + .gk-link-element,
+.gk-nsp-ui .gk-link-element + .gk-link-element {
   border-top: none;
 }
 .gk-nsp-ui .gk-format-textarea {

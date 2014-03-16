@@ -82,7 +82,7 @@ class GK_NSP_Layout_Parts_xml {
 	 	}
 	 }
 	 
-	 function art_image($i, $only_value = false) {
+	 function art_image($i, $only_value = false, $type = 'article') {
  	 	if(
 	 		isset($this->parent->wdgt_results[$i]['title']) &&
 	 		isset($this->parent->wdgt_results[$i]['image']) &&
@@ -93,8 +93,8 @@ class GK_NSP_Layout_Parts_xml {
 		 	$art_image = $this->parent->wdgt_results[$i]['image'];
 		 	
 		 	// check for the default image
-		 	if($art_image == '' && $this->parent->config['default_image'] != '') {
-	 			$art_image = $this->parent->config['default_image'];
+		 	if($art_image == '' && $this->parent->config[$type . '_default_image'] != '') {
+	 			$art_image = $this->parent->config[$type . '_default_image'];
 	 		}
 
 		 	if($art_image != '') {
@@ -104,21 +104,27 @@ class GK_NSP_Layout_Parts_xml {
 		 			return apply_filters('gk_nsp_art_raw_image', $art_image);
 		 		}
 
-			 	if($this->parent->config['image_block_padding'] != '' && $this->parent->config['image_block_padding'] != '0') {
-			 		$style = ' style="margin: '.$this->parent->config['image_block_padding'].';"';
-			 	}
+			 	if($this->parent->config[($type == 'links' ? 'links_' : '') . 'image_block_padding'] != '' && $this->parent->config[($type == 'links' ? 'links_' : '') . 'image_block_padding'] != '0') {
+	 				$style = ' style="margin: '.$this->parent->config[($type == 'links' ? 'links_' : '') . 'image_block_padding'].';"';
+	 			}
 
 			 	// if the popup is enabled
 	 			$link_additional_classes = '';
 	 			$link_rel = '';
-	 			if($this->parent->config['article_image_popup'] == 'on') {
+	 			if($this->parent->config[$type . '_image_popup'] == 'on') {
 	 				$art_url = $art_image;
 	 				$link_additional_classes = ' thickbox';
 	 				$link_rel = ' rel="gallery-gk-nsp-' . $this->parent->id . '"';
 	 			}
 			 		
-	 			if($this->parent->config['article_image_pos'] == 'left' && $this->parent->config['article_image_order'] == 1) {
-	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$art_image.'" alt="" class="gk-nsp-image" width="'.$this->parent->config['article_image_w'].'" height="'.$this->parent->config['article_image_h'].'" /></a></div>';
+	 			if(
+	 				$type == 'links' ||
+	 				(
+	 					$this->parent->config['article_image_pos'] == 'left' && 
+	 					$this->parent->config['article_image_order'] == 1
+	 				)
+	 			) {
+	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" width="'.$this->parent->config[$type . '_image_w'].'" height="'.$this->parent->config[$type . '_image_h'].'" /></a></div>';
 
 	 				return apply_filters('gk_nsp_art_image', $output);
 	 			} else {
@@ -284,6 +290,15 @@ class GK_NSP_Layout_Parts_xml {
 		} else {
 			return false;
 		}
+	}
+
+
+	function link_image($i, $only_value = false) {
+		return $this->art_image($i, $only_value, 'links');
+	}
+
+	function link_readmore() {
+		return '<a class="gk-nsp-links-readon" href="'. $this->parent->config['links_readmore_url'] .'">'. $this->parent->config['links_readmore_text'] .'</a>';
 	}
 }
 

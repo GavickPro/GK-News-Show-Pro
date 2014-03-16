@@ -91,8 +91,11 @@ if($num_of_arts <= count($results)) {
 				if($start < count($results)) {
 					do_action('gk_nsp_before_link');
 					echo '<li>';
+					if($links_image_state == 'on') echo $this->generator->link_image($start);
+					if($links_image_state == 'on') echo '<div class="gk-nsp-link-content-wrap">';					
 					if($links_title_state == 'on') echo $this->generator->link_title($start);
-					if($links_text_state == 'on') echo $this->generator->link_text($start);
+					if($links_text_state  == 'on') echo $this->generator->link_text($start);
+					if($links_image_state == 'on') echo '</div>';	
 					echo '</li>';
 					do_action('gk_nsp_after_link');
 				}
@@ -103,6 +106,10 @@ if($num_of_arts <= count($results)) {
 		}
 		//
 		echo '</div>';
+		//
+		if($links_readmore_state == 'on') {
+			echo $this->generator->link_readmore();
+		}
 		//
 		echo '</div>';
 	}
