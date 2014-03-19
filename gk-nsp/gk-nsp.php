@@ -600,7 +600,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		}
 		// check checkboxes
 		foreach($instance as $key => $option) {
-			if(substr($key, -6) == '_state') {
+			if(substr($key, -6) == '_state' || $key == 'parse_shortcodes') {
 				if(!isset($new_instance[$key])) {
 					$instance[$key] = 'off';
 				}
