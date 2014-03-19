@@ -1,0 +1,154 @@
+/* 
+* GK News Show Pro
+*
+* @version: 0.1 beta
+* @date: 07-11-2013
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+
+/* GK NSP Highlighter */
+.gk-nsp-highlighter {
+    display: table;
+    position: relative;
+    width: 100%;
+    
+    > strong,
+    > .gk-nsp-highligher-items-wrap {
+        display: table-cell;
+    }
+
+    > strong {
+        font-size: 13px;
+        font-style: italic;
+        font-weight: bold;
+        line-height: 55px;
+        padding: 0 0 0 45px;
+        width: 2%;
+    }
+
+    > .gk-nsp-highligher-items-wrap {
+        height: 55px;
+        padding: 0 95px 0 25px;
+
+        ol {
+            display: block;
+            height: 55px;
+            margin: 0;
+            overflow: hidden;
+            -webkit-transition: all .3s ease-out;
+            -moz-transition: all .3s ease-out;
+            -ms-transition: all .3s ease-out;
+            -o-transition: all .3s ease-out;
+            transition: all .3s ease-out;
+
+            li {
+                border: none;
+                height: 55px;
+                line-height: 55px;
+                opacity: 0;
+                -webkit-transition: all .3s ease-out;
+                -moz-transition: all .3s ease-out;
+                -ms-transition: all .3s ease-out;
+                -o-transition: all .3s ease-out;
+                transition: all .3s ease-out;
+
+                a {
+                    display: block;
+                    height: 55px;
+                    overflow: hidden;
+                }
+
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .gk-nsp-highlighter-ui {
+        position: absolute;
+        right: 20px;
+
+        a:first-child {
+            border: 1px solid #e5e5e5;
+            border-radius: 2px;
+            cursor: pointer;
+            display: block;
+            float: left;
+            height: 24px;
+            margin: 14px 0 0 5px;
+            position: relative;
+            width: 26px;
+
+            &:before {
+                color: #949494;
+                content: "\f104";
+                font-family: FontAwesome;
+                font-size: 16px;
+                left: 10px;
+                line-height: 15px;
+                position: absolute;
+                top: 5px;
+            }
+
+            &:hover:before {
+                color: #eb1e00;
+            }
+
+            & + a {
+                border: 1px solid #e5e5e5;
+                border-radius: 2px;
+                cursor: pointer;
+                display: block;
+                float: left;
+                height: 24px;
+                margin: 14px 0 0 5px;
+                position: relative;
+                width: 26px;
+
+                &:before {
+                    color: #949494;
+                    content: "\f105";
+                    font-family: FontAwesome;
+                    font-size: 16px;
+                    left: 10px;
+                    line-height: 15px;
+                    position: absolute;
+                    top: 5px;
+                }
+
+                &:hover:before {
+                    color: #eb1e00;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .gk-nsp-highlighter {
+        > strong {
+            padding: 0 0 0 20px;
+        }
+        > .gk-nsp-highligher-items-wrap {
+            padding: 0 95px 0 12px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .gk-nsp-highlighter {
+        > strong {
+            padding: 0 0 0 10px;
+        }
+        > .gk-nsp-highligher-items-wrap {
+            padding: 0 12px;
+        }
+        .gk-nsp-highlighter-ui {
+            display: none;
+        }
+    }
+}

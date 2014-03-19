@@ -1,0 +1,58 @@
+{
+	"name": "highlighter",
+	"tab_name": "Highlighter options",
+	"css": true,
+	"js": true,
+	"support": [
+		"wp",
+		"wp_woocommerce",
+		"json",
+		"xml",
+		"rss"
+	],
+	"params": [
+		{
+			"name": "articles",
+			"label": "Number of articles",
+			"tooltip": "Specify number of articles displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 5
+		},
+		{
+			"name": "text_len",
+			"label": "Text length",
+			"tooltip": "Specify the text lenght",
+			"classes": "medium-right",
+			"type": "text",
+			"default": "60",
+			"after": "chars"
+		},
+		{
+			"name": "intro_text",
+			"label": "Intro text",
+			"tooltip": "Specify text of the intro block",
+			"classes": "",
+			"type": "text",
+			"default": "Headlines:"
+		},
+		{
+			"name": "animation_interval",
+			"label": "Animation interval",
+			"tooltip": "Specify the interval of autoanimation in miliseconds",
+			"classes": "medium-right",
+			"type": "text",
+			"default": 5000,
+			"after": "ms"
+		},
+		{
+			"name": "animation_speed",
+			"label": "Animation speed",
+			"tooltip": "Specify the speed of animation in miliseconds",
+			"classes": "medium-right",
+			"type": "text",
+			"default": 300,
+			"after": "ms"
+		}
+	]
+}
