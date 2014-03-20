@@ -59,6 +59,7 @@
   height: 55px;
   overflow: hidden;
   position: absolute;
+  top: 0;
 }
 .gk-nsp-highlighter > .gk-nsp-highligher-items-wrap ol li.active {
   opacity: 1;
