@@ -17,6 +17,7 @@
 .gk-nsp-highlighter > strong,
 .gk-nsp-highlighter > .gk-nsp-highligher-items-wrap {
   display: table-cell;
+  vertical-align: top;
 }
 .gk-nsp-highlighter > strong {
   font-size: 13px;
