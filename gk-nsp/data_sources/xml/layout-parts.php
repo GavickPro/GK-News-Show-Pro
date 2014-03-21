@@ -124,7 +124,7 @@ class GK_NSP_Layout_Parts_xml {
 	 					$this->parent->config['article_image_order'] == 1
 	 				)
 	 			) {
-	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" width="'.$this->parent->config[$type . '_image_w'].'" height="'.$this->parent->config[$type . '_image_h'].'" /></a></div>';
+	 				$output = '<div class="gk-nsp-image-wrap"><a href="'.$art_url.'" title="'.esc_attr(strip_tags($art_title)).'" class="gk-image-link'.$link_additional_classes.'"'.$style.$link_rel.'><img src="'.$new_path.'" alt="" class="gk-nsp-image" width="'.$this->parent->config[$type . '_image_w'].'" height="'.$this->parent->config[$type . '_image_h'].'" '.(($type == 'links') ? ' style="min-width: '.$this->parent->config[$type . '_image_w'].'px;"' : '').' /></a></div>';
 
 	 				return apply_filters('gk_nsp_art_image', $output);
 	 			} else {

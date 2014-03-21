@@ -205,15 +205,18 @@
 }
 .gk-nsp-links ul li {
   border-top: 1px solid #e5e5e5;
+  display: table;
   margin: 0;
   padding: 16px 0;
 }
 .gk-nsp-links ul li .gk-nsp-link-header {
   color: #2f3133;
+  display: table-cell;
   font-size: 16px;
   font-weight: bold;
   line-height: 28px;
   margin: 0;
+  vertical-align: top;
 }
 .gk-nsp-links ul li .gk-nsp-link-header a {
   color: #2f3133;
@@ -223,6 +226,10 @@
 .gk-nsp-links ul li .gk-nsp-link-header a:focus,
 .gk-nsp-links ul li .gk-nsp-link-header a:hover {
   color: #418cd1;
+}
+.gk-nsp-links ul li p {
+  display: table-cell;
+  vertical-align: top;
 }
 .gk-nsp-links p {
   font-size: 14px;
