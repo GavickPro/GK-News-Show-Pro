@@ -218,12 +218,53 @@ function GK_NSP_UI() {
             function (i, el) {
                 el = jQuery(el);
                 var btnid = el.attr('id') + '_button';
+                var imageFrame;
 
-                jQuery('#' + btnid).click(function () {
-                    uploadID = jQuery(this).prev('input');
-                    tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
+                jQuery('#' + btnid).click(function (event) {
+                    event.preventDefault();
+                    var btn = jQuery(event.target);
+                    var options, attachment;
 
-                    return false;
+                    // if the frame already exists, open it
+                    if ( imageFrame ) {
+                        imageFrame.open();
+                        return;
+                    }
+
+                    // set our settings
+                    imageFrame = wp.media({
+                        title: 'Choose Image',
+                        multiple: false,
+                        library: {
+                            type: 'image'
+                        },
+                        button: {
+                            text: 'Use This Image'
+                        }
+                    });
+
+                    // set up our select handler
+                    imageFrame.on( 'select', function() {
+                        var selection = imageFrame.state().get('selection');
+
+                        if ( ! selection ) {
+                            return;
+                        }
+
+                        // loop through the selected files
+                        selection.each( function( attachment ) {
+                            var url = attachment.attributes.url;
+                            jQuery(btn).prev('input').val(url);
+                        } );
+                    });
+
+                    // open the frame
+                    imageFrame.open();
+
+                    //uploadID = jQuery(this).prev('input');
+                    //tb_show('', 'media-upload.php?TB_iframe=true');
+
+                    //return false;
                 });
             }
         );
