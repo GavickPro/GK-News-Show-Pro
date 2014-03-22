@@ -33,7 +33,7 @@ if(!class_exists('GK_NSP_Article_Wrapper_video_list')) {
 		}
 		
 		static function article_date($i, $generator, $results) {
-			return get_the_time('M j, Y', $art_ID, $results[$i]->ID);
+			return get_the_time('M j, Y', $results[$i]->ID);
 		}
 		
 		static function article_video($i, $generator, $results) {
