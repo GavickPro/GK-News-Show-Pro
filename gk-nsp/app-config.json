@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "GK News Show Pro",
-		"version": "0.1 beta",
+		"version": "1.0.0",
 		"description": "Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.",
 		"author": {
 			"name": "GavickPro",
