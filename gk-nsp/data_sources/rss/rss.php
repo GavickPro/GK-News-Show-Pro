@@ -51,7 +51,7 @@ class GK_NSP_Data_Source_rss {
 		$art_title = GK_NSP_Widget_Helpers::cut_text('article_title', $item->get_title(), $config['article_title_len_type'], $config['article_title_len']);
 		$art_text = GK_NSP_Widget_Helpers::cut_text('article_text', $item->get_content(), $config['article_text_len_type'], $config['article_text_len']);
 	 	// parsing shortcodes
-	 	if($this->parent->config['parse_shortcodes'] == 'on') {
+	 	if($config['parse_shortcodes'] == 'on') {
  			$art_text = do_shortcode($art_text);
  		} else {
  			$art_text = preg_replace('@\[.+?\]@mis', '', $art_text);
