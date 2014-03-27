@@ -218,7 +218,6 @@ function GK_NSP_UI() {
             function (i, el) {
                 el = jQuery(el);
                 var btnid = el.attr('id') + '_button';
-                var imageFrame;
 
                 jQuery('#' + btnid).click(function (event) {
                     event.preventDefault();
@@ -226,13 +225,13 @@ function GK_NSP_UI() {
                     var options, attachment;
 
                     // if the frame already exists, open it
-                    if ( imageFrame ) {
-                        imageFrame.open();
+                    if ( wp.media.frames.gkNSPImageFrame ) {
+                        wp.media.frames.gkNSPImageFrame.open();
                         return;
                     }
 
                     // set our settings
-                    imageFrame = wp.media({
+                    wp.media.frames.gkNSPImageFrame = wp.media({
                         title: 'Choose Image',
                         multiple: false,
                         library: {
@@ -242,10 +241,21 @@ function GK_NSP_UI() {
                             text: 'Use This Image'
                         }
                     });
+                    
+                    wp.media.frames.gkNSPImageFrame.on('close',function() {
+                        // get selections and save to hidden input plus other AJAX stuff etc.
+                        var selection = wp.media.frames.gkNSPImageFrame.state().get('selection');
+                        
+                        // loop through the selected files
+                        selection.each( function( attachment ) {
+                            var url = attachment.attributes.url;
+                            jQuery(btn).prev('input').val(url);
+                        });
+                    });
 
                     // set up our select handler
-                    imageFrame.on( 'select', function() {
-                        var selection = imageFrame.state().get('selection');
+                    wp.media.frames.gkNSPImageFrame.on( 'select', function() {
+                        var selection = wp.media.frames.gkNSPImageFrame.state().get('selection');
 
                         if ( ! selection ) {
                             return;
@@ -255,16 +265,11 @@ function GK_NSP_UI() {
                         selection.each( function( attachment ) {
                             var url = attachment.attributes.url;
                             jQuery(btn).prev('input').val(url);
-                        } );
+                        });
                     });
 
                     // open the frame
-                    imageFrame.open();
-
-                    //uploadID = jQuery(this).prev('input');
-                    //tb_show('', 'media-upload.php?TB_iframe=true');
-
-                    //return false;
+                    wp.media.frames.gkNSPImageFrame.open();
                 });
             }
         );
