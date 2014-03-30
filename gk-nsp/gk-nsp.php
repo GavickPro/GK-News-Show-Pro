@@ -225,19 +225,25 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 
 		$upload_dir =  wp_upload_dir();
 
+		if(is_multisite() && stripos($upload_dir['baseurl'], '/sites/') !== FALSE) {
+			$upload_dir_basedir = substr($upload_dir['basedir'], 0, stripos($upload_dir['basedir'], '/sites/'));
+		} else {
+			$upload_dir_basedir = $upload_dir['basedir'];
+		}
+
 		$files = array(
 			array(
-				'base' 		=> $upload_dir['basedir'] . '/gk_nsp_cache',
+				'base' 		=> $upload_dir_basedir . '/gk_nsp_cache',
 				'file' 		=> 'index.html',
 				'content' 	=> ''
 			),
 			array(
-				'base' 		=> $upload_dir['basedir'] . '/gk_nsp_cache/overrides',
+				'base' 		=> $upload_dir_basedir . '/gk_nsp_cache/overrides',
 				'file' 		=> 'index.html',
 				'content' 	=> ''
 			),
 			array(
-				'base' 		=> $upload_dir['basedir'] . '/gk_nsp_external_data',
+				'base' 		=> $upload_dir_basedir . '/gk_nsp_external_data',
 				'file' 		=> 'index.html',
 				'content' 	=> ''
 			)
@@ -263,43 +269,50 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 			return;
 		}
 
-		$upload_dir =  wp_upload_dir();
+		$upload_dir = wp_upload_dir();
+		
+		if(is_multisite() && stripos($upload_dir['baseurl'], '/sites/') !== FALSE) {
+			$upload_dir_basedir = substr($upload_dir['basedir'], 0, stripos($upload_dir['basedir'], '/sites/'));
+		} else {
+			$upload_dir_basedir = $upload_dir['basedir'];
+		}
+		
 		// remove the dir for the image cache
-		if(is_dir($upload_dir['basedir'] . '/gk_nsp_cache')) {
+		if(is_dir($upload_dir_basedir . '/gk_nsp_cache')) {
 			// error flag for the files remove
 			$error_flag = false;
 			// generate the list of files to remove
-			$files = scandir($upload_dir['basedir'] . '/gk_nsp_cache');
+			$files = scandir($upload_dir_basedir . '/gk_nsp_cache');
 			// remove all files in the directory
 			foreach($files as $file) {
 				if($file != '.' && $file != '..') {
-					if(!unlink($upload_dir['basedir'] . GK_DS . 'gk_nsp_cache' . GK_DS . $file)) {
+					if(!unlink($upload_dir_basedir . GK_DS . 'gk_nsp_cache' . GK_DS . $file)) {
 						$error_flag = true;
 					}
 				}
 			}
 			// remove the directory if all files was removed
 			if(!$error_flag) {
-				rmdir($upload_dir['basedir'] . '/gk_nsp_cache');	
+				rmdir($upload_dir_basedir . '/gk_nsp_cache');	
 			}
 		}
 		// remove the dir for the external data
-		if(is_dir($upload_dir['basedir'] . '/gk_nsp_external_data')) {
+		if(is_dir($upload_dir_basedir . '/gk_nsp_external_data')) {
 			// error flag for the files remove
 			$error_flag = false;
 			// generate the list of files to remove
-			$files = scandir($upload_dir['basedir'] . '/gk_nsp_external_data');
+			$files = scandir($upload_dir_basedir . '/gk_nsp_external_data');
 			// remove all files in the directory
 			foreach($files as $file) {
 				if($file != '.' && $file != '..') {
-					if(!unlink($upload_dir['basedir'] . GK_DS . 'gk_nsp_external_data' . GK_DS . $file)) {
+					if(!unlink($upload_dir_basedir . GK_DS . 'gk_nsp_external_data' . GK_DS . $file)) {
 						$error_flag = true;
 					}
 				}
 			}
 			// remove the directory if all files was removed
 			if(!$error_flag) {
-				rmdir($upload_dir['basedir'] . '/gk_nsp_external_data');	
+				rmdir($upload_dir_basedir . '/gk_nsp_external_data');	
 			}
 		}
 	}
