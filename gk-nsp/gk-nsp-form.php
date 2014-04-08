@@ -153,9 +153,7 @@ class GK_NSP_Widget_Form {
 						</div>
 					</div>
 
-					<p>
-						<?php $this->input_switch('one_per_category', $one_per_category, __('One per category:', 'gk-nsp'), '', 'gk-one-per-category', ' data-depends="'.$json_data['one_per_category'].'"'); ?>
-					</p>
+					<p><?php $this->input_checkbox('one_per_category', $one_per_category, __('One per category', 'gk-nsp'), '', 'gk-one-per-category', ' data-depends="'.$json_data['one_per_category'].'"'); ?></p>
 				
 					<p>
 						<?php $this->input_select('orderby', $orderby, __('Order by:', 'gk-nsp'), array('ID' => __('ID', 'gk-nsp'), 'date' => __('Date', 'gk-nsp'), 'title' => __('Title', 'gk-nsp'), 'modified' => __('Modified', 'gk-nsp'), 'rand' => __('Random', 'gk-nsp')), '', 'gk-order-by', ' data-depends="'.$json_data['orderby'].'"'); ?>
@@ -168,9 +166,7 @@ class GK_NSP_Widget_Form {
 						<p><?php $this->input_text('data_source_blog', $data_source_blog, __( 'Blog ID (leave blank for current blog): ', 'gk-nsp' ), '', 'short'); ?></p>
 					<?php endif; ?>
 
-					<p>
-						<?php $this->input_switch('use_css', $use_css, __('Use default CSS:', 'gk-nsp'), ''); ?>
-					</p>
+					<p><?php $this->input_checkbox('use_css', $use_css, __('Use default CSS', 'gk-nsp')); ?></p>
 				</div>
 			</div>
 			
@@ -225,17 +221,11 @@ class GK_NSP_Widget_Form {
 			<h3 class="gk-toggler gk-article-wrapper-hide"><?php _e('Autoanimation settings', 'gk-nsp'); ?></h3>
 			<div class="gk-toggle gk-article-wrapper-hide">
 				<div>
-					<p>
-						<label class="long-text" for="<?php echo esc_attr( $nsp->get_field_id( 'autoanim' ) ); ?>"><?php _e( 'Auto-animation:', 'gk-nsp' ); ?></label>
-						<?php $this->input_switch('autoanim', $autoanim, ''); ?>		
-					</p>
+					<p><?php $this->input_checkbox('autoanim', $autoanim, __('Auto-animation', 'gk-nsp')); ?></p>	
 					
 					<p><?php $this->input_text('autoanim_interval', $autoanim_interval, __( 'Interval: ', 'gk-nsp' ), '', 'medium-right', '', 'text', ' (ms)'); ?></p>
 					
-					<p>
-						<label class="long-text" for="<?php echo esc_attr( $nsp->get_field_id( 'autoanim_hover' ) ); ?>"><?php _e( 'Auto-animation stops on hover:', 'gk-nsp' ); ?></label>
-						<?php $this->input_switch('autoanim_hover', $autoanim_hover, ''); ?>		
-					</p>
+					<p><?php $this->input_checkbox('autoanim_hover', $autoanim_hover, __('Auto-animation stops on hover', 'gk-nsp')); ?></p>
 				</div>
 			</div>
 		
@@ -324,7 +314,8 @@ class GK_NSP_Widget_Form {
                     			</p>
 								<p><?php $this->input_select('article_image_filter', $article_image_filter, __('Image filter:', 'gk-nsp'), array('none' => __('None', 'gk-nsp'), 'greyscale' => __('Greyscale', 'gk-nsp'), 'sepia' => __('Sepia', 'gk-nsp'))); ?></p>
 								
-								<p><?php $this->input_switch('article_image_popup', $article_image_popup, __('Image popup:', 'gk-nsp'), __('This option works only with the WordPress and WooCommerce data sources', 'gk-nsp')); ?></p>
+								<p><?php $this->input_checkbox('article_image_popup', $article_image_popup, __('Image popup', 'gk-nsp'), __('This option works only with the WordPress and WooCommerce data sources', 'gk-nsp')); ?></p>
+
 
 								<p><?php $this->input_text('image_block_padding', $image_block_padding, __( 'Margin: ', 'gk-nsp' ), '', 'long'); ?></p>
 								
@@ -425,7 +416,8 @@ class GK_NSP_Widget_Form {
                     			</p>
 								<p><?php $this->input_select('links_image_filter', $links_image_filter, __('Image filter:', 'gk-nsp'), array('none' => __('None', 'gk-nsp'), 'greyscale' => __('Greyscale', 'gk-nsp'), 'sepia' => __('Sepia', 'gk-nsp'))); ?></p>
 								
-								<p><?php $this->input_switch('links_image_popup', $links_image_popup, __('Image popup:', 'gk-nsp'), __('This option works only with the WordPress and WooCommerce data sources', 'gk-nsp')); ?></p>
+								<p><?php $this->input_checkbox('links_image_popup', $links_image_popup, __('Image popup', 'gk-nsp'), __('This option works only with the WordPress and WooCommerce data sources', 'gk-nsp')); ?></p>
+
 
 								<p><?php $this->input_text('links_image_block_padding', $links_image_block_padding, __( 'Margin: ', 'gk-nsp' ), '', 'long'); ?></p>
 							</div>
@@ -534,13 +526,15 @@ class GK_NSP_Widget_Form {
 		<?php
 	}
 
-	function input_checkbox($name, $value, $label, $tip = '') {
+	function input_checkbox($name, $value, $label, $tip = '', $classes = '', $other = '') {
 		?>
 		<input 
 			type="checkbox"
 			id="<?php echo esc_attr( $this->nsp->get_field_id( $name )); ?>" 
 			name="<?php echo esc_attr( $this->nsp->get_field_name( $name )); ?>"
 			value="on" 
+			class="<?php echo $classes; ?>"
+			<?php echo $other; ?>
 			<?php if($value == 'on') : ?>
 			checked="checked"
 			<?php endif; ?>

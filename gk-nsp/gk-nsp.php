@@ -615,9 +615,19 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 				}
 			}
 		}
+		// array of checkboxes
+		$checkboxes = array( 
+								'use_css', 
+								'one_per_category',
+								'autoanim',
+								'autoanim_hover',
+								'article_image_popup',
+								'links_image_popup',
+								'parse_shortcodes'
+							);
 		// check checkboxes
 		foreach($instance as $key => $option) {
-			if(substr($key, -6) == '_state' || $key == 'parse_shortcodes') {
+			if(substr($key, -6) == '_state' || in_array($key, $checkboxes)) {
 				if(!isset($new_instance[$key])) {
 					$instance[$key] = 'off';
 				}
