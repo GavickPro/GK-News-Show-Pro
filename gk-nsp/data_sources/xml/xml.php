@@ -87,6 +87,7 @@ class GK_NSP_Data_Source_xml {
 						"{TITLE_ESC}" => esc_attr($art_title),
 						"{TEXT}" => $art_text,
 						"{IMAGE}" => $art_image,
+						"{IMAGE_MARGIN}" => $config['image_block_padding'],
 						"{CATEGORIES}" => $art_categories,
 						"{AUTHOR_NAME}" => $art_author_name,
 						"{AUTHOR_URL}" => $art_author_URL,

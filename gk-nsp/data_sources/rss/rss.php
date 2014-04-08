@@ -94,6 +94,7 @@ class GK_NSP_Data_Source_rss {
 						"{TEXT}" => $art_text,
 						"{CATEGORY}" => $art_category,
 						"{IMAGE}" => $art_image,
+						"{IMAGE_MARGIN}" => $config['image_block_padding'],
 						"{DATE}" => $art_date,
 						"{DATE_W3C}" => $item->get_date('c')
 					);

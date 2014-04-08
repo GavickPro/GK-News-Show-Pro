@@ -150,6 +150,7 @@ class GK_NSP_Data_Source_wp_woocommerce {
 						"{TITLE_ESC}" => esc_attr($art_title),
 						"{TEXT}" => $art_text,
 						"{IMAGE}" => $generator->art_image($i, true),
+						"{IMAGE_MARGIN}" => $config['image_block_padding'],
 						"{IMAGE_FULL}" => $art_image_full,
 						"{IMAGE_LARGE}" => $art_image_large,
 						"{IMAGE_MEDIUM}" => $art_image_medium,
