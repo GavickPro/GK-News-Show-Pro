@@ -444,6 +444,8 @@ class GK_NSP_Widget_Form {
 					<p><?php $this->input_text('cache_time', $cache_time, __( 'Cache time: ', 'gk-nsp' ), '', 'medium-right', ' min="0" max="9999999999"', 'number', __('min', 'gk-nsp')); ?></p>
 
 					<p><?php $this->input_checkbox('parse_shortcodes', $parse_shortcodes, __('Parse shortcodes in the article text', 'gk-nsp')); ?></p>
+
+					<p><?php $this->input_checkbox('fontawesome_state', $fontawesome_state, __('Load Font Awesome', 'gk-nsp')); ?></p>
 				</div>
 			</div>
 		</div>

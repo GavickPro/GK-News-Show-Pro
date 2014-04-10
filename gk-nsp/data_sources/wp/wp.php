@@ -80,7 +80,9 @@ class GK_NSP_Data_Source_wp {
                         $post_slugs = explode(',', $data_source);
                         foreach($post_slugs as $slug) {
                                 $res = get_posts(array('name' => $slug));
-                                array_push($results, $res[0]);
+                                if(is_array($res) && count($res)) {
+                                    array_push($results, $res[0]);
+                                }
                         }
                 } else if($data_source_type == 'wp-custom') {
                         $results = get_posts(array(

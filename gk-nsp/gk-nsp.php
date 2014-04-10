@@ -166,7 +166,9 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		// Autoanimation
 		'autoanim' => 'off',
 		'autoanim_interval' => '5000',
-		'autoanim_hover' => 'on'
+		'autoanim_hover' => 'on',
+		// Font Awesome
+		'fontawesome_state' => 'off'
 	);
 	// variable used to store the object query results
 	public $wdgt_results;
@@ -366,7 +368,8 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 			// iterate through instances
 			foreach($instances as $instance) {
 				$use_css = isset($instance['use_css']) ? $instance['use_css'] : $this->config['use_css']; 
-				$article_wrapper = isset($instance['article_wrapper']) ? $instance['article_wrapper'] : $this->config['article_wrapper']; 
+				$fontawesome_state = isset($instance['fontawesome_state']) ? $instance['fontawesome_state'] : $this->config['fontawesome_state'];
+				$article_wrapper = isset($instance['article_wrapper']) ? $instance['article_wrapper'] : $this->config['article_wrapper'];
 				$article_image_popup = isset($instance['article_image_popup']) ? $instance['article_image_popup'] : $this->config['article_image_popup']; 
 				// check if the wrapper exist in the specific instance and isn't duplicated
 				if(	
@@ -393,6 +396,11 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 				if(!$thickbox_loaded && $article_image_popup === 'on') {
 					wp_enqueue_style('thickbox');
 					$thickbox_loaded = true;
+				}
+				// load Font Awesome stylesheet
+				if($fontawesome_state === 'on') {
+					wp_register_style( 'gk-nsp-font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', array(), false, 'all' );
+					wp_enqueue_style( 'gk-nsp-font-awesome' );
 				}
 			}
 		}
