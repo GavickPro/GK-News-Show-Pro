@@ -689,13 +689,15 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		if(is_array($instances) || is_object($instances)) {
 			// iterate through instances
 			foreach($instances as $widget_id => $instance) {
-				// check if the wrapper exist in the specific instance and isn't duplicated
-				if(
-					$instance['data_source_type'] == 'wp-post' && 
-					in_array($post_before->post_name, explode(',', $instance['data_source']))
-				) {
-					$instance['data_source'] = str_replace($post_before->post_name, $post_after->post_name, $instance['data_source']);
-					$instances[$widget_id]['data_source'] = $instance['data_source'];
+				if(is_array($instance)) {
+					// check if the wrapper exist in the specific instance and isn't duplicated
+					if(
+						$instance['data_source_type'] == 'wp-post' && 
+						in_array($post_before->post_name, explode(',', $instance['data_source']))
+					) {
+						$instance['data_source'] = str_replace($post_before->post_name, $post_after->post_name, $instance['data_source']);
+						$instances[$widget_id]['data_source'] = $instance['data_source'];
+					}
 				}
 			}
 		}
