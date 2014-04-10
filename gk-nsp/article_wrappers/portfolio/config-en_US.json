@@ -1,0 +1,61 @@
+{
+	"name": "portfolio",
+	"tab_name": "Portfolio options",
+	"css": true,
+	"js": true,
+	"support": [
+		"wp"
+	],
+	"params": [
+		{
+			"name": "cols",
+			"label": "Number of columns",
+			"tooltip": "Specify number of columns displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 3
+		},
+		{
+			"name": "rows",
+			"label": "Number of rows",
+			"tooltip": "Specify number of rows displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 2
+		},
+		{
+			"name": "category_filtering",
+			"label": "Category filtering",
+			"tooltip": "You can display an interface for category filtering",
+			"classes": "",
+			"type": "switch",
+			"default": 1
+		},
+		{
+			"name": "overlay_popup",
+			"label": "Overlay popup",
+			"tooltip": "You can enable display of the popup after clicking an item",
+			"classes": "",
+			"type": "switch",
+			"default": 1
+		},
+		{
+			"name": "thumbnail_w",
+			"label": "Thumbnail width",
+			"tooltip": "Specify the thumbnail width",
+			"classes": "short",
+			"type": "text",
+			"after": "px",
+			"default": 200
+		},
+		{
+			"name": "thumbnail_h",
+			"label": "Thumbnail height",
+			"tooltip": "Specify the thumbnail height",
+			"classes": "short",
+			"type": "text",
+			"after": "px",
+			"default": 160
+		}
+	]
+}
