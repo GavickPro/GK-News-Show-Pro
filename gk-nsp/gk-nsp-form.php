@@ -454,23 +454,63 @@ class GK_NSP_Widget_Form {
 		setTimeout(function() {
 			jQuery('.gk-nsp-ui').each(function(i, el) {
 				el = jQuery(el);
-				var id = el.parent().parent().find('.widget-id').val();
-				
-				if(id.indexOf('gk_nsp-__i__') === -1) {
-					var selected = jQuery("div[id$='"+id+"']");
-					if(!selected.hasClass('activated')) {
+				// check if the module is not displayed in the popup
+				if(!el.parent().hasClass('ui-dialog-content')) {
+					var id = el.parent().parent().find('.widget-id').val();
+					
+					if(id.indexOf('gk_nsp-__i__') === -1) {
+						var selected = jQuery("div[id$='"+id+"']");
+						if(!selected.hasClass('activated')) {
+							selected.addClass('activated');
+							
+							setTimeout(function() {
+								selected.find('.gk-loader').remove();
+							}, 350);
+							
+							selected.find('.widget-control-save').click(function() {
+								selected.removeClass('activated');
+							});
+							// init the specific instance
+							var nsp = GK_NSP_UI();
+							nsp.init(selected);
+						}
+					}
+				} else {
+					var selected = el.parent();
+					function loadResources( url, callback ) {
+						// add scripts
+						var script = document.createElement( "script" )
+						script.type = "text/javascript";
+						script.setAttribute('id', 'gk-nsp-dialog-js');
+						script.onload = function() { callback(); };
+						script.src = url + '.js';
+						document.getElementsByTagName( "head" )[0].appendChild( script );
+						// add stylesheet
+						var link = document.createElement( "link" )
+						link.type = "text/css";
+						link.setAttribute('id', 'gk-nsp-dialog-css');
+						link.href = url + '.css';
+						document.getElementsByTagName( "head" )[0].appendChild( link );
+					}
+					// load it if the script wasn't loaded or just init the widget UI
+					if(!jQuery('#gk-nsp-dialog-js').length) {
+						loadResources('<?php echo plugins_url('gk-nsp-admin', __FILE__); ?>', function() {
+							var nsp = GK_NSP_UI();
+							nsp.init(selected);
+							selected.addClass('activated');
+							
+							setTimeout(function() {
+								selected.find('.gk-loader').remove();
+							}, 350);
+						});
+					} else {
+						var nsp = GK_NSP_UI();
+						nsp.init(selected);
 						selected.addClass('activated');
-						
+							
 						setTimeout(function() {
 							selected.find('.gk-loader').remove();
 						}, 350);
-						
-						selected.find('.widget-control-save').click(function() {
-							selected.removeClass('activated');
-						});
-						// init the specific instance
-						var nsp = GK_NSP_UI();
-						nsp.init(selected);
 					}
 				}
 			});

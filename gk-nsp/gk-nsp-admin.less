@@ -188,7 +188,7 @@
         }
 
         &.active + .gk-toggle > div {
-                margin-top: 0;
+                margin-top: 0!important;
                 opacity: 1; filter: alpha(opacity=100);
         }
 }
@@ -209,7 +209,9 @@
 }
 
 /* WordPress 3.8 CSS adjustments */
-.branch-3-8 {
+.branch-3-8,
+.branch-3-9,
+.branch-4-0 {
         .gk-nsp-ui {
                 margin: 0 -10px;
                 padding: 0 0 15px 0;
@@ -259,7 +261,7 @@
         }
 
         .gk-toggle > div {
-                margin-top: -800px;
+                margin-top: -800px!important;
         }
 
         .gk-toggler {

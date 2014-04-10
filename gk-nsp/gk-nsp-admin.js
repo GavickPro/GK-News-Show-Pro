@@ -168,7 +168,7 @@ function GK_NSP_UI() {
             var el = jQuery(elements_list_items[num]);
             var x = el.attr('data-sort-pos');
 
-            if(x == 1) {
+            if(x === 1) {
                 el.insertBefore(elements_list.find('.gk-article-element[data-sort-pos="2"]'));
             } else {
                 el.insertAfter(elements_list.find('.gk-article-element[data-sort-pos="'+(x - 1)+'"]'));
@@ -273,12 +273,6 @@ function GK_NSP_UI() {
                 });
             }
         );
-    };
-    //
-    window.send_to_editor = function (html) {
-        var imgurl = jQuery('img', html).attr('src');
-        uploadID.val(imgurl);
-        tb_remove();
     };
 
     // public API
