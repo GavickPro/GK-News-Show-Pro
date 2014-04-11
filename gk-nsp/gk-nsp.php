@@ -60,7 +60,7 @@ function gk_nsp_register() {
 }
 
 add_action( 'widgets_init', 'gk_nsp_register' );
-add_action( 'update_option_widget_gk_nsp', array( 'GK_NewsShowPro_Widget', 'cleanup' ));
+
 /**
  * install & uninstall
  */
@@ -318,39 +318,6 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 			}
 		}
 	}
-	
-	/*
-	 *
-	 *
-	 *
-	 */
-	 
-	static function cleanup() {
-		$active_instances_info = get_option('sidebars_widgets');
-		$active_instances = array();
-		
-		if(count($active_instances_info) > 0 && is_array($active_instances_info)) {
-			foreach($active_instances_info as $sidebar_name => $widgets) {
-				if(count($widgets) > 0 && is_array($widgets)) {
-					foreach($widgets as $widget) {
-						if(stripos($widget, 'gk_nsp-') !== FALSE) {
-							array_push($active_instances, str_replace('gk_nsp-', '', $widget));	
-						}	
-					}
-				}
-			}
-		}
-		
-		$instances = get_option('widget_gk_nsp');
-		
-		foreach($instances as $key => $widget) {
-			if(!in_array($key, $active_instances) && is_array($instances[$key])) {
-				unset($instances[$key]);
-			}
-		}
-		
-		update_option('widget_gk_nsp', $instances);
-	}
 
 	function add_js() {
 		// read the widget settings
@@ -395,10 +362,9 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 	function add_css() {
 		// read the widget settings
 		$json_cache = get_option('widget_gk_nsp_json_cache');
-		$instances = get_option('widget_gk_nsp');		
+		$instances = get_option('widget_gk_nsp');
 		$loaded_files = array();
 		$thickbox_loaded = false;
-		
 		// check if the instances are correct
 		if(is_array($instances) || is_object($instances)) {
 			// iterate through instances
@@ -639,10 +605,11 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 	 * @return updated instance of the widget settings
 	 *
 	 **/
-	function update( $new_instance, $old_instance ) {	
+	function update( $new_instance, $old_instance ) {
 		//
 		// save the widget settings
 		//
+
 		$instance = $old_instance;
 
 		if(count($new_instance) > 0) {
@@ -722,13 +689,15 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		if(is_array($instances) || is_object($instances)) {
 			// iterate through instances
 			foreach($instances as $widget_id => $instance) {
-				// check if the wrapper exist in the specific instance and isn't duplicated
-				if(
-					$instance['data_source_type'] == 'wp-post' && 
-					in_array($post_before->post_name, explode(',', $instance['data_source']))
-				) {
-					$instance['data_source'] = str_replace($post_before->post_name, $post_after->post_name, $instance['data_source']);
-					$instances[$widget_id]['data_source'] = $instance['data_source'];
+				if(is_array($instance)) {
+					// check if the wrapper exist in the specific instance and isn't duplicated
+					if(
+						$instance['data_source_type'] == 'wp-post' && 
+						in_array($post_before->post_name, explode(',', $instance['data_source']))
+					) {
+						$instance['data_source'] = str_replace($post_before->post_name, $post_after->post_name, $instance['data_source']);
+						$instances[$widget_id]['data_source'] = $instance['data_source'];
+					}
 				}
 			}
 		}
