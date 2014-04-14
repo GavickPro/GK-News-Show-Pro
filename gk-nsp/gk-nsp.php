@@ -448,12 +448,12 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 
 	function add_admin_js() {
 		wp_enqueue_media();
-		wp_register_script( 'gk-nsp', home_url() . '/wp-content/plugins/gk-nsp/gk-nsp-admin.js', array('jquery', 'thickbox'), false, 'all');
+		wp_register_script( 'gk-nsp', plugins_url('gk-nsp-admin.js', __FILE__), array('jquery', 'thickbox'), false, 'all');
 		wp_enqueue_script('gk-nsp');
 	}
 
 	function add_admin_css() {
-		wp_register_style( 'gk-nsp', home_url() . '/wp-content/plugins/gk-nsp/gk-nsp-admin.css', array(), false, 'all');
+		wp_register_style( 'gk-nsp', plugins_url('gk-nsp-admin.css', __FILE__), array(), false, 'all');
 		wp_enqueue_style('gk-nsp');
 	}
 

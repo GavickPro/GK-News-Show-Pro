@@ -208,10 +208,11 @@
         }
 }
 
-/* WordPress 3.8 CSS adjustments */
+/* WordPress 3.8+ CSS adjustments */
 .branch-3-8,
 .branch-3-9,
-.branch-4-0 {
+.branch-4-0,
+body.wp-customizer {
         .gk-nsp-ui {
                 margin: 0 -10px;
                 padding: 0 0 15px 0;
@@ -276,5 +277,27 @@
                 &:after {
                         opacity: 0.5; filter: alpha(opacity=50);
                 }
+        }
+}
+
+/* Widget Customizer adjustments */
+.wp-customizer {
+        .gk-nsp-ui {
+                select {
+                        min-width: inherit;
+                }
+                input[type=text] {
+                        width: 50px;
+                } 
+                input[type=text].long {
+                       width: 150px;
+                }
+                .gk-media-input {
+                        width: auto!important;
+                }
+        }
+
+        .gk-cols2 > span {
+                line-height: 2;
         }
 }

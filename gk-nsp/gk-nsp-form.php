@@ -49,9 +49,9 @@ class GK_NSP_Widget_Form {
 			<h3 class="gk-toggler active"><?php _e('Basic settings', 'gk-nsp'); ?></h3>
 			<div class="gk-toggle">
 				<div>
-					<p><?php $this->input_text('title', $title, __( 'Title:', 'gk-nsp' ), '', ''); ?></p>
+					<p><?php $this->input_text('title', $title, __( 'Title:', 'gk-nsp' ), '', 'long'); ?></p>
 
-					<p><?php $this->input_text('widget_css_suffix', $widget_css_suffix, __( 'CSS suffix:', 'gk-nsp' ), '', ''); ?></p>
+					<p><?php $this->input_text('widget_css_suffix', $widget_css_suffix, __( 'CSS suffix:', 'gk-nsp' ), '', 'long'); ?></p>
 				
 					<p>
 						<label for="<?php echo esc_attr( $nsp->get_field_id( 'data_source_type' ) ); ?>"><?php _e( 'Data source:', 'gk-nsp' ); ?></label>
@@ -457,9 +457,10 @@ class GK_NSP_Widget_Form {
 				// check if the module is not displayed in the popup
 				if(!el.parent().hasClass('ui-dialog-content')) {
 					var id = el.parent().parent().find('.widget-id').val();
-					
+
 					if(id.indexOf('gk_nsp-__i__') === -1) {
-						var selected = jQuery("div[id$='"+id+"']");
+						var selected = (jQuery(document.body).hasClass('wp-customizer')) ? el.parent() : jQuery("div[id$='"+id+"']");
+						
 						if(!selected.hasClass('activated')) {
 							selected.addClass('activated');
 							
@@ -477,6 +478,7 @@ class GK_NSP_Widget_Form {
 					}
 				} else {
 					var selected = el.parent();
+
 					function loadResources( url, callback ) {
 						// add scripts
 						var script = document.createElement( "script" )
