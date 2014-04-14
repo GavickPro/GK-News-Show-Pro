@@ -252,7 +252,7 @@ class GK_NSP_Widget_Form {
 					
 					<div class="gk-article-elements">		
 						<div class="gk-article-element" data-element-name="title" data-sort-pos="<?php echo $article_title_order; ?>">
-							<?php $this->input_checkbox('article_title_state', $article_title_state, __('Show title', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('article_title_state', $article_title_state, __('Show title', 'gk-nsp')); ?>
 							
 							<div class="gk-additional">
 								<?php $this->input_text('article_title_len', $article_title_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>		
@@ -265,7 +265,7 @@ class GK_NSP_Widget_Form {
 						</div>
 									
 						<div class="gk-article-element" data-element-name="text" data-sort-pos="<?php echo $article_text_order; ?>">
-							<?php $this->input_checkbox('article_text_state', $article_text_state, __('Show text', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('article_text_state', $article_text_state, __('Show text', 'gk-nsp')); ?>
 							
 							<div class="gk-additional">
 								<?php $this->input_text('article_text_len', $article_text_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>
@@ -278,7 +278,7 @@ class GK_NSP_Widget_Form {
 						</div>	
 						
 						<div class="gk-article-element" data-element-name="image" data-sort-pos="<?php echo $article_image_order; ?>">
-							<?php $this->input_checkbox('article_image_state', $article_image_state, __('Show image', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('article_image_state', $article_image_state, __('Show image', 'gk-nsp')); ?>
 							
 							<div class="gk-additional">
 								<label for="<?php echo esc_attr( $nsp->get_field_id( 'article_image_w' ) ); ?>"><?php _e( 'size:', 'gk-nsp' ); ?></label>
@@ -326,7 +326,7 @@ class GK_NSP_Widget_Form {
 						
 									
 						<div class="gk-article-element" data-element-name="info" data-sort-pos="<?php echo $article_info_order; ?>">
-							<?php $this->input_checkbox('article_info_state', $article_info_state, __('Show info block', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('article_info_state', $article_info_state, __('Show info block', 'gk-nsp')); ?>
 							
 							<span class="gk-right">
 								<?php $this->input_select('article_info_order', $article_info_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-info-order'); ?>
@@ -353,7 +353,7 @@ class GK_NSP_Widget_Form {
 						</div>
 									
 						<div class="gk-article-element" data-element-name="readmore" data-sort-pos="<?php echo $article_readmore_order; ?>">
-							<?php $this->input_checkbox('article_readmore_state', $article_readmore_state, __('Show read more button', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('article_readmore_state', $article_readmore_state, __('Show read more button', 'gk-nsp')); ?>
 							
 							<span class="gk-right">
 								<?php $this->input_select('article_readmore_order', $article_readmore_order, __('order:', 'gk-nsp'), 5, '', 'gk-article-readmore-order'); ?>
@@ -368,7 +368,7 @@ class GK_NSP_Widget_Form {
 				<div>
 					<div class="gk-link-elements">		
 						<div class="gk-link-element" data-element-name="title">
-							<?php $this->input_checkbox('links_title_state', $links_title_state, __('Show title', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('links_title_state', $links_title_state, __('Show title', 'gk-nsp')); ?>
 							
 							<div class="gk-additional">
 								<?php $this->input_text('links_title_len', $links_title_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>		
@@ -377,7 +377,7 @@ class GK_NSP_Widget_Form {
 						</div>
 									
 						<div class="gk-link-element" data-element-name="text">
-							<?php $this->input_checkbox('links_text_state', $links_text_state, __('Show text', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('links_text_state', $links_text_state, __('Show text', 'gk-nsp')); ?>
 							
 							<div class="gk-additional">
 								<?php $this->input_text('links_text_len', $links_text_len, __( 'length: ', 'gk-nsp' ), '', 'short'); ?>
@@ -386,7 +386,7 @@ class GK_NSP_Widget_Form {
 						</div>	
 						
 						<div class="gk-link-element" data-element-name="image">
-							<?php $this->input_checkbox('links_image_state', $links_image_state, __('Show image', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('links_image_state', $links_image_state, __('Show image', 'gk-nsp')); ?>
 							
 							<div class="gk-additional">
 								<label for="<?php echo esc_attr( $nsp->get_field_id( 'links_image_w' ) ); ?>"><?php _e( 'size:', 'gk-nsp' ); ?></label>
@@ -424,7 +424,7 @@ class GK_NSP_Widget_Form {
 						</div>
 
 						<div class="gk-link-element" data-element-name="readmore">
-							<?php $this->input_checkbox('links_readmore_state', $links_readmore_state, __('Show read more button under links', 'gk-nsp')); ?>
+							<?php $this->input_checkbox_before('links_readmore_state', $links_readmore_state, __('Show read more button under links', 'gk-nsp')); ?>
 							
 							<div class="gk-indent">	
 								<p><?php $this->input_text('links_readmore_text', $links_readmore_text, __( 'Link text: ', 'gk-nsp' ), '', 'long'); ?></p>
@@ -571,6 +571,28 @@ class GK_NSP_Widget_Form {
 	}
 
 	function input_checkbox($name, $value, $label, $tip = '', $classes = '', $other = '') {
+		?>
+		<label
+			for="<?php echo esc_attr( $this->nsp->get_field_id( $name ) ); ?>" 
+			title="<?php echo $tip; ?>"
+		>
+		<?php echo $label; ?>
+		</label>
+		<input 
+			type="checkbox"
+			id="<?php echo esc_attr( $this->nsp->get_field_id( $name )); ?>" 
+			name="<?php echo esc_attr( $this->nsp->get_field_name( $name )); ?>"
+			value="on" 
+			class="<?php echo $classes; ?>"
+			<?php echo $other; ?>
+			<?php if($value == 'on') : ?>
+			checked="checked"
+			<?php endif; ?>
+		/>
+		<?php 
+	}
+
+	function input_checkbox_before($name, $value, $label, $tip = '', $classes = '', $other = '') {
 		?>
 		<input 
 			type="checkbox"

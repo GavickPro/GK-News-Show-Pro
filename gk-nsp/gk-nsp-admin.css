@@ -258,9 +258,9 @@ body.wp-customizer .gk-nsp-ui .gk-format-textarea + small {
 .branch-3-9 .gk-nsp-ui p > label:first-child,
 .branch-4-0 .gk-nsp-ui p > label:first-child,
 body.wp-customizer .gk-nsp-ui p > label:first-child {
-  max-width: 90px;
+  max-width: 100px;
   padding-right: 5px;
-  width: 90px;
+  width: 100px;
 }
 .branch-3-8 .gk-nsp-ui .gk-article-element > .gk-indent,
 .branch-3-9 .gk-nsp-ui .gk-article-element > .gk-indent,
