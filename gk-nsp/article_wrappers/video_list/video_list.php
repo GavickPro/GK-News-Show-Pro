@@ -80,7 +80,7 @@ if($num_of_arts > 0) {
 			echo '<a href="'.(($video != '') ? $video . '?TB_iframe=true&amp;width='.$video_list_popup_w.'&amp;height='.$video_list_popup_h : $url).'" class="gk-nsp-image-wrap'.(($video_list_popup_switcher == 'on' && $video != '') ? ' thickbox' : '').'"><img src="'.$image.'" data-url="'. (($video != '') ? $video . '?TB_iframe=true&amp;width='.$video_list_popup_w.'&amp;height='.$video_list_popup_h : '').'" alt="" /></a>';
 
 			echo '<figcaption>';
-				echo '<h3><a href="'.$url.'" title="'.htmlspecialchars(strip_tags($title)).'">'.$title.'</a></h3>';
+				echo '<h3><a href="'.$url.'" title="'.esc_attr($title).'">'.$title.'</a></h3>';
 				echo '<strong>' . $date . '</strong>';
 			echo '</figcaption>';
 		echo '</figure>';
