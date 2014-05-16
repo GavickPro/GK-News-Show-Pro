@@ -203,6 +203,7 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	$reviews = '';
 	 	$price = '';
 	 	$stars = '';
+	 	$cart = '';
 	 	//
 	 	$art_ID = $this->parent->wdgt_results[$i]->ID;
 	 	$review_count = $this->parent->wdgt_results[$i]->comment_count;
