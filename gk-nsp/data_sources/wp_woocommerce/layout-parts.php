@@ -250,6 +250,10 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	if(stripos($this->parent->config['article_info_format'], '{STARS}') !== FALSE) {
 	 		$stars = $this->art_rating($prod);
 	 	}
+	 	// check if there are the add_to_cart in the format
+	 	if(stripos($this->parent->config['article_info_format'], '{CART}') !== FALSE) {
+	 		$cart = $this->add_cart($prod);
+	 	}
 	 	// check if there is a comments in format
 	 	if(stripos($this->parent->config['article_info_format'], '{REVIEWS}') !== FALSE) {
 	 		$review_phrase = '';
@@ -269,8 +273,8 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{REVIEWS}', '{PRICE}', '{STARS}'),
-	 		array($category, $author, $date, $reviews, $price, $stars),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{REVIEWS}', '{PRICE}', '{STARS}', '{CART}'),
+	 		array($category, $author, $date, $reviews, $price, $stars, $cart),
 	 		$this->parent->config['article_info_format']
 	 	);
 
@@ -290,6 +294,17 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 
 		return $stars;
 	}
+
+	function add_cart($prod) {
+		if ( $prod->is_in_stock() ) {
+			$cart =  '<form class="cart" method="post" enctype="multipart/form-data">';
+			$cart .= '<input type="hidden" name="add-to-cart" value="'. esc_attr( $prod->id ) . '" /><button type="submit" class="single_add_to_cart_button button alt">' .$prod->single_add_to_cart_text(). '</button>';
+		 	$cart .= '</form>';
+		 }
+
+	 	return $cart;
+	}
+
 	 
 	 function art_readmore($i, $only_value = false) {
 	 	$art_ID = '';
