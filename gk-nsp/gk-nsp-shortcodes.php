@@ -38,7 +38,7 @@ function GK_NewsShowPro_Shortcode($params = array()) {
 	// return the widget instance
 	$instance->widget($args, $params);
 	$content = ob_get_clean();
-	ob_end_clean();
+
 	return $content;
 }
 
