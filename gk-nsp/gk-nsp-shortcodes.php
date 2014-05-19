@@ -25,6 +25,7 @@ if ( !defined( 'WPINC' ) ) {
 
 // Basic shortcode
 function GK_NewsShowPro_Shortcode($params = array()) {
+	ob_start();
 	// create widget
 	$instance = new GK_NewsShowPro_Widget();
 	// basic widget params
@@ -35,7 +36,10 @@ function GK_NewsShowPro_Shortcode($params = array()) {
 		'after_title' => ''
 	);
 	// return the widget instance
-	return $instance->widget($args, $params);
+	$instance->widget($args, $params);
+	$content = ob_get_clean();
+	ob_end_clean();
+	return $content;
 }
 
 add_shortcode('gknsp', 'GK_NewsShowPro_Shortcode');

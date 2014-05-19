@@ -573,7 +573,8 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 			echo '<p>' . __('Warning! There is no posts to display. Please check your widget settings', 'gk-nsp') . '</p>';
 		}
 		// save the cache results
-		$cache_output = ob_get_flush();
+		$cache_output = ob_get_clean();
+		echo $cache_output;
 		$cache_time = ($cache_time == '' || !is_numeric($cache_time)) ? 60 : (int) $cache_time;
 		set_transient('widget_' . $this->id, $cache_output, $cache_time * 60);
 		// 
