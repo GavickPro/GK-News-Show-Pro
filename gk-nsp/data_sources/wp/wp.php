@@ -48,10 +48,12 @@ class GK_NSP_Data_Source_wp {
                                 ));
                         }
                 } else if($data_source_type == 'wp-category') {
+                        $wp_cats = is_array($wp_category_list) ? $wp_category_list : explode(',', $wp_category_list);
+                        
                         if($one_per_category == 'on') {
                                 $post_ids = array(0);
                                 
-                                foreach($wp_category_list as $cat_id ) {
+                                foreach($wp_cats as $cat_id ) {
                                     if ( $posts = get_posts(array('category' => $cat_id, 'showposts' => 1)) ) {
                                         $first = array_shift($posts);
                                         $post_ids[] = $first->ID;
@@ -61,7 +63,7 @@ class GK_NSP_Data_Source_wp {
                                 $results = get_posts(array('post__in' => $post_ids));
                         } else {
                                 $results = get_posts(array(
-                                        'category' => implode(',', $wp_category_list),
+                                        'category' => implode(',', $wp_cats),
                                         'posts_per_page' => $amount_of_posts,
                                         'offset' => $offset, 
                                         'orderby' => $orderby,
