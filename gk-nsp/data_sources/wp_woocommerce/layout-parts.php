@@ -300,14 +300,18 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 		global $woocommerce;
 		
 		if( $prod->has_child() ) {
-			$cart = '<p><a href="'.get_permalink($prod->id).'" class="readon" title="'.__('More details', 'gk-nsp').'">'.__('More details', 'gk-nsp').'</a></p>';
+			$cart = '</p><p><a href="'.get_permalink($prod->id).'" class="readon" title="'.__('More details', 'gk-nsp').'">'.__('More details', 'gk-nsp').'</a></p><p>';
 		}
 		else {
 			if ( $prod->is_in_stock() ) {
-				$cart =  '<form class="cart" method="post" enctype="multipart/form-data">';
+				$cart =  '</p><form class="cart" method="post" enctype="multipart/form-data">';
 				$cart .= '<input type="hidden" name="add-to-cart" value="'. esc_attr( $prod->id ) . '" /><button type="submit" class="single_add_to_cart_button button alt">' .$prod->single_add_to_cart_text(). '</button>';
-			 	$cart .= '</form>';
+			 	$cart .= '</form><p>';
 			 }
+		 }
+		 
+		 if( $prod->is_featured() ) {
+		 	$cart .= '<span class="onsale">'.__('Featured', 'gk-nsp').'</span>';
 		 }
 
 	 	return $cart;
