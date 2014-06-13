@@ -1,0 +1,27 @@
+{
+	"name": "events",
+	"tab_name": "Event list options",
+	"css": true,
+	"js": true,
+	"support": [
+		"wp"
+	],
+	"params": [
+		{
+			"name": "cols",
+			"label": "Number of columns",
+			"tooltip": "Specify number of columns displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 2
+		},
+		{
+			"name": "rows",
+			"label": "Number of rows",
+			"tooltip": "Specify number of rows displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 2
+		}
+	]
+}

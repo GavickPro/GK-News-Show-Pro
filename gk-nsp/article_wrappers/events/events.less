@@ -1,0 +1,119 @@
+/* 
+* GK News Show Pro
+*
+* @version: 1.0.0
+* @date: 22-03-2014
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+
+/* GK NSP Events List */
+.gk-nsp-events {
+    & > div {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        float: left;
+        margin: 10px 0;
+        min-height: 60px;
+        overflow: hidden;
+        padding: 10px 30px;
+        position: relative;
+        & > time {
+            + {
+                div {
+                    padding-left: 90px;
+                }
+            }
+        }
+        & > div {
+            & > span {
+                color: #999;
+                font-size: 11px;
+            }
+        }
+    }
+    time {
+        border: 1px solid #e5e5e5;
+        color: #000;
+        left: 30px;
+        line-height: 1.2;
+        font-size: 18px;
+        font-weight: 500;
+        min-width: 60px;
+        padding: 10px;
+        position: absolute;
+        text-transform: uppercase;
+        top: 0;
+        & > small {
+            display: block;
+            font-size: 12px;
+        }
+    }
+    h3 {
+        color: #000;
+        font-size: 15px;
+        font-style: italic;
+        text-transform: none;
+    }
+    a {
+        color: #000;
+        display: block;
+        height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+    .gk-events-list-progress {
+        background: #e5e5e5;
+        display: inline-block;
+        height: 3px;
+        margin-left: 16px;
+        position: relative;
+        top: -2px;
+        width: 50px;
+        & > div {
+            background: #fa7252;
+            height: 3px;
+            left: 0;
+            max-width: 100%;
+            position: absolute;
+            top: 0;
+            -webkit-transition: all .75s ease-out;
+            -moz-transition: all .75s ease-out;
+            -ms-transition: all .75s ease-out;
+            -o-transition: all .75s ease-out;
+            transition: all .75s ease-out;
+            width: 0%;
+        }
+    }
+}
+.gk-nsp-events[data-cols="1"] {
+    & > div {
+        width: 100%;
+    }
+}
+.gk-nsp-events[data-cols="2"] {
+    & > div {
+        width: 50%;
+    }
+}
+.gk-nsp-events[data-cols="3"] {
+    & > div {
+        width: 33.333333%;
+    }
+}
+.gk-nsp-events[data-cols="4"] {
+    & > div {
+        width: 25%;
+    }
+}
+.gk-nsp-events[data-cols="2"] &>div:nth-child(2n+1),.gk-nsp-events[data-cols="3"] &>div:nth-child(3n+1),.gk-nsp-events[data-cols="4"] &>div:nth-child(4n+1) {
+    clear: both;
+}
+.gk-nsp-events a:active,.gk-nsp-events a:focus,.gk-nsp-events a:hover {
+    color: #fa7252;
+}
