@@ -39,15 +39,15 @@ if($num_of_arts > 0) {
 			data-rows="'.$portfolio_rows.'" 
 			data-popup="'.$portfolio_popup.'"
 	>';
-	
+
 	$used_categories = array();
 
 	echo '<ul class="gk-portfolio-categories">';
 		echo '<li class="active">'.__('All', 'gk-nsp').'</li>';
-		
+
 		for($i = 0; $i < $num_of_arts; $i++) {
 			$category = GK_NSP_Article_Wrapper_portfolio::article_category($i, $this->generator, $results);
-			
+
 			if(!in_array($category['name'], $used_categories)) {
 				echo '<li>' . $category['name'] . '</li>';
 				array_push($used_categories, $category['name']);
