@@ -296,6 +296,12 @@ class GK_NSP_Layout_Parts_json {
 	function link_readmore() {
 		return '<a class="gk-nsp-links-readon" href="'. $this->parent->config['links_readmore_url'] .'">'. $this->parent->config['links_readmore_text'] .'</a>';
 	}
+	
+	function link_readmorelink($i) {
+		$art_url = $this->parent->wdgt_results[$i]->URL;
+				
+		return '<a class="gk-nsp-link-readmore" href="'. $art_url .'">'. __('Read more', 'gk-nsp') .'</a>';
+	}
 }
 
 // EOF

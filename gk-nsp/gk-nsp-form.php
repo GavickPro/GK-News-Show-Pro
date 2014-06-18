@@ -422,6 +422,10 @@ class GK_NSP_Widget_Form {
 								<p><?php $this->input_text('links_image_block_padding', $links_image_block_padding, __( 'Margin: ', 'gk-nsp' ), '', 'long'); ?></p>
 							</div>
 						</div>
+						
+						<div class="gk-link-element" data-element-name="link">
+							<?php $this->input_checkbox_before('links_readmorelink_state', $links_readmorelink_state, __('Show readmore link', 'gk-nsp')); ?>
+						</div>
 
 						<div class="gk-link-element" data-element-name="readmore">
 							<?php $this->input_checkbox_before('links_readmore_state', $links_readmore_state, __('Show read more button under links', 'gk-nsp')); ?>

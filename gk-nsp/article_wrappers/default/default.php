@@ -95,6 +95,7 @@ if($num_of_arts <= count($results)) {
 					if($links_image_state == 'on') echo '<div class="gk-nsp-link-content-wrap">';					
 					if($links_title_state == 'on') echo $this->generator->link_title($start);
 					if($links_text_state  == 'on') echo $this->generator->link_text($start);
+					if($links_readmorelink_state  == 'on') echo $this->generator->link_readmorelink($start);
 					if($links_image_state == 'on') echo '</div>';	
 					echo '</li>';
 					do_action('gk_nsp_after_link');

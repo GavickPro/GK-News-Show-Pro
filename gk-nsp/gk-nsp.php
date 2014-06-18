@@ -153,6 +153,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		'links_image_filter' => 'none',		
 		'links_image_popup' => 'off',
 		'links_image_block_padding' => '',
+		'links_readmorelink_state' => 'off',
 		// links readmore format
 		'links_readmore_state' => 'off',
 		'links_readmore_text' => '',
@@ -671,6 +672,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 								'autoanim_hover',
 								'article_image_popup',
 								'links_image_popup',
+								'links_readmorelink_state',
 								'parse_shortcodes'
 							);
 		// check checkboxes
