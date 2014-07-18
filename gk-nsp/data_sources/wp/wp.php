@@ -164,7 +164,8 @@ class GK_NSP_Data_Source_wp {
                                                 "{RATING}" => $generator->art_rating($art_ID),
                                                 "{DATE_W3C}" => get_the_time('c', $art_ID),
                                                 "{COMMENT_COUNT}" => $art_comment_count,
-                                                "{COMMENTS}" => $art_comment
+                                                "{COMMENTS}" => $art_comment,
+                                                "{STARS}" => $generator->art_rating($art_ID)
                                         );
         }
 }
