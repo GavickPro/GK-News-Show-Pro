@@ -43,7 +43,9 @@ if($highlighter_intro_text != '') {
 }
 
 // interface
-echo '<div class="gk-nsp-highlighter-ui"><a href="#"></a><a href="#"></a></div>';
+if($num_of_arts > 1) {
+	echo '<div class="gk-nsp-highlighter-ui"><a href="#"></a><a href="#"></a></div>';
+}
 
 // wrap articles
 echo '<div class="gk-nsp-highligher-items-wrap">';
