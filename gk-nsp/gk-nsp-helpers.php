@@ -70,9 +70,13 @@ class GK_NSP_Widget_Helpers {
 	 static function get_product_by_sku($sku) {
 	 	global $wpdb;
 	 	global $post;
-	   
-	 	$product_id = $wpdb->get_var($wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='_sku' AND meta_value='%s' LIMIT 1", $sku));
-	 	
+	        // check for WPML installation
+	   	if(!defined('ICL_LANGUAGE_CODE')) {
+	 	    $product_id = $wpdb->get_var($wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='_sku' AND meta_value='%s' LIMIT 1", $sku));
+	   	} else {
+	   	    $product_id = $wpdb->get_var($wpdb->prepare("SELECT pm.post_id FROM ".$wpdb->postmeta." AS pm LEFT JOIN ".$wpdb->prefix."icl_translations AS tr ON pm.post_id = tr.element_id WHERE pm.meta_key='_sku' AND pm.meta_value='%s' AND tr.language_code = '".ICL_LANGUAGE_CODE."'", $sku));
+	   	}
+	   	
 	 	if($product_id) {
 	 		return $product_id; //new WC_Product($product_id);
 	 	}
