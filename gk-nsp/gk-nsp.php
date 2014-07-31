@@ -525,6 +525,16 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 
 		// generate the data source class name
 		$data_source_prefix = explode('-', $data_source_type);
+		
+		if(!(
+		    file_exists($this->ds_path . GK_DS . $data_source_prefix[0] . GK_DS . $data_source_prefix[0] . '.php') &&
+		    file_exists($this->aw_path . GK_DS . $article_wrapper . GK_DS . 'helper.php');
+		)) {
+		    _e('The specified data source is not correct', 'gk-nsp');
+		    echo $after_widget;
+		    
+		    return false;	
+		}
 		require_once($this->ds_path . GK_DS . $data_source_prefix[0] . GK_DS . $data_source_prefix[0] . '.php');
 		require_once($this->aw_path . GK_DS . $article_wrapper . GK_DS . 'helper.php');
 		$data_source_class = 'GK_NSP_Data_Source_' . $data_source_prefix[0];
