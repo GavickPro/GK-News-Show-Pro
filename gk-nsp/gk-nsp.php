@@ -528,7 +528,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		
 		if(!(
 		    file_exists($this->ds_path . GK_DS . $data_source_prefix[0] . GK_DS . $data_source_prefix[0] . '.php') &&
-		    file_exists($this->aw_path . GK_DS . $article_wrapper . GK_DS . 'helper.php');
+		    file_exists($this->aw_path . GK_DS . $article_wrapper . GK_DS . 'helper.php')
 		)) {
 		    _e('The specified data source is not correct', 'gk-nsp');
 		    echo $after_widget;
