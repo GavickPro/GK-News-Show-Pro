@@ -63,7 +63,7 @@ class GK_NSP_Data_Source_wp {
                                 $results = get_posts(array('post__in' => $post_ids));
                         } else {
                                 $results = get_posts(array(
-                                        'category' => implode(',', $wp_cats),
+                                        'category__in' => $wp_cats,
                                         'posts_per_page' => $amount_of_posts,
                                         'offset' => $offset, 
                                         'orderby' => $orderby,
