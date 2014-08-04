@@ -45,9 +45,11 @@ if(!class_exists('GK_NSP_Article_Wrapper_portfolio')) {
 			$categories = get_the_category($results[$i]->ID);
 
 	 		if(count($categories) > 0) {
+	 			$i = 0;
 	 			foreach($categories as $cat) { 			
-	 				$result['url'] = get_category_link( $cat->term_id );
-	 				$result['name'] = $cat->name;
+	 				$result[$i]['url'] = get_category_link( $cat->term_id );
+	 				$result[$i]['name'] = $cat->name;
+	 				$i++;
 	 			}
 	 		}
 

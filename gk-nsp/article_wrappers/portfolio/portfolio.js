@@ -15,7 +15,7 @@ var GKNSPPortfolio = function(module) {
 					jQuery(btns[i]).addClass('active');
 
 					if(i > 0) {
-						module.find('.gk-images-wrapper a[data-cat="' + btn.html() + '"]').addClass('active');
+						module.find('.gk-images-wrapper a[data-cat*="' + btn.html() + '"]').addClass('active');
 					} else {
 						images.addClass('active');
 					}
@@ -109,7 +109,7 @@ var GKNSPPortfolio = function(module) {
 				img = jQuery(img);
 				popup_image_wrap.html('<a href="' + img.attr('href') + '"><img src="' + img.attr('data-img') + '" /></a>');
 				popup_title.html(img.attr('title'));
-				popup_cat.html('<span>' + img.attr('data-cat-text') + '</span>' + img.attr('data-cat'));
+				popup_cat.html('<span>' + img.attr('data-cat-text') + '</span>' + img.attr('data-cat').replace(/;/g, '<br />'));
 				popup_author.html('<span>' + img.attr('data-author-text') + '</span>' + img.attr('data-author'));
 				popup_date.html('<span>' + img.attr('data-date-text') + '</span>' + img.attr('data-date'));
 

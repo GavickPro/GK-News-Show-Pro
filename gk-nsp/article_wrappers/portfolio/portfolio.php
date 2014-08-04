@@ -42,18 +42,24 @@ if($num_of_arts > 0) {
 
 	$used_categories = array();
 
-	echo '<ul class="gk-portfolio-categories">';
-		echo '<li class="active">'.__('All', 'gk-nsp').'</li>';
-
-		for($i = 0; $i < $num_of_arts; $i++) {
-			$category = GK_NSP_Article_Wrapper_portfolio::article_category($i, $this->generator, $results);
-
-			if(!in_array($category['name'], $used_categories)) {
-				echo '<li>' . $category['name'] . '</li>';
-				array_push($used_categories, $category['name']);
+	if($portfolio_category_filtering == 'on') {
+		echo '<ul class="gk-portfolio-categories">';
+			echo '<li class="active">'.__('All', 'gk-nsp').'</li>';
+	
+			for($i = 0; $i < $num_of_arts; $i++) {
+				$categories = GK_NSP_Article_Wrapper_portfolio::article_category($i, $this->generator, $results);
+	
+				if(count($categories) > 0) {
+					foreach($categories as $category) {
+						if(!in_array($category['name'], $used_categories)) {
+							echo '<li>' . $category['name'] . '</li>';
+							array_push($used_categories, $category['name']);
+						}
+					}
+				}
 			}
-		}
-	echo '</ul>';
+		echo '</ul>';
+	}
 
 	echo '<div class="gk-images-wrapper gk-images-cols'.$portfolio_cols.'">';
 
@@ -65,14 +71,24 @@ if($num_of_arts > 0) {
 		$full_image = GK_NSP_Article_Wrapper_portfolio::article_full_image($i, $this->generator);
 		$date = GK_NSP_Article_Wrapper_portfolio::article_date($i, $this->generator, $results);
 		$author = GK_NSP_Article_Wrapper_portfolio::article_author($i, $this->generator, $results);
-		$category = GK_NSP_Article_Wrapper_portfolio::article_category($i, $this->generator, $results);
+		$categories = GK_NSP_Article_Wrapper_portfolio::article_category($i, $this->generator, $results);
+		$category_names = '';
+		$category_urls = '';
+		
+		foreach($categories as $category) {
+			if($category['name'] != '') {
+				$category_names .= $category['name'] . ';';
+				$category_urls .= $category['url'] . ';';
+			}
+		}
+		
 
 		echo '<a 
 				href="'.$url.'" 
 				title="'.$title.'" 
 				class="gk-image gk-nsp-art gk-nsp-col'.$portfolio_cols.' active"
-				data-cat="'.$category['name'].'"
-				data-cat-url="'.$category['url'].'"
+				data-cat="'.$category_names.'"
+				data-cat-url="'.$category_urls.'"
 				data-cat-text="'.__('Category:', 'gk-nsp').'"
 				data-date="'.$date.'"
 				data-date-text="'.__('Date:', 'gk-nsp').'"
