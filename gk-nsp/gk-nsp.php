@@ -45,9 +45,13 @@ include(dirname(__FILE__) . '/gk-nsp-image-filters.php');
 include(dirname(__FILE__) . '/gk-nsp-shortcodes.php');
 
 /**
- * i18n
+ * i18n - language files should be like gk-nsp-en_GB.po and gk-nsp-en_GB.mo
  */
-load_plugin_textdomain( 'gk-nsp', false, dirname( dirname( plugin_basename( __FILE__) ) ).'/languages' );
+add_action( 'plugins_loaded', 'gk_nsp_load_textdomain' );
+
+function gk_nsp_load_textdomain() {
+  load_plugin_textdomain( 'gk-nsp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' ); 
+}
 
 
 /**
