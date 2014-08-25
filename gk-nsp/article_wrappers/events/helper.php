@@ -14,9 +14,12 @@ if(!class_exists('GK_NSP_Article_Wrapper_events')) {
 		 * Method used to generate the date of event
 		 */
 		static function event_date($i, $generator, $results) {
+			global $wp_locale;
 			$date_start = new DateTime(get_post_meta( $results[$i]->ID, 'gkevent_date_start', true ));
+
+			$datemonth = $wp_locale->get_month($date_start->format('m') );
 			//
-			return '<span>' . __( 'When: ','gk-nsp' ) .''. $date_start->format('d F Y') . ' @ ' .$date_start->format('g:i a'). '<span class="gk-events-list-progress"></span></span>';
+			return '<span>' . __( 'When: ','gk-nsp' ) .''. $date_start->format('j ') . $datemonth . $date_start->format(' Y '). ' @ ' .$date_start->format('g:i a'). '<span class="gk-events-list-progress"></span></span>';
 			
 		}
 		
@@ -24,10 +27,17 @@ if(!class_exists('GK_NSP_Article_Wrapper_events')) {
 		 * Method used to generate the date event block
 		 */
 		static function event_dateblock($i, $generator, $results) {
+			global $wp_locale;
 			$date_start = new DateTime(get_post_meta( $results[$i]->ID, 'gkevent_date_start', true ));
 			$event_start = new DateTime(get_post_meta( $results[$i]->ID, 'gkevent_counter_start', true ));
+			
+			$dateweekday = $wp_locale->get_weekday( $date_start->format('w') );
+			$dateweekday_abbrev = $wp_locale->get_weekday_abbrev( $dateweekday );
+
+			$datemonth = $wp_locale->get_month($date_start->format('m') );
+			$datemonth_abbrev = $wp_locale->get_month_abbrev( $datemonth );
 			//
-			return '<time datetime="' . $date_start->format('c'). '" data-start="'. $event_start->format('c') .'">' . $date_start->format('D') . '<small>' . $date_start->format('M j') . '</small></time>';
+			return '<time datetime="' . $date_start->format('c'). '" data-start="'. $event_start->format('c') .'">' . $dateweekday_abbrev . '<small>' . $datemonth_abbrev .' '. $date_start->format('j') . '</small></time>';
 		}
 
 		/*
