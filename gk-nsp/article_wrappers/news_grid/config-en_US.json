@@ -1,0 +1,67 @@
+{
+	"name": "news_grid",
+	"tab_name": "News Grid options",
+	"css": true,
+	"js": false,
+	"support": [
+		"wp"
+	],
+	"params": [
+		{
+			"name": "cols",
+			"label": "Number of columns",
+			"tooltip": "Specify number of columns displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 2
+		},
+		{
+			"name": "rows",
+			"label": "Number of rows",
+			"tooltip": "Specify number of rows displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 2
+		},
+		{
+			"name": "title_length",
+			"label": "Title length in chars",
+			"tooltip": "Specify the maximum length of title in chars. Set it to 0 to hide the title.",
+			"classes": "short",
+			"type": "text",
+			"default": 40
+		},
+		{
+			"name": "text_length",
+			"label": "Text length in chars",
+			"tooltip": "Specify the maximum length of text in chars. Set it to 0 to hide the text.",
+			"classes": "short",
+			"type": "text",
+			"default": 50
+		},
+		{
+			"name": "date_format",
+			"label": "Date format",
+			"tooltip": "Specify the format of the date displayed under the title. Leave it blank to hide the date.",
+			"classes": "short",
+			"type": "text",
+			"default": "F j, Y"
+		},
+		{
+			"name": "link_url",
+			"label": "Link URL",
+			"tooltip": "Specify the URL of the link displayed under the blocks",
+			"classes": "",
+			"type": "text",
+			"default": ""
+		},
+		{
+			"name": "link_label",
+			"label": "Link label",
+			"tooltip": "Specify the label of the link displayed under the blocks - set it to blank to hide the link",
+			"classes": "",
+			"type": "text",
+			"default": "Find more news"
+		}
+	]
+}
