@@ -194,89 +194,61 @@
   transition: all 0.3s ease-out;
 }
 /* WordPress 3.8+ CSS adjustments */
-.branch-3-8 .gk-nsp-ui,
-.branch-3-9 .gk-nsp-ui,
-.branch-4-0 .gk-nsp-ui,
+.wp-admin .gk-nsp-ui,
 body.wp-customizer .gk-nsp-ui {
   margin: 0 -10px;
   padding: 0 0 15px 0;
   width: auto;
 }
-.branch-3-8 .gk-nsp-ui label,
-.branch-3-9 .gk-nsp-ui label,
-.branch-4-0 .gk-nsp-ui label,
+.wp-admin .gk-nsp-ui label,
 body.wp-customizer .gk-nsp-ui label {
   line-height: 15px;
   vertical-align: text-bottom;
 }
-.branch-3-8 .gk-nsp-ui label,
-.branch-3-9 .gk-nsp-ui label,
-.branch-4-0 .gk-nsp-ui label,
+.wp-admin .gk-nsp-ui label,
 body.wp-customizer .gk-nsp-ui label,
-.branch-3-8 .gk-nsp-ui input,
-.branch-3-9 .gk-nsp-ui input,
-.branch-4-0 .gk-nsp-ui input,
+.wp-admin .gk-nsp-ui input,
 body.wp-customizer .gk-nsp-ui input,
-.branch-3-8 .gk-nsp-ui select,
-.branch-3-9 .gk-nsp-ui select,
-.branch-4-0 .gk-nsp-ui select,
+.wp-admin .gk-nsp-ui select,
 body.wp-customizer .gk-nsp-ui select {
   font-size: 11px!important;
 }
-.branch-3-8 .gk-nsp-ui input,
-.branch-3-9 .gk-nsp-ui input,
-.branch-4-0 .gk-nsp-ui input,
+.wp-admin .gk-nsp-ui input,
 body.wp-customizer .gk-nsp-ui input {
   padding: 6px 4px!important;
 }
-.branch-3-8 .gk-nsp-ui input.button,
-.branch-3-9 .gk-nsp-ui input.button,
-.branch-4-0 .gk-nsp-ui input.button,
+.wp-admin .gk-nsp-ui input.button,
 body.wp-customizer .gk-nsp-ui input.button {
   padding: 0 6px!important;
 }
-.branch-3-8 .gk-nsp-ui textarea,
-.branch-3-9 .gk-nsp-ui textarea,
-.branch-4-0 .gk-nsp-ui textarea,
+.wp-admin .gk-nsp-ui textarea,
 body.wp-customizer .gk-nsp-ui textarea {
   margin-left: 105px;
   width: 71%;
 }
-.branch-3-8 .gk-nsp-ui .gk-filelist,
-.branch-3-9 .gk-nsp-ui .gk-filelist,
-.branch-4-0 .gk-nsp-ui .gk-filelist,
+.wp-admin .gk-nsp-ui .gk-filelist,
 body.wp-customizer .gk-nsp-ui .gk-filelist {
   margin-left: 98px;
 }
-.branch-3-8 .gk-nsp-ui .gk-format-textarea + small,
-.branch-3-9 .gk-nsp-ui .gk-format-textarea + small,
-.branch-4-0 .gk-nsp-ui .gk-format-textarea + small,
+.wp-admin .gk-nsp-ui .gk-format-textarea + small,
 body.wp-customizer .gk-nsp-ui .gk-format-textarea + small {
   margin: 0 0 0 105px;
 }
-.branch-3-8 .gk-nsp-ui p > label:first-child,
-.branch-3-9 .gk-nsp-ui p > label:first-child,
-.branch-4-0 .gk-nsp-ui p > label:first-child,
+.wp-admin .gk-nsp-ui p > label:first-child,
 body.wp-customizer .gk-nsp-ui p > label:first-child {
   max-width: 100px;
   padding-right: 5px;
   width: 100px;
 }
-.branch-3-8 .gk-nsp-ui .gk-article-element > .gk-indent,
-.branch-3-9 .gk-nsp-ui .gk-article-element > .gk-indent,
-.branch-4-0 .gk-nsp-ui .gk-article-element > .gk-indent,
+.wp-admin .gk-nsp-ui .gk-article-element > .gk-indent,
 body.wp-customizer .gk-nsp-ui .gk-article-element > .gk-indent {
   padding: 1px;
 }
-.branch-3-8 .gk-toggle > div,
-.branch-3-9 .gk-toggle > div,
-.branch-4-0 .gk-toggle > div,
+.wp-admin .gk-toggle > div,
 body.wp-customizer .gk-toggle > div {
   margin-top: -800px !important;
 }
-.branch-3-8 .gk-toggler,
-.branch-3-9 .gk-toggler,
-.branch-4-0 .gk-toggler,
+.wp-admin .gk-toggler,
 body.wp-customizer .gk-toggler {
   background: #fafafa;
   background-image: none;
@@ -286,9 +258,7 @@ body.wp-customizer .gk-toggler {
   border-radius: 0;
   margin: 5px 0!important;
 }
-.branch-3-8 .gk-toggler:after,
-.branch-3-9 .gk-toggler:after,
-.branch-4-0 .gk-toggler:after,
+.wp-admin .gk-toggler:after,
 body.wp-customizer .gk-toggler:after {
   opacity: 0.5;
   filter: alpha(opacity=50);
