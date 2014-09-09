@@ -51,7 +51,7 @@ if($num_of_arts > 0) {
 	
 				if(count($categories) > 0) {
 					foreach($categories as $category) {
-						if(!in_array($category['name'], $used_categories)) {
+						if(isset($category) && is_array($category) && !in_array($category['name'], $used_categories)) {
 							echo '<li>' . $category['name'] . '</li>';
 							array_push($used_categories, $category['name']);
 						}
@@ -76,7 +76,7 @@ if($num_of_arts > 0) {
 		$category_urls = '';
 		
 		foreach($categories as $category) {
-			if($category['name'] != '') {
+			if(isset($category) && is_array($category) && $category['name'] != '') {
 				$category_names .= $category['name'] . ';';
 				$category_urls .= $category['url'] . ';';
 			}
