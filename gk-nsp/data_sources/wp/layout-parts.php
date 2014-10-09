@@ -248,16 +248,17 @@ class GK_NSP_Layout_Parts_wp {
 	 	}
 	 	// check if there is a featured badge in format
 	 	if(stripos($this->parent->config['article_info_format'], '{FEATURED}') !== FALSE && is_sticky($art_ID)) {
-	 		$featured = '<strong class="is-featured">' . __(' Featured', 'gk-nsp') . '</strong>';
+	 		$featured= '<p class="gk-nsp-info"><strong class="is-featured">' . __(' Featured', 'gk-nsp') . '</strong></p>';
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
 	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}', '{COMMENT_COUNT}', '{STARS}', '{FEATURED}'),
-	 		array($category, $author, $date, $comments, $comment_count, $stars, $featured),
+	 		array($category, $author, $date, $comments, $comment_count, $stars, ''),
 	 		$this->parent->config['article_info_format']
 	 	);
-
-	 	return apply_filters('gk_nsp_art_info', '<p class="gk-nsp-info">' . $output . '</p>');
+	 	$output = '<p class="gk-nsp-info">' . $output . '</p>' . $featured;
+	 	
+	 	return apply_filters('gk_nsp_art_info',$output);
 	 }
 	 
 	 function art_rating($art_ID) {
