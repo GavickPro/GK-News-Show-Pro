@@ -88,8 +88,8 @@ class GK_NSP_Data_Source_wp {
                         }
                 } else if($data_source_type == 'wp-custom') {
                         $results = get_posts(array(
-                        	'post_type' => $post_types_list,
-                        	'numberposts' => $amount_of_posts
+                            'post_type' => $post_types_list,
+                            'numberposts' => $amount_of_posts
                         ));
                 }
 
@@ -143,6 +143,10 @@ class GK_NSP_Data_Source_wp {
                  }
 
                  $art_comment = '<a href="'.get_permalink($art_ID).'#comments">'.$comment_phrase.'</a>';
+
+                 if(is_sticky($art_ID)) {
+                    $featured = '<strong class="is-featured">' . __(' Featured', 'gk-nsp') . '</strong>';
+                 }
                  // put the results to an array:
                 return array(
                                                 "{ID}" => $art_ID,
@@ -165,7 +169,8 @@ class GK_NSP_Data_Source_wp {
                                                 "{DATE_W3C}" => get_the_time('c', $art_ID),
                                                 "{COMMENT_COUNT}" => $art_comment_count,
                                                 "{COMMENTS}" => $art_comment,
-                                                "{STARS}" => $generator->art_rating($art_ID)
+                                                "{STARS}" => $generator->art_rating($art_ID),
+                                                "{FEATURED}" => $featured
                                         );
         }
 }

@@ -202,6 +202,7 @@ class GK_NSP_Layout_Parts_wp {
 	 	$comments = '';
 	 	$price = '';
 	 	$stars = '';
+	 	$featured = '';
 	 	//
 	 	$art_ID = $this->parent->wdgt_results[$i]->ID;
 	 	$comment_count = $this->parent->wdgt_results[$i]->comment_count;
@@ -245,10 +246,14 @@ class GK_NSP_Layout_Parts_wp {
 	 	if(stripos($this->parent->config['article_info_format'], '{COMMENT_COUNT}') !== FALSE) {
 	 		$comment_count = '<a href="'.get_permalink($art_ID).'#comments" class="gk-nsp-comment-count">' .$comment_count. '</a>';
 	 	}
+	 	// check if there is a featured badge in format
+	 	if(stripos($this->parent->config['article_info_format'], '{FEATURED}') !== FALSE && is_sticky($art_ID)) {
+	 		$featured = '<strong class="is-featured">' . __(' Featured', 'gk-nsp') . '</strong>';
+	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}', '{COMMENT_COUNT}', '{STARS}'),
-	 		array($category, $author, $date, $comments, $comment_count, $stars),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}', '{COMMENT_COUNT}', '{STARS}', '{FEATURED}'),
+	 		array($category, $author, $date, $comments, $comment_count, $stars, $featured),
 	 		$this->parent->config['article_info_format']
 	 	);
 
