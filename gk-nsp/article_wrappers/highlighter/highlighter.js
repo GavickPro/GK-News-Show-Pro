@@ -13,6 +13,28 @@
     });
 
     var gkNspHighlighterInit = function(widget) {
+    	function gkNspHighlighterAutoanim() {
+            if(!blank_animation) {
+                var prev = current;
+                current = current < items.length - 1 ? current + 1 : 0;
+                first_item.animate({
+                    'margin-top': current * -1 * first_item.outerHeight()  
+                }, anim_speed);
+
+                jQuery(items[prev]).removeClass('active');
+                jQuery(items[current]).addClass('active');
+
+                setTimeout(function() {
+                    gkNspHighlighterAutoanim();
+                }, anim_interval);
+            } else {
+                blank_animation = false;
+                
+                setTimeout(function() {
+                    gkNspHighlighterAutoanim();
+                }, anim_interval);
+            }
+        }
         widget = jQuery(widget);
         // check if the UI exists
         if(widget.find('.gk-nsp-highlighter-ui a').length > 0) {
@@ -70,29 +92,7 @@
 	                gkNspHighlighterAutoanim();
 	            }, anim_interval);
 	        }
-	
-	        function gkNspHighlighterAutoanim() {
-	            if(!blank_animation) {
-	                var prev = current;
-	                current = current < items.length - 1 ? current + 1 : 0;
-	                first_item.animate({
-	                    'margin-top': current * -1 * first_item.outerHeight()  
-	                }, anim_speed);
-	
-	                jQuery(items[prev]).removeClass('active');
-	                jQuery(items[current]).addClass('active');
-	
-	                setTimeout(function() {
-	                    gkNspHighlighterAutoanim();
-	                }, anim_interval);
-	            } else {
-	                blank_animation = false;
-	                
-	                setTimeout(function() {
-	                    gkNspHighlighterAutoanim();
-	                }, anim_interval);
-	            }
-	        }
+	        
         }
     };
 })();
