@@ -1,0 +1,8 @@
+<figure>
+<a href="{URL}"><img src="{IMAGE}" alt="{TITLE}" /></a>
+<a href="{URL}" class="gk-icon-arrow">&nbsp;</a>
+<figcaption>
+<h3><a href="{URL}">{TITLE}</a></h3>
+<small>{DATE}, {AUTHOR_NAME}</small>
+</figcaption>
+</figure>
