@@ -1,10 +1,6 @@
 GK-News-Show-Pro
 ================
 
-## Important!
-
-Please read the installation tutorial here: https://github.com/GavickPro/GK-News-Show-Pro/wiki/Installation
-
 ## Description
 
 Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
