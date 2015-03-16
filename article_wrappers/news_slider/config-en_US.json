@@ -1,0 +1,84 @@
+{
+	"name": "news_slider",
+	"tab_name": "News Slider options",
+	"css": true,
+	"js": true,
+	"support": [
+		"wp"
+	],
+	"params": [
+		{
+			"name": "articles",
+			"label": "News amount",
+			"tooltip": "Specify number of articles with news displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 5
+		},
+		{
+			"name": "show_title",
+			"label": "Show title",
+			"tooltip": "Specify if the title will be displayed",
+			"classes": "",
+			"type": "switch",
+			"default": 1
+		},
+		{
+			"name": "show_text",
+			"label": "Show text",
+			"tooltip": "Specify if the text will be displayed",
+			"classes": "",
+			"type": "switch",
+			"default": 1
+		},
+		{
+			"name": "date_format",
+			"label": "Date format",
+			"tooltip": "Specify the date format",
+			"classes": "medium-left",
+			"type": "text",
+			"default": "D, j F Y"
+		},
+		{
+			"name": "animation_interval",
+			"label": "Animation interval",
+			"tooltip": "Specify the interval of autoanimation in miliseconds",
+			"classes": "medium-right",
+			"type": "text",
+			"default": 6000,
+			"after": "ms"
+		},
+		{
+			"name": "small_img_margin",
+			"label": "Small image margin",
+			"tooltip": "This margin will be used to decrease the original image size",
+			"classes": "medium-left",
+			"type": "text",
+			"default": "-30% 0"
+		},
+		{
+			"name": "widget_label",
+			"label": "Label of the widget",
+			"tooltip": "This margin will be used to decrease the original image size",
+			"classes": "medium-left",
+			"type": "text",
+			"default": "Events"
+		},
+		{
+			"name": "cat_label",
+			"label": "Category link label",
+			"tooltip": "Leave it blank to hide the category link",
+			"classes": "medium-left",
+			"type": "text",
+			"default": "More events"
+		},
+		{
+			"name": "cat_url",
+			"label": "Category URL",
+			"tooltip": "Specify the category or other page URL",
+			"classes": "medium-left",
+			"type": "text",
+			"default": "#"
+		}
+	]
+}
