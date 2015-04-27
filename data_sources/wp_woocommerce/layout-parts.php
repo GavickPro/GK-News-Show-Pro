@@ -105,6 +105,8 @@ class GK_NSP_Layout_Parts_wp_woocommerce {
 	 	}
 	 	
 	 	$image_path = str_replace($upload_dir['baseurl'] . '/', '', $image_path);
+		$image_path = str_replace(str_replace('http://', 'https://', $upload_dir['baseurl']) . '/', '', $image_path);
+		
 	 	$img_override = FALSE;
 	 	$img_editor = wp_get_image_editor( 
 			$upload_dir['basedir'] . '/' . $image_path, 
