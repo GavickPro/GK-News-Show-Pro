@@ -20,7 +20,7 @@ if(!class_exists('GK_NSP_Article_Wrapper_highlighter')) {
 			$art_text   = $generator->art_text($i, true);
 			$art_url    = $generator->art_readmore($i, true);
 			$art_final_text = $art_title . ': ' . $art_text;
-			$art_final_text = function_exists('mb_substr') ? mb_substr($art_final_text, 0, $config['highlighter_text_len']) : substr($art_final_text, 0, $config['highlighter_text_len']);
+			$art_final_text = function_exists('mb_substr') ? mb_substr($art_final_text, 0, $config['highlighter_text_len'], 'utf-8') : substr($art_final_text, 0, $config['highlighter_text_len']);
 			//
 			$art_output .= '<li'.($i == 0 ? ' class="active"' : '').'>';
 			$art_output .= '<a href="'.$art_url.'" title="'.$art_title.'"> ' . $art_final_text .'</a>';			
