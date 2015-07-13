@@ -147,6 +147,7 @@ class GK_NSP_Data_Source_wp {
                  if(is_sticky($art_ID)) {
                     $featured = '<strong class="is-featured">' . __(' Featured', 'gk-nsp') . '</strong>';
                  }
+
                  // put the results to an array:
                 return array(
                                                 "{ID}" => $art_ID,
@@ -170,6 +171,7 @@ class GK_NSP_Data_Source_wp {
                                                 "{COMMENT_COUNT}" => $art_comment_count,
                                                 "{COMMENTS}" => $art_comment,
                                                 "{STARS}" => $generator->art_rating($art_ID),
+                                                "{ART_PRICE}" => $generator->art_price($art_ID),
                                                 "{FEATURED}" => $featured
                                         );
         }

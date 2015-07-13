@@ -201,7 +201,7 @@ class GK_NSP_Layout_Parts_wp {
 	 	$author = '';
 	 	$date = '';
 	 	$comments = '';
-	 	$price = '';
+	 	$art_price = '';
 	 	$stars = '';
 	 	$featured = '';
 	 	//
@@ -227,11 +227,15 @@ class GK_NSP_Layout_Parts_wp {
 	 	if(stripos($this->parent->config['article_info_format'], '{DATE}') !== FALSE) {
 	 		$date = '<span class="gk-nsp-date">' . get_the_time($this->parent->config['article_info_date_format'], $art_ID) . '</span>';
 	 	}
+	 	// check if there are the price in format
+	 	if(stripos($this->parent->config['article_info_format'], '{ART_PRICE}') !== FALSE) {
+	 		$art_price = $this->art_price($art_ID);
+	 	}
 	 	// check if there are the stars in format
 	 	if(stripos($this->parent->config['article_info_format'], '{STARS}') !== FALSE) {
 	 		$stars = $this->art_rating($art_ID);
 	 	}
-	 	// check if there is a comments in format
+	 	//check if there is a comments in format
 	 	if(stripos($this->parent->config['article_info_format'], '{COMMENTS}') !== FALSE) {
 	 		$comment_phrase = '';
 
@@ -253,11 +257,13 @@ class GK_NSP_Layout_Parts_wp {
 	 	}
 	 	// replace them all!
 	 	$output = str_replace(
-	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}', '{COMMENT_COUNT}', '{STARS}', '{FEATURED}'),
-	 		array($category, $author, $date, $comments, $comment_count, $stars, ''),
+	 		array('{CATEGORY}', '{AUTHOR}', '{DATE}', '{COMMENTS}', '{COMMENT_COUNT}', '{ART_PRICE}', '{STARS}', '{FEATURED}'),
+	 		array($category, $author, $date, $comments, $comment_count, $art_price, $stars, ''),
 	 		$this->parent->config['article_info_format']
 	 	);
+
 	 	$output = '<p class="gk-nsp-info">' . $output . '</p>' . $featured;
+
 	 	
 	 	return apply_filters('gk_nsp_art_info',$output);
 	 }
@@ -293,6 +299,17 @@ class GK_NSP_Layout_Parts_wp {
  		}
 
  		return $stars;
+	 }
+
+	 function art_price($art_ID) {
+	 	$price = get_post_custom_values('gk-price', $art_ID);
+	 	if(isset($price[0])) {
+	 		$price = sanitize_text_field($price[0]);
+	 	} else {
+	 		$price = 'No gk-price custom field found'; 
+	 	}
+	 	
+ 		return $price;
 	 }
 
 	 function art_readmore($i, $only_value = false) {
