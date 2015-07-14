@@ -1,0 +1,14 @@
+<a href="{URL}" title="{TITLE}" class="gk-responsive gk-image-link nsp-image-wrapper">
+<img src="{IMAGE}" alt="{TITLE}" class="gk-nsp-image gk-responsive">
+</a>
+
+<div class="gk-art-content-wrap">
+<h3 class="gk-nsp-header"><a href="{URL}" title="{TITLE}">{TITLE}</a></h3>
+<p class="gk-nsp-info">
+<span class="gk-nsp-date">{DATE}</span>
+</p>
+
+<p class="gk-nsp-text">{TEXT}</p>
+<a class="readon" href="{URL}">More</a>
+</div>
+

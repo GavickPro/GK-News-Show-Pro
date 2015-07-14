@@ -89,7 +89,9 @@ class GK_NSP_Data_Source_wp {
                 } else if($data_source_type == 'wp-custom') {
                         $results = get_posts(array(
                             'post_type' => $post_types_list,
-                            'numberposts' => $amount_of_posts
+                            'numberposts' => $amount_of_posts,
+                            'orderby' => $orderby,
+                            'order' => $order
                         ));
                 }
 
@@ -146,6 +148,8 @@ class GK_NSP_Data_Source_wp {
 
                  if(is_sticky($art_ID)) {
                     $featured = '<strong class="is-featured">' . __(' Featured', 'gk-nsp') . '</strong>';
+                 } else {
+                    $featured = '';
                  }
 
                  // put the results to an array:
