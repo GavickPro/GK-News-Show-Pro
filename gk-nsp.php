@@ -4,7 +4,7 @@
 Plugin Name: GK News Show Pro
 Plugin URI: http://www.gavick.com/
 Description: Advanced widget for the posts display
-Version: 1.0.1.3
+Version: 1.0.1.4
 Author: GavickPro
 Author URI: http://www.gavick.com/
 License: GPLv2 or later
