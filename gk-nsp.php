@@ -199,18 +199,18 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 		$this->aw_path = dirname(__FILE__) . GK_DS . 'article_wrappers';
 		$this->af_path = dirname(__FILE__) . GK_DS . 'article_formats';
 		//
-		$this->WP_Widget(
-			'gk_nsp', 
-			__('News Show Pro by GavickPro', 'gk-nsp'), 
-			array( 
+		$widget_ops = array(
 				'classname' => 'gk_nsp', 
-				'description' => __( 'Use this widget to show recent items with images and additional elements like title, date etc.', 'gk-nsp') 
-			),
-			array(
+				'description' => __( 'Use this widget to show recent items with images and additional elements like title, date etc', 'gk-nsp')
+			);
+		
+		$control_ops = array(
 				'width' => 400, 
 				'height' => 240
-			)
-		);
+			);
+
+		parent::__construct('gk_nsp', __( 'News Show Pro by GavickPro', 'gk-nsp' ), $widget_ops, $control_ops );
+
 		//
 		$this->alt_option_name = 'gk_nsp';
 		// DEV-FEATURE:
