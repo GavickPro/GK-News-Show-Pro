@@ -90,6 +90,7 @@ class GK_NSP_Data_Source_wp {
                         $results = get_posts(array(
                             'post_type' => $post_types_list,
                             'numberposts' => $amount_of_posts,
+                            'offset' => $offset,
                             'orderby' => $orderby,
                             'order' => $order
                         ));
