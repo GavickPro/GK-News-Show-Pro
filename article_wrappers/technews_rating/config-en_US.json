@@ -1,0 +1,19 @@
+{
+	"name": "technews_rating",
+	"tab_name": "TechNews Reviews options",
+	"css": true,
+	"js": false,
+	"support": [
+		"wp"
+	],
+	"params": [
+		{
+			"name": "articles",
+			"label": "Number of rows",
+			"tooltip": "Specify number of articles displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 4
+		}
+	]
+}

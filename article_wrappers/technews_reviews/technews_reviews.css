@@ -1,0 +1,233 @@
+/* 
+* GK News Show Pro
+*
+* @version: 1.0.0
+* @date: 22-03-2014
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+/* Portal Mode - TechNews Reviews */
+.gk-nsp.gk-technews-reviews {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    position: relative;
+}
+
+.gk-nsp.gk-technews-reviews .gk-sidebar-reviews {
+    float: left;
+    position: relative;
+    width: 25%;
+}
+
+.gk-nsp.gk-technews-reviews .gk-sidebar-list {
+    border-right: 1px solid #ddd;
+    padding: 30px 0;
+}
+
+.gk-nsp.gk-technews-reviews li span {
+    color: #555;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    outline: 0;
+    padding: 8px 0;
+    position: relative;
+      -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.gk-nsp.gk-technews-reviews li:hover span,
+.gk-nsp.gk-technews-reviews li.gk-active span {
+    color: #ff4081!important;
+}
+.gk-nsp.gk-technews-reviews li:hover span {
+  cursor: pointer;
+}
+
+.gk-nsp.gk-technews-reviews li.gk-active span:after {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-left: none;
+    content: "";
+    height: 10px;
+    position: absolute;
+    right: -6px;
+    top: 10px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 10px;
+}
+
+.gk-nsp.gk-technews-reviews .button-gray + .gk-sidebar-list {
+    padding: 30px 0 85px 0;
+}
+
+.gk-nsp.gk-technews-reviews .gk-sidebar-intro {
+    color: #757575;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 10px 80px 60px 0;
+}
+
+.gk-nsp.gk-technews-reviews .button-gray {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-reviews {
+    float: right;
+    margin-top: -34px;
+    position: relative;
+    width: 63%;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-review {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    z-index: 0;
+}
+    
+.gk-nsp.gk-technews-reviews .gk-content-review img {
+    border-radius: 3px;
+    display: block;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-review .gk-content-img {
+    display: block;
+    overflow: hidden;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-review .gk-content-img:hover img {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-review.gk-active {
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-title {
+    position: relative;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-title h3 {
+    color: #555;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 40px 0 5px;
+    text-transform: none;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-title .gk-review-sum-value {
+    left: 0;
+    position: absolute;
+    top: -8px;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-title .gk-review-sum-value + h3,
+.gk-nsp.gk-technews-reviews .gk-content-title .gk-review-sum-value + h3 + small {
+    padding-left: 110px;
+}
+
+.gk-nsp.gk-technews-reviews .gk-content-title small {
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+/* Mobile devices */
+@media (max-width: 1280px) {
+    .gk-nsp.gk-technews-reviews .gk-content-title h3 {
+        font-size: 28px;
+    }
+    
+    .gk-nsp.gk-technews-reviews .gk-sidebar-intro {
+        padding: 10px 0px 60px 0;
+    }
+}
+
+@media (max-width: 1040px) {
+    .gk-nsp.gk-technews-reviews .gk-sidebar-intro {
+        padding: 10px 0;
+    }
+    
+    .gk-nsp.gk-technews-reviews .gk-sidebar-list {
+        padding: 10px 0;
+    }
+    
+    .gk-nsp.gk-technews-reviews .button-gray + .gk-sidebar-list {
+        padding: 10px 10px 45px 0;
+    }
+    
+    .gk-nsp.gk-technews-reviews li.gk-active span:after {
+        right: -16px;
+    }
+    
+    .gk-nsp.gk-technews-reviews .gk-content-reviews {
+        width: 70%;
+    }   
+}
+
+@media (max-width: 840px) {
+    .gk-nsp.gk-technews-reviews .gk-sidebar-intro {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    .gk-nsp.gk-technews-reviews .gk-sidebar-reviews {
+        width: 100%;
+    }
+    
+    .gk-nsp.gk-technews-reviews .gk-content-reviews {
+        margin-top: 20px!important;
+        width: 100%;
+    }
+    
+    .gk-nsp.gk-technews-reviews .gk-sidebar-list {
+        border-right: none;
+    }
+    
+    .gk-nsp.gk-technews-reviews .gk-content-review.gk-active:after {
+        display: none;
+    }
+    
+    .gk-nsp.gk-technews-reviews .gk-content-title h3 {
+        font-size: 20px;
+    }
+    
+    .gk-nsp.gk-technews-reviews .gk-content-title small {
+        font-size: 14px;
+    }
+}

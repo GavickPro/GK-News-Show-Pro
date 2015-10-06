@@ -1,0 +1,60 @@
+{
+	"name": "technews_reviews",
+	"tab_name": "TechNews Reviews options",
+	"css": true,
+	"js": true,
+	"support": [
+		"wp"
+	],
+	"params": [
+		{
+			"name": "articles",
+			"label": "News amount",
+			"tooltip": "Specify number of articles with news displayed in the widget",
+			"classes": "short",
+			"type": "text",
+			"default": 6
+		},
+		{
+			"name": "widget_intro",
+			"label": "Introduction text",
+			"tooltip": "This text will be displayed in the widget's sidebar after the title",
+			"classes": "medium-left",
+			"type": "text",
+			"default": "Introduction text"
+		},
+		{
+			"name": "button_label",
+			"label": "Button label",
+			"tooltip": "Leave it blank to hide the category link",
+			"classes": "medium-left",
+			"type": "text",
+			"default": "Find More"
+		},
+		{
+			"name": "button_url",
+			"label": "Button URL",
+			"tooltip": "Specify the category or other page URL",
+			"classes": "medium-left",
+			"type": "text",
+			"default": "#"
+		},
+		{
+			"name": "animation_autoanim",
+			"label": "Auto-animation",
+			"tooltip": "Enable/Disable Auto-animation",
+			"classes": "",
+			"type": "switch",
+			"default": 1
+		},
+		{
+			"name": "animation_interval",
+			"label": "Animation interval",
+			"tooltip": "Specify the interval of autoanimation in miliseconds",
+			"classes": "medium-right",
+			"type": "text",
+			"default": 8000,
+			"after": "ms"
+		}
+	]
+}

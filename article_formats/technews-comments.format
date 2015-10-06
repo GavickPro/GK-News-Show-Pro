@@ -1,0 +1,10 @@
+<div class="gk-nsp-image-wrap"><a href="{URL}" title="{TITLE}" class="gk-image-link"><img src="{IMAGE}" alt="{TITLE}" class="gk-nsp-image"></a>
+</div>
+<div class="gk-nsp-content-wrap">
+
+<h3 class="gk-nsp-header"><a href="{URL}" title="{TITLE}">{TITLE}</a></h3>
+<p class="gk-nsp-comments">
+	<sup><a href="{URL}" target="_self">{COMMENT_COUNT}</a></sup>
+</p>
+<p class="gk-nsp-author">by {AUTHOR_NAME}</p>
+</div>

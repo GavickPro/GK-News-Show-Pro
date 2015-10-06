@@ -1,0 +1,103 @@
+/* 
+* GK News Show Pro
+*
+* @version: 1.0.0
+* @date: 22-03-2014
+* @desc: Complex widget for displaying WordPress posts, WooCommerce products, XML/JSON file content and RSS feeds.
+* @author: GavickPro 
+* @email: info@gavick.com
+*
+*/
+/* Portal Mode - TechNews Rating */
+.gk-technews-rating {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px 0;
+    position: relative;
+}
+
+.gk-technews-rating .gk-item {
+    clear: both;
+    margin: 56px 0;
+    overflow: hidden;
+}
+
+.gk-technews-rating .gk-item-rating {
+    float: left;
+    width: 25%; 
+}
+
+.gk-technews-rating .gk-item-content {
+    float: left;
+    width: 75%;
+}
+
+.gk-technews-rating .gk-review-sum-value {
+    font-size: 2.6rem;
+    height: 60px;
+    line-height: 61px;
+    width: 60px;
+}
+
+.gk-technews-rating .gk-review-sum-value > span {
+    font-size: 2.6rem;
+    line-height: 61px;
+}
+
+.gk-technews-rating .gk-item-title {
+    font-size: 1.6rem;
+    line-height: 1;
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-transform: none;
+}
+
+.gk-technews-rating .gk-item-title > a {
+    color: #555;
+}
+
+.gk-technews-rating .gk-item-title > a:active,
+.gk-technews-rating .gk-item-title > a:focus,
+.gk-technews-rating .gk-item-title > a:hover {
+    color: #151515;
+}
+
+.gk-technews-rating .gk-item-author {
+    color: #999;
+    float: left;
+    font-size: 1.1rem;
+    padding: 0;
+    text-transform: none;
+}
+
+/* Mobile devices */
+@media (max-width: 1040px) {
+    .gk-technews-rating .gk-item {
+        margin: 36px 0;
+    }
+    
+    .gk-technews-rating .gk-review-sum-value {
+        font-size: 2rem;
+        height: 50px;
+        line-height: 50px;
+        width: 50px;
+    }
+    
+    .gk-technews-rating .gk-review-sum-value > span {
+        font-size: 2rem;
+        line-height: 50px;
+    }
+}
+
+@media (max-width: 840px) {
+    .gk-technews-rating .gk-item-rating {
+        width: 15%;
+    }
+}
+
+@media (max-width: 640px) {
+    .gk-technews-rating .gk-item-rating {
+        width: 20%;
+    }
+}
