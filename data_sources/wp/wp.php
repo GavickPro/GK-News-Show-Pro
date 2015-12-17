@@ -35,6 +35,7 @@ class GK_NSP_Data_Source_wp {
                                 'posts_per_page' => $amount_of_posts,
                                 'offset' => $offset, 
                                 'orderby' => $orderby,
+                                'suppress_filters' => false,
                                 'order' => $order
                         ));
                 } else if($data_source_type == 'wp-sticky') {
@@ -43,6 +44,7 @@ class GK_NSP_Data_Source_wp {
                                         'posts_per_page' => $amount_of_posts,
                                         'offset' => $offset, 
                                         'orderby' => $orderby,
+                                        'suppress_filters' => false,
                                         'order' => $order,
                                         'post__in' => get_option('sticky_posts')
                                 ));
@@ -67,6 +69,7 @@ class GK_NSP_Data_Source_wp {
                                         'posts_per_page' => $amount_of_posts,
                                         'offset' => $offset, 
                                         'orderby' => $orderby,
+                                        'suppress_filters' => false,
                                         'order' => $order
                                 ));
                         }
@@ -76,6 +79,7 @@ class GK_NSP_Data_Source_wp {
                                 'posts_per_page' => $amount_of_posts,
                                 'offset' => $offset, 
                                 'orderby' => $orderby,
+                                'suppress_filters' => false,
                                 'order' => $order
                         ));
                 } else if($data_source_type == 'wp-post') {
@@ -92,6 +96,7 @@ class GK_NSP_Data_Source_wp {
                             'numberposts' => $amount_of_posts,
                             'offset' => $offset,
                             'orderby' => $orderby,
+                            'suppress_filters' => false,
                             'order' => $order
                         ));
                 }

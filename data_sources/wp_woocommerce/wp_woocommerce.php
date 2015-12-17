@@ -39,6 +39,7 @@ class GK_NSP_Data_Source_wp_woocommerce {
 				'post_type' => 'product',
 				'offset' => $offset, 
 				'orderby' => $orderby,
+				'suppress_filters' => false,
 				'order' => $order
 			));
 		} else if($data_source_type == 'wp_woocommerce-wooc_category') {
@@ -49,7 +50,8 @@ class GK_NSP_Data_Source_wp_woocommerce {
 				
 				foreach($wc_cats as $cat_id ) {
 				    if ( $posts = get_posts(array(
-				    			'post_type' => 'product', 
+				    			'post_type' => 'product',
+				    			'suppress_filters' => false, 
 				    			'tax_query'  => array(
 					                array(
 					                    'taxonomy'  => 'product_cat',
@@ -70,6 +72,7 @@ class GK_NSP_Data_Source_wp_woocommerce {
 			} else {
 				$results = get_posts(array(
 					'post_type' => 'product',
+					'suppress_filters' => false,
 					'tax_query'  => array(
 		                array(
 		                    'taxonomy'  => 'product_cat',
