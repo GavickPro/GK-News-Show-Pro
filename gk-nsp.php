@@ -387,7 +387,7 @@ class GK_NewsShowPro_Widget extends WP_Widget {
 							}
 						}
 						// push the wrapper to teh list - avoid duplicates
-						array_push($loaded_files, $instance['article_wrapper']);
+						array_push($loaded_files, $article_wrapper);
 					}
 					// load Thickbox script if popup is used
 					if(!$thickbox_loaded && $article_image_popup === 'on') {
